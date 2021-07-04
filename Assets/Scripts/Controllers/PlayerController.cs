@@ -21,6 +21,11 @@ namespace GrazingShmup
         {
             _inputHor = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Horizontal);
             _inputVer = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Vertical);
+
+            if (Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Fire) > 0)
+            {
+                _player.Fire();
+            } 
         }
         public void FixedUpdate(float fixedDeltaTime)
         {

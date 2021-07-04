@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace GrazingShmup
 {
@@ -8,6 +9,7 @@ namespace GrazingShmup
         private Transform _transform;
         private IEnginePlayer _movement;
         private IWeaponPlayer _weapon;
+        private Transform _weaponMount;
 
         Animator[] _animators;
         ParticleSystem[] _particles;
@@ -20,6 +22,8 @@ namespace GrazingShmup
             _weapon = weapon;
 
             _transform = GameObject.Instantiate(_playerData.Prefab, _playerData.Position, Quaternion.identity).transform;
+
+            _weaponMount = _transform.GetComponentInChildren<AimConstraint>().transform;
 
             _movement.SetDependencies(_transform, _playerData);
             //ServiceLocator.GetService<CollisionManager>().PlayerHit += _playerHealth.TakeHit;
@@ -45,6 +49,11 @@ namespace GrazingShmup
         {
             _movement.Move(inputHor, inputVer, deltaTime);
             Animate(inputHor, inputVer);
+        }
+
+        public void Fire()
+        {
+            _weapon.Shoot(_weaponMount);
         }
 
         private void Animate(float inputHor, float inputVer)
