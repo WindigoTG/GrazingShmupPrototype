@@ -26,12 +26,18 @@ namespace GrazingShmup
         [SerializeField] private float _rowLineOffset;
         [SerializeField] private float _rowVerticalOffset;
         [SerializeField] private bool _isMirrored;
+        [Space]
+        [Header("Row settings")]
+        [SerializeField] private float _capsuleDalay;
+        [SerializeField] private float _capsuleSpeed;
+        [SerializeField] private float _capsuleAngularSpeed;
 
         public BullletConfig GetConfig()
         {
             return new BullletConfig(_bulletSpeed, _bulletAngularSpeed, _lifeTime, _fireDelay,
                 _lineBulletCount, _deltaSpeed, _arcLineCount, _arcAngle, _initialRadius,
-                _rowLineCount, _rowLineOffset, _rowVerticalOffset, _isMirrored);
+                _rowLineCount, _rowLineOffset, _rowVerticalOffset, _isMirrored,
+                _capsuleDalay, _capsuleSpeed, _capsuleAngularSpeed);
         }
     }
 }

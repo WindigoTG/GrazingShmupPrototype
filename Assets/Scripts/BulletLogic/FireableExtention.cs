@@ -36,5 +36,10 @@ namespace GrazingShmup
         {
             return new Row().Of(fireable);
         }
+
+        public static Fireable FiredInDelayedCapsule(this Fireable fireable)
+        {
+            return new DelayedCapsule().Of(fireable);
+        }
     }
 }

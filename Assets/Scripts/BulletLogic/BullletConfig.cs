@@ -27,6 +27,11 @@ namespace GrazingShmup
         [SerializeField] private float _rowLineOffset;
         [SerializeField] private float _rowVerticalOffset;
         [SerializeField] private bool _isMirrored;
+        [Space]
+        [Header("Row settings")]
+        [SerializeField] private float _capsuleDelay;
+        [SerializeField] private float _capsuleSpeed;
+        [SerializeField] private float _capsuleAngularSpeed;
 
         private Vector3 _position;
         private Vector3 _rotation;
@@ -35,7 +40,8 @@ namespace GrazingShmup
         public BullletConfig(float bulletSpeed = 1.0f, float bulletAngularSpeed = 0.0f, float lifetime = 5.0f,
                             float fireDelay = 1.0f, int lineBulletCount = 1, float deltaSpeed = 1.0f,
                             int arcLineCount = 1, float arcAngle = 0.0f, float initialRadius = 0.0f,
-                            int rowLineCount = 1, float rowLineOffset = 0.0f, float rowVerticalOffset = 0.0f, bool isMirrored = true)
+                            int rowLineCount = 1, float rowLineOffset = 0.0f, float rowVerticalOffset = 0.0f, bool isMirrored = true,
+                            float capsuleDelay = 1.0f, float capsuleSpeed = 1.0f, float capsuleAngularSpeed = 1.0f)
         {
             _bulletSpeed = bulletSpeed;
             _bulletAngularSpeed = bulletAngularSpeed;
@@ -50,6 +56,9 @@ namespace GrazingShmup
             _rowLineOffset = rowLineOffset;
             _rowVerticalOffset = rowVerticalOffset;
             _isMirrored = isMirrored;
+            _capsuleDelay = capsuleDelay;
+            _capsuleSpeed = capsuleSpeed;
+            _capsuleAngularSpeed = capsuleAngularSpeed;
             _position = Vector3.zero;
             _rotation = Vector3.zero;
             _angle = 0.0f;
@@ -149,6 +158,24 @@ namespace GrazingShmup
         {
             get => _isMirrored;
             set => _isMirrored = value;
+        }
+
+        public float CapsuleSpeed
+        {
+            get => _capsuleSpeed;
+            set => _capsuleSpeed = value;
+        }
+
+        public float CapsuleAngularSpeed
+        {
+            get => _capsuleAngularSpeed * (float)Math.PI / 180;
+            set => _capsuleAngularSpeed = value;
+        }
+
+        public float CapsuleDelay
+        {
+            get => _capsuleDelay;
+            set => _capsuleDelay = value;
         }
     }
 }

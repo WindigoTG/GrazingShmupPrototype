@@ -26,7 +26,8 @@ namespace GrazingShmup
 
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
-            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule();
 
             _config = _bulletData.GetConfig();
             _fireDelay = _config.FireDelay;
