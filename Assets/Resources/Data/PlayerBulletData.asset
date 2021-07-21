@@ -25,3 +25,6 @@ MonoBehaviour:
   _rowLineOffset: 0.1
   _rowVerticalOffset: -0.03
   _isMirrored: 1
+  _capsuleDalay: 0
+  _capsuleSpeed: 0
+  _capsuleAngularSpeed: 0

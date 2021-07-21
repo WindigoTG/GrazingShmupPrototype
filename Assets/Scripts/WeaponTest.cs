@@ -21,12 +21,13 @@ namespace GrazingShmup
             ServiceLocator.AddService(new CollisionManager());
             _bulletManager = new BulletManager();
 
-            ServiceLocator.AddService(new ObjectPoolManager());
+            ServiceLocator.AddService(new ObjectPoolManager(null));
             ServiceLocator.AddService(_bulletManager);
 
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
-            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            _projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
 
             _config = _bulletData.GetConfig();
             _fireDelay = _config.FireDelay;

@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2.5
   _position: {x: 0, y: 0, z: 0}
-  _boundX: 0
-  _boundZ: 0
+  _screenBoundMargin: 0.5
   _prefab: {fileID: 7553030071712996970, guid: bf48740297f52254c805a0e640aae51c, type: 3}

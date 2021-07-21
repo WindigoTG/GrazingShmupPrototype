@@ -31,5 +31,7 @@ namespace GrazingShmup
         {
             _player.Move(_inputHor, _inputVer, fixedDeltaTime);
         }
+
+        public Vector3 PlayerPosition => _player.Transform.position;
     }
 }

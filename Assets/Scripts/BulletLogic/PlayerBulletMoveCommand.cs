@@ -51,7 +51,7 @@ namespace GrazingShmup
 
         private void GetBulletSize()
         {
-            var collider =_bullet.gameObject.AddComponent<BoxCollider>();
+            var collider =_bullet.gameObject.AddComponent<BoxCollider2D>();
             _bulletRadius = collider.bounds.extents.z;
             Object.Destroy(collider);
         }

@@ -35,9 +35,9 @@ namespace GrazingShmup
                     ServiceLocator.GetService<BulletManager>().RemoveCommand(this);
                 }
 
-                //_bullet.transform.Rotate(Vector3.up, _angularSpeed * _speed * deltaTime);
+                //_bullet.transform.Rotate(Vector3.forward, _angularSpeed * _speed * deltaTime);
                 _bullet.transform.Rotate(Vector3.forward, _angularSpeed *180 /Mathf.PI * deltaTime);
-                _bullet.Translate(Vector3.forward * _speed * deltaTime, Space.Self);
+                _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
                 if (ServiceLocator.GetService<CollisionManager>().CheckCollisions(
                     _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(ConstantsAndMagicLines.PlayerLayer)))
@@ -52,7 +52,7 @@ namespace GrazingShmup
 
         private void GetBulletSize()
         {
-            var collider =_bullet.gameObject.AddComponent<BoxCollider>();
+            var collider =_bullet.gameObject.AddComponent<BoxCollider2D>();
             _bulletRadius = collider.bounds.extents.x;
             Object.Destroy(collider);
         }

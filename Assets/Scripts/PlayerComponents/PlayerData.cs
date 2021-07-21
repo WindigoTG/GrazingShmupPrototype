@@ -7,13 +7,11 @@ namespace GrazingShmup
     {
         [SerializeField, Range(0, 10)] private float _speed;
         [SerializeField] private Vector3 _position;
-        [SerializeField] private float _boundX;
-        [SerializeField] private float _boundZ;
+        [SerializeField] private float _screenBoundMargin;
         [SerializeField] private GameObject _prefab;
         public float Speed => _speed;
         public Vector3 Position => _position;
-        public float Xbound => _boundX;
-        public float Zbound => _boundZ;
+        public float ScreenBoundMargin => _screenBoundMargin;
         public GameObject Prefab => _prefab;
     }
 }
