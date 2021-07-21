@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
-  _bulletSpeed: 0
-  _bulletAngularSpeed: 0
-  _lifeTime: 0
-  _fireDelay: 0
-  _lineBulletCount: 0
-  _deltaSpeed: 0
-  _arcLineCount: 0
-  _arcAngle: 0
-  _initialRadius: 0
-  _rowLineCount: 0
-  _rowLineOffset: 0
-  _rowVerticalOffset: 0
-  _isMirrored: 0
-  _capsuleDalay: 0
-  _capsuleSpeed: 0
+  _bulletSpeed: -1
+  _bulletAngularSpeed: 100
+  _lifeTime: 10
+  _fireDelay: 2
+  _lineBulletCount: 1
+  _deltaSpeed: 0.5
+  _arcLineCount: 10
+  _arcAngle: 324
+  _initialRadius: 0.1
+  _rowLineCount: 1
+  _rowLineOffset: 0.1
+  _rowVerticalOffset: 0.05
+  _isMirrored: 1
+  _capsuleDalay: 3
+  _capsuleSpeed: 1.5
   _capsuleAngularSpeed: 0

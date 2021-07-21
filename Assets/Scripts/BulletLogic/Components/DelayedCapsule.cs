@@ -6,7 +6,7 @@ namespace GrazingShmup
     {
         public override void Fire(BullletConfig config, Vector3 position, Vector3 rotation)
         {
-            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().EnemyBulletsPool.Pop().transform;
+            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Pop().transform;
 
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);

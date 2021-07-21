@@ -44,7 +44,7 @@ namespace GrazingShmup
                 if (_delayTime <= 0)
                 {
                     _content.Fire(_config, _bullet.position, _bullet.rotation.eulerAngles);
-                    ServiceLocator.GetService<ObjectPoolManager>().EnemyBulletsPool.Push(_bullet.gameObject);
+                    ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Push(_bullet.gameObject);
                     ServiceLocator.GetService<BulletManager>().RemoveCommand(this);
                 }
             }

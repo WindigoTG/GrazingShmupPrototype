@@ -5,6 +5,7 @@ namespace GrazingShmup
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField] EnemyRoute _testEnemyRoute;
 
         List<IUpdateableRegular> _updatables;
         List<IUpdateableFixed> _fixedUpdatables;
@@ -49,11 +50,16 @@ namespace GrazingShmup
             _fixedUpdatables.Add(playerController);
 
             ServiceLocator.AddService(new CollisionManager());
-            ServiceLocator.AddService(new ObjectPoolManager());
+
+            EnemyFactory enemyFactory = new EnemyFactory();
+            ServiceLocator.AddService(new ObjectPoolManager(enemyFactory));
 
             BulletManager bulletManager = new BulletManager();
             ServiceLocator.AddService(bulletManager);
             _lateUpdatables.Add(bulletManager);
+
+            EnemyController enemyController = new EnemyController(enemyFactory, _testEnemyRoute, playerController);
+            _updatables.Add(enemyController);
         }
     }
 }
