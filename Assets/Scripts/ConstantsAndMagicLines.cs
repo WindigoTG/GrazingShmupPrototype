@@ -17,6 +17,10 @@ namespace GrazingShmup
         public const string Player_Bullets_Parent_Object = "PlayerBullets";
 
         public const string Enemy_Bullet_Prefab = "Prefabs/Bullet_Enemy";
-        public const string Player_Bullet_Prefab = "Prefabs/PlayerShot";
+        public const string Player_Bullet_Prefab = "Prefabs/Bullet_Player";
+        public const string Bullet_Capsule_Prefab = "Prefabs/Bullet_Capsule";
+        public const string Enemy_Prefabs = "Prefabs/Enemies/Enemy_";
+        public const string Enemy_Movement_Data = "Data/Enemies/Movement/EnemyMovementData_";
+        public const string Enemy_Bullet_Data = "Data/Enemies/Weapons/EnemyBulletData_";
     }
 }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
+  m_Name: EnemyBulletData_0
+  m_EditorClassIdentifier: 
+  _bulletSpeed: 0
+  _bulletAngularSpeed: 0
+  _lifeTime: 0
+  _fireDelay: 0
+  _lineBulletCount: 0
+  _deltaSpeed: 0
+  _arcLineCount: 0
+  _arcAngle: 0
+  _initialRadius: 0
+  _rowLineCount: 0
+  _rowLineOffset: 0
+  _rowVerticalOffset: 0
+  _isMirrored: 0
+  _capsuleDalay: 0
+  _capsuleSpeed: 0
+  _capsuleAngularSpeed: 0

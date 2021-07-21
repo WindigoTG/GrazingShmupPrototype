@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace GrazingShmup
 {
@@ -6,17 +7,21 @@ namespace GrazingShmup
     {
         private ObjectPool _playerBulletsPool;
         private ObjectPool _enemyBulletsPool;
-        private ObjectPool _enemyPool;
+        private ObjectPool _bulletCapsulePool;
+        private Dictionary<EnemyType, ObjectPool> _enemyPool = new Dictionary<EnemyType, ObjectPool>();
 
         private Transform _playerBulletParent;
         private Transform _enemyBulletParent;
         private Transform _enemyParent;
 
-        public ObjectPoolManager()
+        IEnemyFactory _enemyFactory;
+
+        public ObjectPoolManager(IEnemyFactory enemyFactory)
         {
             _playerBulletParent = new GameObject(ConstantsAndMagicLines.Player_Bullets_Parent_Object).transform;
             _enemyBulletParent = new GameObject(ConstantsAndMagicLines.Enemy_Bullets_Parent_Object).transform;
             _enemyParent = new GameObject(ConstantsAndMagicLines.Enemies_Parent_Object).transform;
+            _enemyFactory = enemyFactory;
         }
 
         public ObjectPool PlayerBulletsPool
@@ -39,14 +44,22 @@ namespace GrazingShmup
             }
         }
 
-        //public ObjectPool EnemyPool
-        //{
-        //    get
-        //    {
-        //        if (_enemyPool == null)
-        //            _enemyPool = new ObjectPool(Resources.Load<GameObject>(ConstantsAndMagicLines.Enemy_Prefab), _enemyParent);
-        //        return _enemyPool;
-        //    }
-        //}
+        public ObjectPool BulletCapsulePool
+        {
+            get
+            {
+                if (_bulletCapsulePool == null)
+                    _bulletCapsulePool = new ObjectPool(Resources.Load<GameObject>(ConstantsAndMagicLines.Bullet_Capsule_Prefab), _enemyBulletParent);
+                return _bulletCapsulePool;
+            }
+}
+
+        public ObjectPool GetEnemyPool(EnemyType type)
+        {
+            if (!_enemyPool.ContainsKey(type))
+                _enemyPool.Add(type, new ObjectPool(_enemyFactory.GetEnemyPrefab(type), _enemyParent));
+
+            return _enemyPool[type];
+        }
     }
 }
