@@ -20,7 +20,6 @@ namespace GrazingShmup
             if (!_bulletData.ContainsKey(type))
             {
                 string path = ConstantsAndMagicLines.Enemy_Bullet_Data + ((int)type).ToString();
-                Debug.Log(path);
                 _bulletData.Add(type, Resources.Load<BulletData>(path));
             }
 

@@ -10,6 +10,7 @@ namespace GrazingShmup
 
         private float _inputHor;
         private float _inputVer;
+        private float _slowDownInput;
 
         public PlayerController(IPlayerFactory playerFactory)
         {
@@ -21,6 +22,7 @@ namespace GrazingShmup
         {
             _inputHor = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Horizontal);
             _inputVer = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Vertical);
+            _slowDownInput = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Fire2);
 
             if (Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Fire) > 0)
             {
@@ -29,7 +31,7 @@ namespace GrazingShmup
         }
         public void FixedUpdate(float fixedDeltaTime)
         {
-            _player.Move(_inputHor, _inputVer, fixedDeltaTime);
+            _player.Move(_inputHor, _inputVer, _slowDownInput != 0, fixedDeltaTime);
         }
 
         public Vector3 PlayerPosition => _player.Transform.position;

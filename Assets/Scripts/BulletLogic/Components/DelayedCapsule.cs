@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class DelayedCapsule : Fireable
     {
-        public override void Fire(BullletConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Pop().transform;
 

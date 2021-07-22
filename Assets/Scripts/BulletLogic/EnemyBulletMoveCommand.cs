@@ -40,7 +40,7 @@ namespace GrazingShmup
                 _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
                 if (ServiceLocator.GetService<CollisionManager>().CheckCollisions(
-                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(ConstantsAndMagicLines.PlayerLayer)))
+                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(ConstantsAndMagicLines.PlayerHitBox)))
                 {
                     ServiceLocator.GetService<BulletManager>().RemoveCommand(this);
                     ServiceLocator.GetService<ObjectPoolManager>().EnemyBulletsPool.Push(_bullet.gameObject);

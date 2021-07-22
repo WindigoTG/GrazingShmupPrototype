@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 901104444118253796}
   - component: {fileID: 3393444153426288678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeaponMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ Transform:
   - {fileID: 7553030071307402487}
   - {fileID: 7553030073040374149}
   - {fileID: 901104444118253796}
+  - {fileID: 8816804377946894614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14635,7 +14636,7 @@ GameObject:
   - component: {fileID: 7553030073040374149}
   - component: {fileID: 7553030073040374148}
   - component: {fileID: 7553030073040374147}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19527,3 +19528,145 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &9196585436195811475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8816804377946894614}
+  - component: {fileID: 3483024816669503980}
+  - component: {fileID: 5417608216343058186}
+  m_Layer: 11
+  m_Name: GrazeCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8816804377946894614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196585436195811475}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_Children: []
+  m_Father: {fileID: 7553030071712996983}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &3483024816669503980
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196585436195811475}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.38, y: -0.84999996}
+      - {x: 0.41, y: -0.95}
+      - {x: 0.7, y: -1}
+      - {x: 0.72999996, y: -0.96}
+      - {x: 0.72999996, y: -0.84}
+      - {x: 0.66999996, y: -0.77}
+      - {x: 0.56, y: -0.71999997}
+      - {x: 0.39999998, y: -0.51}
+      - {x: 0.42, y: -0.32999998}
+      - {x: 0.48490214, y: -0.22547998}
+      - {x: 0.74, y: -0.31}
+      - {x: 0.82, y: -0.39}
+      - {x: 1.01, y: -0.53}
+      - {x: 1.03, y: -0.57}
+      - {x: 1.06, y: -0.56}
+      - {x: 1.09, y: -0.53}
+      - {x: 1.09, y: -0.34}
+      - {x: 1.02, y: -0.19}
+      - {x: 1.01, y: -0.08}
+      - {x: 0.93, y: -0.04}
+      - {x: 0.9, y: -0.07}
+      - {x: 0.77, y: 0.04}
+      - {x: 0.12, y: 0.48}
+      - {x: 0.19999999, y: 0.51}
+      - {x: 0.32999998, y: 0.42999998}
+      - {x: 0.35999998, y: 0.45}
+      - {x: 0.35, y: 0.56}
+      - {x: 0.13, y: 0.78}
+      - {x: 0.12, y: 0.94}
+      - {x: 0.04, y: 1.25}
+      - {x: 0.03, y: 1.28}
+      - {x: -0.04, y: 1.28}
+      - {x: -0.13, y: 0.95}
+      - {x: -0.14999999, y: 0.77}
+      - {x: -0.37, y: 0.53999996}
+      - {x: -0.34, y: 0.41}
+      - {x: -0.17999999, y: 0.51}
+      - {x: -0.12, y: 0.48}
+      - {x: -0.64, y: 0.14}
+      - {x: -0.83, y: -0.01}
+      - {x: -0.96999997, y: -0.06}
+      - {x: -1, y: -0.089999996}
+      - {x: -1.09, y: -0.37}
+      - {x: -1.09, y: -0.53}
+      - {x: -1.06, y: -0.56}
+      - {x: -1.03, y: -0.57}
+      - {x: -0.98999995, y: -0.48999998}
+      - {x: -0.84999996, y: -0.41}
+      - {x: -0.69, y: -0.29999998}
+      - {x: -0.47759557, y: -0.22384591}
+      - {x: -0.39, y: -0.34}
+      - {x: -0.39999998, y: -0.51}
+      - {x: -0.56, y: -0.71999997}
+      - {x: -0.66999996, y: -0.77}
+      - {x: -0.72999996, y: -0.84}
+      - {x: -0.72999996, y: -0.96999997}
+      - {x: -0.7, y: -1}
+      - {x: -0.59, y: -1}
+      - {x: -0.41, y: -0.93}
+      - {x: -0.38, y: -0.84999996}
+      - {x: -0.35999998, y: -0.97999996}
+      - {x: -0.21, y: -1.28}
+      - {x: 0.21, y: -1.28}
+      - {x: 0.22999999, y: -1.23}
+      - {x: 0.31, y: -1.0799999}
+      - {x: 0.35999998, y: -0.96999997}
+--- !u!95 &5417608216343058186
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196585436195811475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9426dfecb9fd80341972c113ec7c2e23, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

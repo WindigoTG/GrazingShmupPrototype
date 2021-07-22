@@ -8,8 +8,10 @@ namespace GrazingShmup
         public const string Input_Axis_Horizontal = "Horizontal";
         public const string Input_Axis_Vertical = "Vertical";
         public const string Input_Axis_Fire = "Fire1";
+        public const string Input_Axis_Fire2 = "Fire2";
 
-        public const string PlayerLayer = "Player";
+        public const string PlayerHitBox = "PLayerHitbox";
+        public const string PlayerGraze = "PlayerGrazeCollider";
         public const string EnemyLayer = "Enemy";
 
         public const string Enemies_Parent_Object = "Enemies";

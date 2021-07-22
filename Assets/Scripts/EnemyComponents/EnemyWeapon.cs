@@ -5,11 +5,11 @@ namespace GrazingShmup
 {
     public abstract class EnemyWeapon : IWeaponEnemy, ICloneable
     {
-        protected BullletConfig _config;
+        protected BulletConfig _config;
         protected IFireable _bullet;
         protected float _lastFiredTime = 0;
 
-        public EnemyWeapon(BullletConfig config, IFireable bullet)
+        public EnemyWeapon(BulletConfig config, IFireable bullet)
         {
             _config = config;
             _bullet = bullet;

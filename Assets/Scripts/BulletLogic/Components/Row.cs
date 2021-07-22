@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class Row : Fireable
     {
-        public override void Fire(BullletConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
             config.Rotation = rotation;

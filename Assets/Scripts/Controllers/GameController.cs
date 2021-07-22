@@ -45,11 +45,11 @@ namespace GrazingShmup
 
         private void CreateUpdatables()
         {
+            ServiceLocator.AddService(new CollisionManager());
+
             PlayerController playerController = new PlayerController(new PlayerFactory());
             _updatables.Add(playerController);
             _fixedUpdatables.Add(playerController);
-
-            ServiceLocator.AddService(new CollisionManager());
 
             EnemyFactory enemyFactory = new EnemyFactory();
             ServiceLocator.AddService(new ObjectPoolManager(enemyFactory));

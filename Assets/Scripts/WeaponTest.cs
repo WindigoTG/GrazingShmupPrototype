@@ -6,7 +6,7 @@ namespace GrazingShmup
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private BullletConfig _config;
+        [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         private BulletManager _bulletManager;
         private IFireable _projectile;
