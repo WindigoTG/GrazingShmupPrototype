@@ -4,6 +4,6 @@ namespace GrazingShmup
 {
     public interface IWeaponPlayer
     {
-        void Shoot(Transform bulletSpawn, bool maxPower);
+        void Shoot(Transform bulletSpawn, int powerLevel);
     }
 }

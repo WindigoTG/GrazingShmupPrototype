@@ -60,7 +60,7 @@ namespace GrazingShmup
 
         public void Fire()
         {
-            _weapon.Shoot(_weaponMount, _powerCore.IsGrazing);
+            _weapon.Shoot(_weaponMount, _powerCore.PowerLevel);
         }
 
         private void Animate(float inputHor, float inputVer)
