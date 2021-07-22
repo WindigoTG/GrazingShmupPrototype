@@ -10,6 +10,7 @@ namespace GrazingShmup
         private IEnginePlayer _movement;
         private IWeaponPlayer _weapon;
         private Transform _weaponMount;
+        private PlayerPowerCore _powerCore;
 
         Animator[] _animators;
         ParticleSystem[] _particles;
@@ -25,8 +26,12 @@ namespace GrazingShmup
 
             _weaponMount = _transform.GetComponentInChildren<AimConstraint>().transform;
 
+            _powerCore = new PlayerPowerCore(_transform);
+
             _movement.SetDependencies(_transform, _playerData);
-            //ServiceLocator.GetService<CollisionManager>().PlayerHit += _playerHealth.TakeHit;
+            ServiceLocator.GetService<CollisionManager>().RegisterPlayer(_transform);
+            ServiceLocator.GetService<CollisionManager>().PlayerHit += _powerCore.Hit;
+            ServiceLocator.GetService<CollisionManager>().PlayerGrazed += _powerCore.Graze;
 
             _animators = _transform.GetComponentsInChildren<Animator>();
             _particles = _transform.GetComponentsInChildren<ParticleSystem>();
@@ -45,15 +50,17 @@ namespace GrazingShmup
         public IWeaponPlayer Weapon => _weapon;
         public IEnginePlayer Movement => _movement;
 
-        public void Move(float inputHor, float inputVer, float deltaTime)
+        public void Move(float inputHor, float inputVer, bool isSlowedDown, float deltaTime)
         {
-            _movement.Move(inputHor, inputVer, deltaTime);
+            _movement.Move(inputHor, inputVer, isSlowedDown, deltaTime);
             Animate(inputHor, inputVer);
+
+            _powerCore.Update(deltaTime);
         }
 
         public void Fire()
         {
-            _weapon.Shoot(_weaponMount);
+            _weapon.Shoot(_weaponMount, _powerCore.PowerLevel);
         }
 
         private void Animate(float inputHor, float inputVer)

@@ -24,9 +24,10 @@ namespace GrazingShmup
             _playerShip = playerShip;
         }
 
-        public void Move(float inputHor, float inputVer, float deltaTime)
+        public void Move(float inputHor, float inputVer,  bool isSlowedDown, float deltaTime)
         {
-            _playerShip.Translate(new Vector3(inputHor, inputVer, 0) * (_playerData.Speed * deltaTime));
+            _playerShip.Translate(new Vector3(inputHor, inputVer, 0) * 
+                                    ((isSlowedDown ? _playerData.Speed * _playerData.SlowDownRate : _playerData.Speed) * deltaTime));
             ConstrainPlayerPosition();
         }
 

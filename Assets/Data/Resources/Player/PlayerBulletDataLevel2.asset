@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
-  m_Name: EnemyBulletData_0
+  m_Name: PlayerBulletDataLevel2
   m_EditorClassIdentifier: 
-  _bulletSpeed: 0
+  _bulletSpeed: 7
   _bulletAngularSpeed: 0
-  _lifeTime: 0
-  _fireDelay: 0
-  _lineBulletCount: 0
+  _lifeTime: 1.5
+  _fireDelay: 0.05
+  _lineBulletCount: 1
   _deltaSpeed: 0
-  _arcLineCount: 0
-  _arcAngle: 0
+  _arcLineCount: 5
+  _arcAngle: 25
   _initialRadius: 0
-  _rowLineCount: 0
+  _rowLineCount: 1
   _rowLineOffset: 0
   _rowVerticalOffset: 0
   _isMirrored: 0

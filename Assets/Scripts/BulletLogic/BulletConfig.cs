@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GrazingShmup
 {
     [Serializable]
-    public struct BullletConfig
+    public struct BulletConfig
     {
         [Header("Single bullet settings")]
         [SerializeField] private float _bulletSpeed;
@@ -37,11 +37,11 @@ namespace GrazingShmup
         private Vector3 _rotation;
         private float _angle;
 
-        public BullletConfig(float bulletSpeed = 1.0f, float bulletAngularSpeed = 0.0f, float lifetime = 5.0f,
+        public BulletConfig(float bulletSpeed = 1.0f, float bulletAngularSpeed = 0.0f, float lifetime = 5.0f,
                             float fireDelay = 1.0f, int lineBulletCount = 1, float deltaSpeed = 1.0f,
                             int arcLineCount = 1, float arcAngle = 0.0f, float initialRadius = 0.0f,
                             int rowLineCount = 1, float rowLineOffset = 0.0f, float rowVerticalOffset = 0.0f, bool isMirrored = true,
-                            float capsuleDelay = 1.0f, float capsuleSpeed = 1.0f, float capsuleAngularSpeed = 1.0f)
+                            float capsuleDelay = 0.0f, float capsuleSpeed = 1.0f, float capsuleAngularSpeed = 0.0f)
         {
             _bulletSpeed = bulletSpeed;
             _bulletAngularSpeed = bulletAngularSpeed;
@@ -88,7 +88,7 @@ namespace GrazingShmup
             set => _fireDelay = Math.Abs(value); 
         }
 
-        public int BulletCount
+        public int LineBulletCount
         {
             get => _lineBulletCount; 
             set => _lineBulletCount = value > 0 ? value : 1; 

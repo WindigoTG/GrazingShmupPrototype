@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
-  m_Name: PlayerBulletData
+  m_Name: PlayerBulletDataLevel3
   m_EditorClassIdentifier: 
   _bulletSpeed: 7
   _bulletAngularSpeed: 0
   _lifeTime: 1.5
   _fireDelay: 0.05
   _lineBulletCount: 1
-  _deltaSpeed: 0.1
-  _arcLineCount: 1
-  _arcAngle: 324
+  _deltaSpeed: 0
+  _arcLineCount: 7
+  _arcAngle: 35
   _initialRadius: 0
-  _rowLineCount: 3
-  _rowLineOffset: 0.1
-  _rowVerticalOffset: -0.03
-  _isMirrored: 1
+  _rowLineCount: 1
+  _rowLineOffset: 0
+  _rowVerticalOffset: 0
+  _isMirrored: 0
   _capsuleDalay: 0
   _capsuleSpeed: 0
   _capsuleAngularSpeed: 0
