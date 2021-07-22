@@ -6,7 +6,7 @@ namespace GrazingShmup
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private BullletConfig _config;
+        [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         private BulletManager _bulletManager;
         private IFireable _projectile;
@@ -26,8 +26,8 @@ namespace GrazingShmup
 
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
-            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
-            _projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
+            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            //_projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
 
             _config = _bulletData.GetConfig();
             _fireDelay = _config.FireDelay;

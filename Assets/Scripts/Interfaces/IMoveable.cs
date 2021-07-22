@@ -2,6 +2,6 @@ namespace GrazingShmup
 {
     public interface IMoveable
     {
-        void Move(float inputHor, float inputVer, float deltaTime);
+        void Move(float inputHor, float inputVer, bool isSlowedDown, float deltaTime);
     }
 }

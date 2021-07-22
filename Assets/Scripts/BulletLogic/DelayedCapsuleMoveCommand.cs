@@ -13,9 +13,9 @@ namespace GrazingShmup
         private float _bulletRadius;
 
         private IFireable _content;
-        private BullletConfig _config;
+        private BulletConfig _config;
 
-        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float angularSpeed, float delayTime, IFireable content, BullletConfig config)
+        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float angularSpeed, float delayTime, IFireable content, BulletConfig config)
         {
             _bullet = bullet;
             _speed = speed;
@@ -37,7 +37,7 @@ namespace GrazingShmup
                 _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
                 ServiceLocator.GetService<CollisionManager>().CheckCollisions(
-                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(ConstantsAndMagicLines.PlayerLayer));
+                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(References.PlayerHitBox));
 
 
                 _delayTime -= deltaTime;
