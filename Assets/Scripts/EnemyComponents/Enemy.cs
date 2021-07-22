@@ -3,11 +3,6 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public enum EnemyType
-    {
-        PopcornFlying = 0
-    }
-
     public sealed class Enemy : IUpdateableRegular
     {
         private IMovementEnemy _movement;

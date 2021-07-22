@@ -9,10 +9,10 @@ namespace GrazingShmup
         private float _lastFiredTime;
         private float _fireDelay;
 
-        public PlayerWeapon(BulletConfig[] config)
+        public PlayerWeapon(BulletConfig[] config, IFireable projectile)
         {
-            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
             _config = config;
+            _projectile = projectile;
             _fireDelay = _config[0].FireDelay;
             _lastFiredTime = -_fireDelay;
         }

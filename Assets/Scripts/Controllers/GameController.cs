@@ -46,6 +46,7 @@ namespace GrazingShmup
         private void CreateUpdatables()
         {
             ServiceLocator.AddService(new CollisionManager());
+            ServiceLocator.AddService(new BulletFactory());
 
             PlayerController playerController = new PlayerController(new PlayerFactory());
             _updatables.Add(playerController);

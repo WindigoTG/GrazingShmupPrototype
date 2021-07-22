@@ -28,7 +28,7 @@ namespace GrazingShmup
         [SerializeField] private float _rowVerticalOffset;
         [SerializeField] private bool _isMirrored;
         [Space]
-        [Header("Row settings")]
+        [Header("Delayed Capsule settings")]
         [SerializeField] private float _capsuleDelay;
         [SerializeField] private float _capsuleSpeed;
         [SerializeField] private float _capsuleAngularSpeed;

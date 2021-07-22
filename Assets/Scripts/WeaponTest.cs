@@ -9,6 +9,7 @@ namespace GrazingShmup
         [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         private BulletManager _bulletManager;
+        private BulletFactory _bulletFactory;
         private IFireable _projectile;
         private float _fireDelay;
 
@@ -18,6 +19,8 @@ namespace GrazingShmup
 
         private void Awake()
         {
+            _bulletFactory = new BulletFactory();
+
             ServiceLocator.AddService(new CollisionManager());
             _bulletManager = new BulletManager();
 
@@ -26,10 +29,11 @@ namespace GrazingShmup
 
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
-            _projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
+            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
             //_projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
 
-            _config = _bulletData.GetConfig();
+            _projectile = _bulletFactory.GetBullet(_bulletData.BulletComponents, _bulletData.BulletOwner);
+            _config = _bulletData.Config;
             _fireDelay = _config.FireDelay;
             _lastFiredTime = Time.time;
         }
@@ -38,8 +42,10 @@ namespace GrazingShmup
         {
             if (Time.time - _lastFiredTime >= _fireDelay)
             {
+                _projectile = _bulletFactory.GetBullet(_bulletData.BulletComponents, _bulletData.BulletOwner);
+                _config = _bulletData.Config;
+
                 Fire();
-                _config = _bulletData.GetConfig();
                 _lastFiredTime = Time.time;
                 _fireDelay = _config.FireDelay;
             }

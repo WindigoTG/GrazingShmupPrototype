@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.IO;
 using System.Collections.Generic;
 
 namespace GrazingShmup
@@ -23,10 +22,11 @@ namespace GrazingShmup
                 _bulletData.Add(type, Resources.Load<BulletData>(path));
             }
 
-            IFireable bullet = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule();
+            IFireable bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
+                                                                        _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
 
             Enemy enemy = new Enemy( type,
-                new EnemyWeaponTracking(_bulletData[type].GetConfig(), bullet),
+                new EnemyWeaponTracking(_bulletData[type].Config, bullet),
                 new EnemyEngine(_movementData[type]));
 
             return enemy;

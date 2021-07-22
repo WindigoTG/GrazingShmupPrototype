@@ -29,10 +29,4 @@ namespace GrazingShmup
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }
     }
-
-    public enum BulletOwner
-    {
-        Player,
-        Enemy
-    }
 }

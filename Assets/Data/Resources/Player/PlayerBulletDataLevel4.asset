@@ -12,19 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
   m_Name: PlayerBulletDataLevel4
   m_EditorClassIdentifier: 
-  _bulletSpeed: 7
-  _bulletAngularSpeed: 0
-  _lifeTime: 1.5
-  _fireDelay: 0.05
-  _lineBulletCount: 1
-  _deltaSpeed: 0
-  _arcLineCount: 7
-  _arcAngle: 45
-  _initialRadius: 0
-  _rowLineCount: 2
-  _rowLineOffset: 0.1
-  _rowVerticalOffset: -0.05
-  _isMirrored: 1
-  _capsuleDalay: 0
-  _capsuleSpeed: 0
-  _capsuleAngularSpeed: 0
+  _bulletConfig:
+    _bulletSpeed: 7
+    _bulletAngularSpeed: 0
+    _lifeTime: 1.5
+    _fireDelay: 0.05
+    _lineBulletCount: 1
+    _deltaSpeed: 0
+    _arcLineCount: 7
+    _arcAngle: 45
+    _initialRadius: 0
+    _rowLineCount: 2
+    _rowLineOffset: 0.1
+    _rowVerticalOffset: -0.05
+    _isMirrored: 1
+    _capsuleDelay: 0
+    _capsuleSpeed: 0
+    _capsuleAngularSpeed: 0
+  _bulletOwner: 0
+  _bulletComponents: 0200000001000000
