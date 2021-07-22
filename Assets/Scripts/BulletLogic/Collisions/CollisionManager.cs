@@ -17,15 +17,15 @@ namespace GrazingShmup
         {
             float maxDistance = direction.magnitude;
 
-            if (layerMask == LayerMask.GetMask(ConstantsAndMagicLines.PlayerHitBox))
+            if (layerMask == LayerMask.GetMask(References.PlayerHitBox))
             {
                 Array.Clear(_hits, 0, _hits.Length);
-                if (Physics2D.CircleCastNonAlloc(origin, radius, direction.normalized, _hits, maxDistance, LayerMask.GetMask(ConstantsAndMagicLines.PlayerGraze)) > 0)
+                if (Physics2D.CircleCastNonAlloc(origin, radius, direction.normalized, _hits, maxDistance, LayerMask.GetMask(References.PlayerGraze)) > 0)
             {
                     foreach (var h in _hits)
                         if (h.collider != null)
                         {
-                            NotifyObservers(h, LayerMask.GetMask(ConstantsAndMagicLines.PlayerGraze));
+                            NotifyObservers(h, LayerMask.GetMask(References.PlayerGraze));
                             break;
                         }
                 }
@@ -47,15 +47,15 @@ namespace GrazingShmup
 
         void NotifyObservers(RaycastHit2D hit, int layerMask)
         {
-            if (layerMask == LayerMask.GetMask(ConstantsAndMagicLines.PlayerGraze))
+            if (layerMask == LayerMask.GetMask(References.PlayerGraze))
             {
                 PlayerGrazed?.Invoke(hit.point);
             }
-            if (layerMask == LayerMask.GetMask(ConstantsAndMagicLines.PlayerHitBox))
+            if (layerMask == LayerMask.GetMask(References.PlayerHitBox))
             {
                 PlayerHit?.Invoke();
             }
-            if (layerMask == LayerMask.GetMask(ConstantsAndMagicLines.EnemyLayer))
+            if (layerMask == LayerMask.GetMask(References.EnemyLayer))
             {
                 EnemyHit?.Invoke(hit.collider.transform);
             }

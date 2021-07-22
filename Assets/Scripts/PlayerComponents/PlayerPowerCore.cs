@@ -26,7 +26,7 @@ namespace GrazingShmup
 
         public PlayerPowerCore(Transform playerShip)
         {
-            _grazeSparksTransform = Object.Instantiate(Resources.Load<GameObject>("Prefabs/GrazeSparks")).transform;
+            _grazeSparksTransform = Object.Instantiate(Resources.Load<GameObject>(References.Graze_Sparks_Prefab)).transform;
             _grazeSparks = _grazeSparksTransform.GetComponent<ParticleSystem>();
             _playerShip = playerShip;
 

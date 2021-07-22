@@ -13,7 +13,7 @@ namespace GrazingShmup
 
         public PlayerShip CreatePlayer()
         {
-            return new PlayerShip(Resources.Load<PlayerData>(ConstantsAndMagicLines.Player_Data), new PlayerEngine(), new PlayerWeapon(LoadBulletConfig()));
+            return new PlayerShip(Resources.Load<PlayerData>(References.Player_Data), new PlayerEngine(), new PlayerWeapon(LoadBulletConfig()));
         }
 
         private BulletConfig[] LoadBulletConfig()
@@ -22,7 +22,7 @@ namespace GrazingShmup
 
             for (int i = 0; i < 5; i++)
             {
-                _bulletData = Resources.Load<BulletData>(ConstantsAndMagicLines.Player_Bullet_Data + i.ToString());
+                _bulletData = Resources.Load<BulletData>(References.Player_Bullet_Data + i.ToString());
                 config[i] = _bulletData.GetConfig();
             }
 

@@ -20,11 +20,11 @@ namespace GrazingShmup
 
         public void Update(float deltaTime)
         {
-            _inputHor = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Horizontal);
-            _inputVer = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Vertical);
-            _slowDownInput = Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Fire2);
+            _inputHor = Input.GetAxisRaw(References.Input_Axis_Horizontal);
+            _inputVer = Input.GetAxisRaw(References.Input_Axis_Vertical);
+            _slowDownInput = Input.GetAxisRaw(References.Input_Axis_Fire2);
 
-            if (Input.GetAxisRaw(ConstantsAndMagicLines.Input_Axis_Fire) > 0)
+            if (Input.GetAxisRaw(References.Input_Axis_Fire) > 0)
             {
                 _player.Fire();
             } 

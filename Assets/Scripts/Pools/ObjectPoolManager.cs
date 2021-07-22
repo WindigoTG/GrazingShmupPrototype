@@ -18,9 +18,9 @@ namespace GrazingShmup
 
         public ObjectPoolManager(IEnemyFactory enemyFactory)
         {
-            _playerBulletParent = new GameObject(ConstantsAndMagicLines.Player_Bullets_Parent_Object).transform;
-            _enemyBulletParent = new GameObject(ConstantsAndMagicLines.Enemy_Bullets_Parent_Object).transform;
-            _enemyParent = new GameObject(ConstantsAndMagicLines.Enemies_Parent_Object).transform;
+            _playerBulletParent = new GameObject(References.Player_Bullets_Parent_Object).transform;
+            _enemyBulletParent = new GameObject(References.Enemy_Bullets_Parent_Object).transform;
+            _enemyParent = new GameObject(References.Enemies_Parent_Object).transform;
             _enemyFactory = enemyFactory;
         }
 
@@ -29,7 +29,7 @@ namespace GrazingShmup
             get
             {
                 if (_playerBulletsPool == null)
-                    _playerBulletsPool = new ObjectPool(Resources.Load<GameObject>(ConstantsAndMagicLines.Player_Bullet_Prefab), _playerBulletParent);
+                    _playerBulletsPool = new ObjectPool(Resources.Load<GameObject>(References.Player_Bullet_Prefab), _playerBulletParent);
                 return _playerBulletsPool;
             }
         }
@@ -39,7 +39,7 @@ namespace GrazingShmup
             get
             {
                 if (_enemyBulletsPool == null) 
-                    _enemyBulletsPool = new ObjectPool(Resources.Load<GameObject>(ConstantsAndMagicLines.Enemy_Bullet_Prefab), _enemyBulletParent);
+                    _enemyBulletsPool = new ObjectPool(Resources.Load<GameObject>(References.Enemy_Bullet_Prefab), _enemyBulletParent);
                 return _enemyBulletsPool;
             }
         }
@@ -49,7 +49,7 @@ namespace GrazingShmup
             get
             {
                 if (_bulletCapsulePool == null)
-                    _bulletCapsulePool = new ObjectPool(Resources.Load<GameObject>(ConstantsAndMagicLines.Bullet_Capsule_Prefab), _enemyBulletParent);
+                    _bulletCapsulePool = new ObjectPool(Resources.Load<GameObject>(References.Bullet_Capsule_Prefab), _enemyBulletParent);
                 return _bulletCapsulePool;
             }
 }

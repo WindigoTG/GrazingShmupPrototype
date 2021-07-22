@@ -37,7 +37,7 @@ namespace GrazingShmup
                 _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
                 ServiceLocator.GetService<CollisionManager>().CheckCollisions(
-                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(ConstantsAndMagicLines.PlayerHitBox));
+                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(References.PlayerHitBox));
 
 
                 _delayTime -= deltaTime;

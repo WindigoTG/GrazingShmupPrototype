@@ -13,13 +13,13 @@ namespace GrazingShmup
         {
             if (!_movementData.ContainsKey(type))
             {
-                string path = ConstantsAndMagicLines.Enemy_Movement_Data + ((int)type).ToString();
+                string path = References.Enemy_Movement_Data + ((int)type).ToString();
                 _movementData.Add(type, Resources.Load<EnemyMovementData>(path));
             }
 
             if (!_bulletData.ContainsKey(type))
             {
-                string path = ConstantsAndMagicLines.Enemy_Bullet_Data + ((int)type).ToString();
+                string path = References.Enemy_Bullet_Data + ((int)type).ToString();
                 _bulletData.Add(type, Resources.Load<BulletData>(path));
             }
 
@@ -34,7 +34,7 @@ namespace GrazingShmup
 
         public GameObject GetEnemyPrefab(EnemyType type)
         {
-            string path = ConstantsAndMagicLines.Enemy_Prefabs + ((int)type).ToString();
+            string path = References.Enemy_Prefabs + ((int)type).ToString();
             return Resources.Load<GameObject>(path);
         }
     }
