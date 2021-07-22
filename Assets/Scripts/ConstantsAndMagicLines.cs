@@ -3,7 +3,7 @@ namespace GrazingShmup
     public static class ConstantsAndMagicLines
     {
         public const string Player_Data = "Data/PlayerData";
-        public const string Player_Bullet_Data = "Data/PlayerBulletData";
+        public const string Player_Bullet_Data = "Data/PlayerBulletDataLevel";
 
         public const string Input_Axis_Horizontal = "Horizontal";
         public const string Input_Axis_Vertical = "Vertical";
