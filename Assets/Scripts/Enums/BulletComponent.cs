@@ -5,6 +5,12 @@ namespace GrazingShmup
         Line,
         Arc,
         Row,
-        Capsule
+        DelayedCapsule
+    }
+
+    public enum BulletBase
+    {
+        Bullet,
+        HomingLaser
     }
 }

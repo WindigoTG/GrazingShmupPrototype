@@ -35,5 +35,6 @@ namespace GrazingShmup
         }
 
         public Vector3 PlayerPosition => _player.Transform.position;
+        public Transform PlayerTransform => _player.Transform;
     }
 }

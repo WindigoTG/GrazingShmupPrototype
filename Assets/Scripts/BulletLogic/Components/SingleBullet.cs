@@ -20,11 +20,7 @@ namespace GrazingShmup
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
-            IBulletMoveCommand command;
-            if (_owner == BulletOwner.Enemy)
-                command = new EnemyBulletMoveCommand(bullet, config.BulletSpeed, config.BulletAngularSpeed, config.LifeTime);
-            else
-                command = new PlayerBulletMoveCommand(bullet, config.BulletSpeed, config.BulletAngularSpeed, config.LifeTime);
+            IBulletMoveCommand command = new BaseBulletMoveCommand(bullet, _owner, config.BulletSpeed, config.BulletDeltaSpeed, config.BulletAngularSpeed, config.LifeTime);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

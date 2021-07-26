@@ -23,11 +23,15 @@ namespace GrazingShmup
             }
 
             IFireable bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
-                                                                        _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
+                                                                       _bulletData[type].Base, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
 
-            Enemy enemy = new Enemy( type,
-                new EnemyWeaponTracking(_bulletData[type].Config, bullet),
-                new EnemyEngine(_movementData[type]));
+            IWeaponEnemy weapon;
+            if (_bulletData[type].IsTracking)
+                weapon = new EnemyWeaponTracking(_bulletData[type].Config, bullet);
+            else
+                weapon = new EnemyWeaponNonTracking(_bulletData[type].Config, bullet);
+
+            Enemy enemy = new Enemy( type, weapon, new EnemyEngine(_movementData[type]));
 
             return enemy;
         }

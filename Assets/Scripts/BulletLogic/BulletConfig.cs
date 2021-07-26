@@ -9,13 +9,18 @@ namespace GrazingShmup
         [Header("Single bullet settings")]
         [SerializeField] private float _bulletSpeed;
         [SerializeField] private float _bulletAngularSpeed;
-        [SerializeField] private float _lifeTime;
+        [SerializeField] private float _bulletDeltaSpeed;
         [Space]
-        [SerializeField] private float _fireDelay;
+        [Header("Homing Laser settings")]
+        [SerializeField] [Min(0)] private float _homingTime;
+        [SerializeField] private float _homingSpeed;
+        [Space]
+        [SerializeField] [Min(0)] private float _lifeTime;
+        [SerializeField] [Min(0)] private float _fireDelay;
         [Space]
         [Header("Line settings")]
         [SerializeField] private int _lineBulletCount;
-        [SerializeField] private float _deltaSpeed;
+        [SerializeField] private float _deltaSpeedinLine;
         [Space]
         [Header("Arc settings")]
         [SerializeField] private int _arcLineCount;
@@ -32,23 +37,31 @@ namespace GrazingShmup
         [SerializeField] private float _capsuleDelay;
         [SerializeField] private float _capsuleSpeed;
         [SerializeField] private float _capsuleAngularSpeed;
+        [SerializeField] private bool _refireingCapsule;
+        [SerializeField] private float _refireTime;
 
         private Vector3 _position;
         private Vector3 _rotation;
         private float _angle;
 
-        public BulletConfig(float bulletSpeed = 1.0f, float bulletAngularSpeed = 0.0f, float lifetime = 5.0f,
-                            float fireDelay = 1.0f, int lineBulletCount = 1, float deltaSpeed = 1.0f,
+        public BulletConfig(float bulletSpeed = 1.0f, float bulletAngularSpeed = 0.0f, float bulletDeltaSpeed = 0.0f,
+                            float homingTime = 1.0f, float homingSpeed = 1.0f,
+                            float lifetime = 5.0f, float fireDelay = 1.0f,
+                            int lineBulletCount = 1, float deltaSpeedinLine = 1.0f,
                             int arcLineCount = 1, float arcAngle = 0.0f, float initialRadius = 0.0f,
                             int rowLineCount = 1, float rowLineOffset = 0.0f, float rowVerticalOffset = 0.0f, bool isMirrored = true,
-                            float capsuleDelay = 0.0f, float capsuleSpeed = 1.0f, float capsuleAngularSpeed = 0.0f)
+                            float capsuleDelay = 0.0f, float capsuleSpeed = 1.0f, float capsuleAngularSpeed = 0.0f,
+                            bool isRefireing = false, float refireTime = 1.0f)
         {
             _bulletSpeed = bulletSpeed;
             _bulletAngularSpeed = bulletAngularSpeed;
+            _homingTime = Math.Abs(homingTime);
+            _homingSpeed = Math.Abs(homingSpeed);
             _lifeTime = lifetime != 0 ? Math.Abs(lifetime) : 5.0f;
+            _bulletDeltaSpeed = bulletDeltaSpeed;
             _fireDelay = Math.Abs(fireDelay);
             _lineBulletCount = lineBulletCount > 0 ? lineBulletCount : 1;
-            _deltaSpeed = deltaSpeed;
+            _deltaSpeedinLine = deltaSpeedinLine;
             _arcLineCount = arcLineCount > 0 ? arcLineCount : 1;
             _arcAngle = arcAngle;
             _initialRadius = initialRadius;
@@ -59,6 +72,8 @@ namespace GrazingShmup
             _capsuleDelay = capsuleDelay;
             _capsuleSpeed = capsuleSpeed;
             _capsuleAngularSpeed = capsuleAngularSpeed;
+            _refireingCapsule = isRefireing;
+            _refireTime = refireTime;
             _position = Vector3.zero;
             _rotation = Vector3.zero;
             _angle = 0.0f;
@@ -76,10 +91,28 @@ namespace GrazingShmup
             set => _bulletAngularSpeed = value; 
         }
 
+        public float HomingTime
+        {
+            get => _homingTime;
+            set => _homingTime = value;
+        }
+
+        public float HomingSpeed
+        {
+            get => _homingSpeed;
+            set => _homingSpeed = value;
+        }
+
         public float LifeTime
         {
             get => _lifeTime; 
             set => _lifeTime = value; 
+        }
+
+        public float BulletDeltaSpeed
+        {
+            get => _bulletDeltaSpeed;
+            set => _bulletDeltaSpeed = value;
         }
 
         public float FireDelay
@@ -94,10 +127,10 @@ namespace GrazingShmup
             set => _lineBulletCount = value > 0 ? value : 1; 
         }
 
-        public float DeltaSpeed
+        public float LineDeltaSpeed
         {
-            get => _deltaSpeed;
-            set => _deltaSpeed = value;
+            get => _deltaSpeedinLine;
+            set => _deltaSpeedinLine = value;
         }
 
         public int ArcLineCount
@@ -176,6 +209,18 @@ namespace GrazingShmup
         {
             get => _capsuleDelay;
             set => _capsuleDelay = value;
+        }
+
+        public bool IsRefireing
+        {
+            get => _refireingCapsule;
+            set => _refireingCapsule = value;
+        }
+
+        public float RefireTime
+        {
+            get => _refireTime;
+            set => _refireTime = value;
         }
     }
 }

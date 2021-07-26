@@ -61,6 +61,8 @@ namespace GrazingShmup
 
             EnemyController enemyController = new EnemyController(enemyFactory, _testEnemyRoute, playerController);
             _updatables.Add(enemyController);
+
+            ServiceLocator.AddService(new PlayerTracker(playerController.PlayerTransform));
         }
     }
 }

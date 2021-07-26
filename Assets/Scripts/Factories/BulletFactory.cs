@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace GrazingShmup
 {
     public class BulletFactory : IBulletFactory
     {
-        public Fireable GetBullet(BulletComponent[] bulletComponents, BulletOwner owner)
+        public Fireable GetBullet(BulletBase bulletBase, BulletComponent[] bulletComponents, BulletOwner owner)
         {
-            Fireable fireable = new SingleBullet(owner);
+            Fireable fireable = GetBase(bulletBase, owner);
             if (bulletComponents != null)
                 for (int i = 0; i < bulletComponents.Length; i++)
                     fireable = Decorate(fireable, bulletComponents[i]);
@@ -21,7 +17,7 @@ namespace GrazingShmup
             {
                 case BulletComponent.Arc:
                     return fireable.FiredInArc();
-                case BulletComponent.Capsule:
+                case BulletComponent.DelayedCapsule:
                     return fireable.FiredInDelayedCapsule();
                 case BulletComponent.Line:
                     return fireable.FiredInLine();
@@ -29,6 +25,18 @@ namespace GrazingShmup
                     return fireable.FiredInRow();
                 default:
                     return fireable;
+            }
+        }
+
+        private Fireable GetBase(BulletBase bulletBase, BulletOwner owner)
+        {
+            switch (bulletBase)
+            {
+                case BulletBase.Bullet:
+                default:
+                    return new SingleBullet(owner);
+                case BulletBase.HomingLaser:
+                    return new HomingLaser(owner);
             }
         }
     }

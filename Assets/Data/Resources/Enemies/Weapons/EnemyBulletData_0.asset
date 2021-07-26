@@ -15,13 +15,16 @@ MonoBehaviour:
   _bulletConfig:
     _bulletSpeed: 1
     _bulletAngularSpeed: 0
+    _bulletDeltaSpeed: 5
+    _homingTime: 1.5
+    _homingSpeed: 5
     _lifeTime: 10
     _fireDelay: 0.5
     _lineBulletCount: 1
-    _deltaSpeed: 0
-    _arcLineCount: 1
-    _arcAngle: 0
-    _initialRadius: 0
+    _deltaSpeedinLine: 0
+    _arcLineCount: 2
+    _arcAngle: 270
+    _initialRadius: 0.25
     _rowLineCount: 1
     _rowLineOffset: 0
     _rowVerticalOffset: 0
@@ -29,5 +32,7 @@ MonoBehaviour:
     _capsuleDelay: 0
     _capsuleSpeed: 0
     _capsuleAngularSpeed: 0
+  _bulletBase: 1
   _bulletOwner: 1
-  _bulletComponents: 
+  _enemyWeaponTracking: 0
+  _bulletComponents: 01000000

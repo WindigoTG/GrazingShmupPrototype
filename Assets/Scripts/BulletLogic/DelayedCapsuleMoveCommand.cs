@@ -4,16 +4,16 @@ namespace GrazingShmup
 {
     public class DelayedCapsuleMoveCommand : IBulletMoveCommand
     {
-        private Transform _bullet;
-        private float _speed;
-        private float _angularSpeed;
-        private float _delayTime;
+        protected Transform _bullet;
+        protected float _speed;
+        protected float _angularSpeed;
+        protected float _delayTime;
 
-        private Vector3 _lastPosition;
-        private float _bulletRadius;
+        protected Vector3 _lastPosition;
+        protected float _bulletRadius;
 
-        private IFireable _content;
-        private BulletConfig _config;
+        protected IFireable _content;
+        protected BulletConfig _config;
 
         public DelayedCapsuleMoveCommand(Transform bullet, float speed, float angularSpeed, float delayTime, IFireable content, BulletConfig config)
         {
@@ -27,7 +27,7 @@ namespace GrazingShmup
             GetBulletSize();
         }
 
-        public void Execute(float deltaTime)
+        public virtual void Execute(float deltaTime)
         {
             if (_bullet.gameObject.activeSelf)
             {

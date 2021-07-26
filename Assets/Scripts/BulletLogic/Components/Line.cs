@@ -8,7 +8,7 @@ namespace GrazingShmup
         {
             for (var i = 0; i < config.LineBulletCount; i++)
             {
-                config.BulletSpeed += config.DeltaSpeed;
+                config.BulletSpeed += config.LineDeltaSpeed;
                 SubFire(config, position, rotation);
             }
         }

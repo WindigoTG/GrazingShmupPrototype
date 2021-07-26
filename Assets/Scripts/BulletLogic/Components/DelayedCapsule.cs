@@ -11,7 +11,9 @@ namespace GrazingShmup
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
-            IBulletMoveCommand command = new DelayedCapsuleMoveCommand(bullet, config.CapsuleSpeed, config.CapsuleAngularSpeed, config.CapsuleDelay, _subFireable, config);
+            IBulletMoveCommand command = config.IsRefireing ?
+                new RefireCapsuleMoveCommand(bullet, config.CapsuleSpeed, config.CapsuleAngularSpeed, config.CapsuleDelay, _subFireable, config, config.RefireTime) :
+                new DelayedCapsuleMoveCommand(bullet, config.CapsuleSpeed, config.CapsuleAngularSpeed, config.CapsuleDelay, _subFireable, config);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

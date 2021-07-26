@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GrazingShmup
@@ -26,13 +24,14 @@ namespace GrazingShmup
 
             ServiceLocator.AddService(new ObjectPoolManager(null));
             ServiceLocator.AddService(_bulletManager);
+            ServiceLocator.AddService(new PlayerTracker(transform));
 
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
             //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
             //_projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
 
-            _projectile = _bulletFactory.GetBullet(_bulletData.BulletComponents, _bulletData.BulletOwner);
+            _projectile = _bulletFactory.GetBullet(_bulletData.Base, _bulletData.BulletComponents, _bulletData.BulletOwner);
             _config = _bulletData.Config;
             _fireDelay = _config.FireDelay;
             _lastFiredTime = Time.time;
@@ -42,7 +41,7 @@ namespace GrazingShmup
         {
             if (Time.time - _lastFiredTime >= _fireDelay)
             {
-                _projectile = _bulletFactory.GetBullet(_bulletData.BulletComponents, _bulletData.BulletOwner);
+                _projectile = _bulletFactory.GetBullet(_bulletData.Base, _bulletData.BulletComponents, _bulletData.BulletOwner);
                 _config = _bulletData.Config;
 
                 Fire();

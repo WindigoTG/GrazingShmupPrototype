@@ -8,6 +8,7 @@ namespace GrazingShmup
         private ObjectPool _playerBulletsPool;
         private ObjectPool _enemyBulletsPool;
         private ObjectPool _bulletCapsulePool;
+        private ObjectPool _homingLaserPool;
         private Dictionary<EnemyType, ObjectPool> _enemyPool = new Dictionary<EnemyType, ObjectPool>();
 
         private Transform _playerBulletParent;
@@ -38,7 +39,7 @@ namespace GrazingShmup
         {
             get
             {
-                if (_enemyBulletsPool == null) 
+                if (_enemyBulletsPool == null)
                     _enemyBulletsPool = new ObjectPool(Resources.Load<GameObject>(References.Enemy_Bullet_Prefab), _enemyBulletParent);
                 return _enemyBulletsPool;
             }
@@ -52,7 +53,17 @@ namespace GrazingShmup
                     _bulletCapsulePool = new ObjectPool(Resources.Load<GameObject>(References.Bullet_Capsule_Prefab), _enemyBulletParent);
                 return _bulletCapsulePool;
             }
-}
+        }
+
+        public ObjectPool HomingLaserPool
+        {
+            get
+            {
+                if (_homingLaserPool == null)
+                    _homingLaserPool = new ObjectPool(Resources.Load<GameObject>(References.Homing_Laser), _enemyBulletParent);
+                return _homingLaserPool;
+            }
+        }
 
         public ObjectPool GetEnemyPool(EnemyType type)
         {

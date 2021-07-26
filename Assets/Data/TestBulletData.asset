@@ -13,21 +13,28 @@ MonoBehaviour:
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
   _bulletConfig:
-    _bulletSpeed: 1
+    _bulletSpeed: -0.5
     _bulletAngularSpeed: 0
-    _lifeTime: 2
-    _fireDelay: 1
-    _lineBulletCount: 5
-    _deltaSpeed: 0.2
-    _arcLineCount: 20
-    _arcAngle: 90
-    _initialRadius: 0
-    _rowLineCount: 1
-    _rowLineOffset: 0.1
+    _bulletDeltaSpeed: 2.5
+    _homingTime: 2
+    _homingSpeed: 2.5
+    _lifeTime: 5
+    _fireDelay: 5
+    _lineBulletCount: 1
+    _deltaSpeedinLine: 0.5
+    _arcLineCount: 2
+    _arcAngle: 330
+    _initialRadius: 1
+    _rowLineCount: 2
+    _rowLineOffset: 0.5
     _rowVerticalOffset: -0.05
     _isMirrored: 1
-    _capsuleDelay: 0.3
-    _capsuleSpeed: 5
+    _capsuleDelay: 2
+    _capsuleSpeed: 10
     _capsuleAngularSpeed: 0
+    _refireingCapsule: 1
+    _refireTime: 0.1
+  _bulletBase: 0
   _bulletOwner: 1
-  _bulletComponents: 00000000020000000100000003000000
+  _enemyWeaponTracking: 0
+  _bulletComponents: 01000000030000000100000003000000

@@ -15,7 +15,7 @@ namespace GrazingShmup
         {
             return new PlayerShip(Resources.Load<PlayerData>(References.Player_Data), new PlayerEngine(), 
                                                             new PlayerWeapon(LoadBulletConfig(), 
-                                                            ServiceLocator.GetService<BulletFactory>().GetBullet(_bulletData.BulletComponents, _bulletData.BulletOwner)));
+                                                            ServiceLocator.GetService<BulletFactory>().GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
         }
 
         private BulletConfig[] LoadBulletConfig()

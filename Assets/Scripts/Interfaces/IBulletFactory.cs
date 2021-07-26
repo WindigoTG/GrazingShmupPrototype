@@ -2,6 +2,6 @@ namespace GrazingShmup
 {
     public interface IBulletFactory
     {
-        Fireable GetBullet(BulletComponent[] bulletComponents, BulletOwner owner);
+        Fireable GetBullet(BulletBase bulletBase, BulletComponent[] bulletComponents, BulletOwner owner);
     }
 }
