@@ -1,11 +1,12 @@
 namespace GrazingShmup
 {
-    public enum BulletComponent
+    public enum ProjectileComponent
     {
         Line,
         Arc,
         Row,
-        DelayedCapsule
+        Capsule,
+        RepeaterCapsule
     }
 
     public enum BulletBase

@@ -11,7 +11,7 @@ public class HomingLaser : Fireable
             _owner = owner;
         }
 
-        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
             Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().HomingLaserPool.Pop().transform;
 
@@ -23,8 +23,8 @@ public class HomingLaser : Fireable
 
             trail.Clear();
 
-            IBulletMoveCommand command = new HomingLaserMoveCommand(bullet, _owner, config.BulletSpeed, config.BulletDeltaSpeed, config.BulletAngularSpeed,
-                                        config.HomingTime, config.HomingSpeed, config.LifeTime);
+            IBulletMoveCommand command = new HomingLaserMoveCommand(bullet, _owner, config.ProjectileSpeed, config.ProjectileDeltaSpeed, config.ProjectileDeltaSpeedDelay,
+                                                                    config.ProjectileTurnSpeed, config.HomingTime, config.LifeTime);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

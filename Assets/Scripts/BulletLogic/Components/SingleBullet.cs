@@ -11,7 +11,7 @@ namespace GrazingShmup
             _owner = owner;
         }
 
-        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
             Transform bullet = _owner == BulletOwner.Enemy ? 
                                 ServiceLocator.GetService<ObjectPoolManager>().EnemyBulletsPool.Pop().transform :
@@ -20,7 +20,7 @@ namespace GrazingShmup
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
-            IBulletMoveCommand command = new BaseBulletMoveCommand(bullet, _owner, config.BulletSpeed, config.BulletDeltaSpeed, config.BulletAngularSpeed, config.LifeTime);
+            IBulletMoveCommand command = new BaseBulletMoveCommand(bullet, _owner, config.ProjectileSpeed, config.ProjectileDeltaSpeed, config.ProjectileDeltaSpeedDelay, config.ProjectileTurnSpeed, config.LifeTime);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

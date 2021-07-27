@@ -13,28 +13,59 @@ MonoBehaviour:
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
   _bulletConfig:
-    _bulletSpeed: -0.5
-    _bulletAngularSpeed: 0
-    _bulletDeltaSpeed: 2.5
-    _homingTime: 2
-    _homingSpeed: 2.5
-    _lifeTime: 5
-    _fireDelay: 5
-    _lineBulletCount: 1
-    _deltaSpeedinLine: 0.5
-    _arcLineCount: 2
-    _arcAngle: 330
-    _initialRadius: 1
-    _rowLineCount: 2
-    _rowLineOffset: 0.5
-    _rowVerticalOffset: -0.05
-    _isMirrored: 1
-    _capsuleDelay: 2
-    _capsuleSpeed: 10
-    _capsuleAngularSpeed: 0
-    _refireingCapsule: 1
-    _refireTime: 0.1
+    _projectileLifeTime: 2
+    _fireDelay: 0.5
+    _projectileSpeed: 1
+    _projectileDeltaSpeed: 0
+    _projectileDeltaSpeedDelay: 0
+    _projectileTurnSpeed: 50
+    _homingTime: 1
+    _lineSettings:
+      LineBulletCount: 1
+      DeltaSpeedInLine: 0.5
+    _arcSettings:
+      ArcBulletCount: 3
+      _arcAngle: 30
+      InitialRadius: 0
+      SymmetrizeTurning: 1
+    _rowSettings:
+      RowAdditionalBulletCount: 0
+      RowHorisontalOffset: 0.1
+      RowVerticalOffset: -0.05
+      IsTwoSided: 0
+      IsMirrored: 0
+      RowGap: 0.2
+    _capsuleSettings:
+      CapsuleLifeTime: 2
+      CapsuleSpeed: 1
+      CapsuleDeltaSpeed: 0
+      CapsuleDeltaSpeedDelay: 0
+      _capsuleTurnSpeed: -50
+    _repeaterCapsuleSettings:
+      RCapsuleLifeTime: 3
+      RCapsuleSpeed: 1
+      RCapsuleDeltaSpeed: 1
+      RCapsuleDeltaSpeedDelay: 1
+      _rCapsuleTurnSpeed: 50
+      RCapsuleRefireTime: 0.25
+    _burstCapsuleSettings:
+      BCapsuleLifeTime: 0
+      BurstRefireTime: 0
+      DeltaSpeedInBurst: 0
+      IsTracking: 0
+      BCapsuleSpeed: 0
+      BCapsuleDeltaSpeed: 0
+      BCapsuleDeltaSpeedDelay: 0
+      _bCapsuleTurnSpeed: 0
+    _spinningCapsuleSettings:
+      SpinArc: 0
+      SpinSpeed: 0
+      DegreesBetweenShots: 0
+      SCapsuleSpeed: 0
+      SCapsuleDeltaSpeed: 0
+      SCapsuleDeltaSpeedDelay: 0
+      _sCapsuleTurnSpeed: 0
   _bulletBase: 0
   _bulletOwner: 1
   _enemyWeaponTracking: 0
-  _bulletComponents: 01000000030000000100000003000000
+  _bulletComponents: 0400000001000000

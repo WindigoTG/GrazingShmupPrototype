@@ -4,8 +4,9 @@ namespace GrazingShmup
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private BulletConfig _config;
+        [SerializeField] private ProjectileConfig _config;
         [SerializeField] private BulletData _bulletData;
+        [SerializeField] private Transform _testTarget;
         private BulletManager _bulletManager;
         private BulletFactory _bulletFactory;
         private IFireable _projectile;
@@ -24,12 +25,7 @@ namespace GrazingShmup
 
             ServiceLocator.AddService(new ObjectPoolManager(null));
             ServiceLocator.AddService(_bulletManager);
-            ServiceLocator.AddService(new PlayerTracker(transform));
-
-            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow();
-            //_projectile = new SingleBullet(BulletOwner.Player).FiredInArc();
-            //_projectile = new SingleBullet(BulletOwner.Player).FiredInRow().FiredInArc().FiredInLine();
-            //_projectile = new SingleBullet(BulletOwner.Enemy).FiredInRow().FiredInArc().FiredInLine().FiredInDelayedCapsule().FiredInArc().FiredInDelayedCapsule();
+            ServiceLocator.AddService(new PlayerTracker(_testTarget));
 
             _projectile = _bulletFactory.GetBullet(_bulletData.Base, _bulletData.BulletComponents, _bulletData.BulletOwner);
             _config = _bulletData.Config;

@@ -5,11 +5,11 @@ namespace GrazingShmup
 {
     public abstract class EnemyWeapon : IWeaponEnemy, ICloneable
     {
-        protected BulletConfig _config;
+        protected ProjectileConfig _config;
         protected IFireable _bullet;
         protected float _lastFiredTime = 0;
 
-        public EnemyWeapon(BulletConfig config, IFireable bullet)
+        public EnemyWeapon(ProjectileConfig config, IFireable bullet)
         {
             _config = config;
             _bullet = bullet;
@@ -17,7 +17,7 @@ namespace GrazingShmup
 
         public void InvertAngularSpeed()
         {
-            _config.BulletAngularSpeed = -_config.BulletAngularSpeed * 180 / (float)Math.PI;
+            _config.ProjectileTurnSpeed = -_config.ProjectileTurnSpeed * 180 / (float)Math.PI;
         }
 
         public abstract object Clone();

@@ -9,10 +9,10 @@ namespace GrazingShmup
         Transform _target;
         Quaternion _rotation;
 
-        public HomingLaserMoveCommand(Transform bullet, BulletOwner owner, float speed, float deltaSpeed, float angularSpeed, float homingTime, float homingSpeed, float lifeTime) :
-            base(bullet, owner, speed, deltaSpeed, angularSpeed, lifeTime)
+        public HomingLaserMoveCommand(Transform bullet, BulletOwner owner, float speed, float deltaSpeed, float deltaSpeedDelay, float turnSpeed, float homingTime, float lifeTime) :
+            base(bullet, owner, speed, deltaSpeed, deltaSpeedDelay, turnSpeed, lifeTime)
         {
-            _homingSpeed = homingSpeed;
+            _homingSpeed = turnSpeed;
             _homingTime = homingTime;
 
             _target = ServiceLocator.GetService<PlayerTracker>().Player;

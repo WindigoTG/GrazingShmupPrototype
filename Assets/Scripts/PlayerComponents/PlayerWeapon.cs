@@ -4,12 +4,12 @@ namespace GrazingShmup
 {
     public sealed class PlayerWeapon : IWeaponPlayer
     {
-        private BulletConfig[] _config;
+        private ProjectileConfig[] _config;
         private IFireable _projectile;
         private float _lastFiredTime;
         private float _fireDelay;
 
-        public PlayerWeapon(BulletConfig[] config, IFireable projectile)
+        public PlayerWeapon(ProjectileConfig[] config, IFireable projectile)
         {
             _config = config;
             _projectile = projectile;

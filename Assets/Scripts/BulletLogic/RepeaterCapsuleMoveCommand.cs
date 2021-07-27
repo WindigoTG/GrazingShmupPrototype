@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public class RefireCapsuleMoveCommand : DelayedCapsuleMoveCommand
+    public class RepeaterCapsuleMoveCommand : DelayedCapsuleMoveCommand
     {
         float _refireTime;
         float _lastFireTime;
 
-        public RefireCapsuleMoveCommand(Transform bullet, float speed, float angularSpeed, float delayTime, IFireable content, BulletConfig config, float refireTime)  
-            : base(bullet, speed, angularSpeed, delayTime, content, config)
+        public RepeaterCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float turnSpeed, 
+                                        float lifeTime, IFireable content, ProjectileConfig config, float refireTime)  
+            : base(bullet, speed, deltaSpeed, deltaSpeedDelay, turnSpeed, lifeTime, content, config)
         {
             _refireTime = refireTime;
             _lastFireTime = Time.time;
@@ -23,6 +24,11 @@ namespace GrazingShmup
                 _bullet.transform.Rotate(Vector3.forward, _angularSpeed * 180 / Mathf.PI * deltaTime);
                 _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
+                if (_deltaSpeedDelay > 0)
+                    _deltaSpeedDelay -= deltaTime;
+                if (_deltaSpeedDelay <= 0)
+                    _speed += _deltaSpeed * deltaTime;
+
                 ServiceLocator.GetService<CollisionManager>().CheckCollisions(
                     _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(References.PlayerHitBox));
 
@@ -32,8 +38,8 @@ namespace GrazingShmup
                     _lastFireTime = Time.time;
                 }
 
-                _delayTime -= deltaTime;
-                if (_delayTime <= 0)
+                _lifeTime -= deltaTime;
+                if (_lifeTime <= 0)
                 {
                     ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Push(_bullet.gameObject);
                     ServiceLocator.GetService<BulletManager>().RemoveCommand(this);

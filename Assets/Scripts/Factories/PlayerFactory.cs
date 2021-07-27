@@ -18,9 +18,9 @@ namespace GrazingShmup
                                                             ServiceLocator.GetService<BulletFactory>().GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
         }
 
-        private BulletConfig[] LoadBulletConfig()
+        private ProjectileConfig[] LoadBulletConfig()
         {
-            BulletConfig[] config = new BulletConfig[5];
+            ProjectileConfig[] config = new ProjectileConfig[5];
 
             for (int i = 0; i < 5; i++)
             {

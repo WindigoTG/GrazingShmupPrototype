@@ -6,21 +6,25 @@ namespace GrazingShmup
     {
         protected Transform _bullet;
         protected float _speed;
+        protected float _deltaSpeed;
+        protected float _deltaSpeedDelay;
         protected float _angularSpeed;
-        protected float _delayTime;
+        protected float _lifeTime;
 
         protected Vector3 _lastPosition;
         protected float _bulletRadius;
 
         protected IFireable _content;
-        protected BulletConfig _config;
+        protected ProjectileConfig _config;
 
-        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float angularSpeed, float delayTime, IFireable content, BulletConfig config)
+        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float angularSpeed, float lifeTime, IFireable content, ProjectileConfig config)
         {
             _bullet = bullet;
             _speed = speed;
             _angularSpeed = angularSpeed;
-            _delayTime = delayTime;
+            _deltaSpeed = deltaSpeed;
+            _deltaSpeedDelay = deltaSpeedDelay;
+            _lifeTime = lifeTime;
             _content = content;
             _config = config;
             _lastPosition = _bullet.position;
@@ -36,12 +40,17 @@ namespace GrazingShmup
                 _bullet.transform.Rotate(Vector3.forward, _angularSpeed * 180 / Mathf.PI * deltaTime);
                 _bullet.Translate(Vector3.up * _speed * deltaTime, Space.Self);
 
+                if (_deltaSpeedDelay > 0)
+                    _deltaSpeedDelay -= deltaTime;
+                if (_deltaSpeedDelay <= 0)
+                    _speed += _deltaSpeed * deltaTime;
+
                 ServiceLocator.GetService<CollisionManager>().CheckCollisions(
                     _lastPosition, _bulletRadius, _bullet.position - _lastPosition, LayerMask.GetMask(References.PlayerHitBox));
 
 
-                _delayTime -= deltaTime;
-                if (_delayTime <= 0)
+                _lifeTime -= deltaTime;
+                if (_lifeTime <= 0)
                 {
                     _content.Fire(_config, _bullet.position, _bullet.rotation.eulerAngles);
                     ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Push(_bullet.gameObject);

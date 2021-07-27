@@ -4,6 +4,6 @@ namespace GrazingShmup
 {
     public interface IFireable
     {
-        public void Fire(BulletConfig config, Vector3 position, Vector3 rotation);
+        public void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation);
     }
 }

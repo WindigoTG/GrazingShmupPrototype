@@ -5,18 +5,18 @@ namespace GrazingShmup
     [CreateAssetMenu(fileName = "BulletData", menuName = "Data/Bullet")]
     public sealed class BulletData : ScriptableObject
     {
-        [SerializeField] BulletConfig _bulletConfig;
+        [SerializeField] ProjectileConfig _bulletConfig;
         [Space]
         [SerializeField] private BulletBase _bulletBase;
         [SerializeField] private BulletOwner _bulletOwner;
         [SerializeField] private bool _enemyWeaponTracking;
         [Space]
-        [SerializeField] private BulletComponent[] _bulletComponents;
+        [SerializeField] private ProjectileComponent[] _bulletComponents;
 
-        public BulletConfig Config => _bulletConfig;
+        public ProjectileConfig Config => _bulletConfig;
         public BulletBase Base => _bulletBase;
         
-        public BulletComponent[] BulletComponents => _bulletComponents;
+        public ProjectileComponent[] BulletComponents => _bulletComponents;
 
         public BulletOwner BulletOwner => _bulletOwner;
         public bool IsTracking => _enemyWeaponTracking;

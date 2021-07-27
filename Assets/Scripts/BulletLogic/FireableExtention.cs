@@ -39,7 +39,12 @@ namespace GrazingShmup
 
         public static Fireable FiredInDelayedCapsule(this Fireable fireable)
         {
-            return new DelayedCapsule().Of(fireable);
+            return new Capsule().Of(fireable);
+        }
+
+        public static Fireable FiredInMultishotCapsule(this Fireable fireable)
+        {
+            return new RepeaterCapsule().Of(fireable);
         }
     }
 }

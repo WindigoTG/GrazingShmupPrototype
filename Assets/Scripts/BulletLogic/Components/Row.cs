@@ -4,31 +4,44 @@ namespace GrazingShmup
 {
     public class Row : Fireable
     {
-        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
             config.Rotation = rotation;
 
-            SubFire(config, position, rotation);
+            var angle = config.Rotation.z * Mathf.PI / 180;
 
-            if (config.RowLineCount > 1)
+            float gap = (config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0) ? config.RowSettings.RowGap / 2 : 0;
+
+            Vector3 gapOffset = new Vector3((0 * Mathf.Sin(angle) + gap * Mathf.Cos(angle)),
+                        (gap * Mathf.Sin(angle) + 0 * Mathf.Cos(angle)),
+                        0.0f);
+
+            SubFire(config, position + gapOffset, rotation);
+
+            if (config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0)
+                SubFire(config, position - gapOffset, rotation);
+
+            if (config.RowSettings.RowAdditionalBulletCount > 0)
             {
-                for (var i = 1; i < config.RowLineCount; i++)
+                for (var i = 1; i <= config.RowSettings.RowAdditionalBulletCount; i++)
                 {
-                    var angle = config.Rotation.z * Mathf.PI / 180;
+                    
 
-                    Vector3 offset = new Vector3((-config.RowVerticalOffset * Mathf.Sin(angle) + config.RowLineOffset * Mathf.Cos(angle)) * i,
-                        (config.RowLineOffset * Mathf.Sin(angle) + config.RowVerticalOffset * Mathf.Cos(angle)) * i, 
+                    Vector3 offset = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) + config.RowSettings.RowHorisontalOffset * Mathf.Cos(angle)) * i,
+                        (config.RowSettings.RowHorisontalOffset * Mathf.Sin(angle) + config.RowSettings.RowVerticalOffset * Mathf.Cos(angle)) * i, 
                         0.0f);
 
-                    SubFire(config, position + offset, rotation);
+                    SubFire(config, position + offset + gapOffset, rotation);
 
-                    if (config.IsMirrored)
+                    if (config.RowSettings.IsMirrored || config.RowSettings.IsTwoSided)
                     {
-                        Vector3 offsetMirrored = new Vector3((-config.RowVerticalOffset * Mathf.Sin(angle) - config.RowLineOffset * Mathf.Cos(angle)) * i,
-                        (-config.RowLineOffset * Mathf.Sin(angle) + config.RowVerticalOffset * Mathf.Cos(angle)) * i,
+                        float yOffsetModifier = config.RowSettings.IsMirrored ? 1 : -1;
+
+                        Vector3 offsetMirrored = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) - config.RowSettings.RowHorisontalOffset * Mathf.Cos(angle)) * i,
+                        (-config.RowSettings.RowHorisontalOffset * Mathf.Sin(angle) + (config.RowSettings.RowVerticalOffset * yOffsetModifier) * Mathf.Cos(angle)) * i,
                         0.0f);
-                        SubFire(config, position + offsetMirrored, rotation);
+                        SubFire(config, position + offsetMirrored - gapOffset, rotation);
                     }
                 }
             }

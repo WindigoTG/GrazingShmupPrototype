@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class EnemyWeaponNonTracking : EnemyWeapon
     {
-        public EnemyWeaponNonTracking(BulletConfig config, IFireable bullet) : base(config, bullet) { }
+        public EnemyWeaponNonTracking(ProjectileConfig config, IFireable bullet) : base(config, bullet) { }
 
         public override object Clone()
         {

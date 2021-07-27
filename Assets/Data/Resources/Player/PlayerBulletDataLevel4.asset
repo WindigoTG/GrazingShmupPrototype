@@ -14,20 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletConfig:
     _bulletSpeed: 7
-    _bulletAngularSpeed: 0
-    _lifeTime: 1.5
+    _bulletDeltaSpeed: 0
+    _bulletDeltaSpeedDelay: 0
+    _bulletTurnSpeed: 0
+    _homingTime: 0
+    _homingSpeed: 0
+    _bulletLifeTime: 0
     _fireDelay: 0.05
     _lineBulletCount: 1
-    _deltaSpeed: 0
-    _arcLineCount: 7
+    _deltaSpeedInLine: 0
+    _arcBulletCount: 0
     _arcAngle: 45
     _initialRadius: 0
-    _rowLineCount: 2
-    _rowLineOffset: 0.1
+    _symmetrizeTurning: 0
+    _rowAdditionalBulletCount: 1
+    _rowHorisontalffset: 0
     _rowVerticalOffset: -0.05
+    _isTwoSided: 0
     _isMirrored: 1
-    _capsuleDelay: 0
+    _rowGap: 0
+    _capsuleLifeTime: 0
     _capsuleSpeed: 0
-    _capsuleAngularSpeed: 0
+    _capsuleDeltaSpeed: 0
+    _capsuleDeltaSpeedDelay: 0
+    _capsuleTurnSpeed: 0
+    _refireingCapsule: 0
+    _refireTime: 0
+  _bulletBase: 0
   _bulletOwner: 0
+  _enemyWeaponTracking: 0
   _bulletComponents: 0200000001000000
