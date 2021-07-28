@@ -48,11 +48,11 @@ namespace GrazingShmup
 
         private void LateUpdate()
         {
-            if (Time.frameCount % 2 == 0)
-                _bulletManager.LateUpdate(_deltaTime + Time.deltaTime);
-            else
-                _deltaTime = Time.deltaTime;
-            //_bulletManager.LateUpdate(Time.deltaTime);
+            //if (Time.frameCount % 2 == 0)
+            //    _bulletManager.LateUpdate(_deltaTime + Time.deltaTime);
+            //else
+            //    _deltaTime = Time.deltaTime;
+            _bulletManager.LateUpdate(Time.deltaTime);
         }
 
         private void Fire()

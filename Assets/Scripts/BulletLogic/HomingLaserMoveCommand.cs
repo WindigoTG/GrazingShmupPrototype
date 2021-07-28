@@ -18,41 +18,46 @@ namespace GrazingShmup
             _target = ServiceLocator.GetService<PlayerTracker>().Player;
         }
 
-        public override void Execute(float deltaTime)
+        public override bool Execute(float deltaTime)
         {
-            if (_bullet.gameObject.activeSelf)
-            {
-                _lastPosition = _bullet.position;
-
-                _lifeTime -= deltaTime;
-                if (_lifeTime <= 0)
-                    DisableBullet();
-
-                if (_homingTime > 0)
-                {
-                    TrackTarget(deltaTime);
-                    _homingTime -= deltaTime;
-                }
-
-                _bullet.Translate(Vector3.up * (_speed * deltaTime), Space.Self);
-                _speed += _deltaSpeed * deltaTime;
-
-                int layerMask = LayerMask.GetMask(References.PlayerHitBox);
-
-                if (ServiceLocator.GetService<CollisionManager>().CheckCollisions(
-                    _lastPosition, _bulletRadius, _bullet.position - _lastPosition, layerMask))
-                {
-                    //DisableBullet();
-                    _homingTime = 0;
-                }
-            }
+            if (_lastUpdateTime != 0)
+                _deltaTime = Time.time - _lastUpdateTime;
             else
-                ServiceLocator.GetService<BulletManager>().RemoveCommand(this);
+                _deltaTime = deltaTime;
+
+            _lastPosition = _bullet.position;
+
+            _lifeTime -= deltaTime;
+            if (_lifeTime <= 0)
+            {
+                DisableBullet();
+                _lastUpdateTime = Time.time;
+                return false;
+            }
+
+            if (_homingTime > 0)
+            {
+                TrackTarget(deltaTime);
+                _homingTime -= deltaTime;
+            }
+
+            _bullet.Translate(Vector3.up * (_speed * deltaTime), Space.Self);
+            _speed += _deltaSpeed * deltaTime;
+
+            int layerMask = LayerMask.GetMask(References.PlayerHitBox);
+
+            if (ServiceLocator.GetService<CollisionManager>().CheckCollisions(
+                _lastPosition, _bulletRadius, _bullet.position - _lastPosition, layerMask))
+            {
+                //DisableBullet();
+                _homingTime = 0;
+            }
+            _lastUpdateTime = Time.time;
+            return true;
         }
 
         private void DisableBullet()
         {
-            ServiceLocator.GetService<BulletManager>().RemoveCommand(this);
             ServiceLocator.GetService<ObjectPoolManager>().HomingLaserPool.Push(_bullet.gameObject);
         }
 
