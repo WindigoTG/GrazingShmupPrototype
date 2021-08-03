@@ -9,7 +9,7 @@ namespace GrazingShmup
         [SerializeField] private Transform _testTarget;
         private BulletManager _bulletManager;
         private BulletFactory _bulletFactory;
-        private IFireable _projectile;
+        private IProjectile _projectile;
         private float _fireDelay;
 
         private float _lastFiredTime;
@@ -48,11 +48,11 @@ namespace GrazingShmup
 
         private void LateUpdate()
         {
-            if (Time.frameCount % 2 == 0)
-                _bulletManager.LateUpdate(_deltaTime + Time.deltaTime);
-            else
-                _deltaTime = Time.deltaTime;
-            //_bulletManager.LateUpdate(Time.deltaTime);
+            //if (Time.frameCount % 2 == 0)
+            //    _bulletManager.LateUpdate(_deltaTime + Time.deltaTime);
+            //else
+            //    _deltaTime = Time.deltaTime;
+            _bulletManager.LateUpdate(Time.deltaTime);
         }
 
         private void Fire()

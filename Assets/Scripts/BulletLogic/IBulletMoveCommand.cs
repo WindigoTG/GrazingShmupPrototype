@@ -2,6 +2,6 @@ namespace GrazingShmup
 {
     public interface IBulletMoveCommand
     {
-        public void Execute(float deltaTime);
+        public bool Execute(float deltaTime);
     }
 }

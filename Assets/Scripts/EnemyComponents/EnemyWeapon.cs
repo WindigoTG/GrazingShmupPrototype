@@ -6,10 +6,10 @@ namespace GrazingShmup
     public abstract class EnemyWeapon : IWeaponEnemy, ICloneable
     {
         protected ProjectileConfig _config;
-        protected IFireable _bullet;
+        protected IProjectile _bullet;
         protected float _lastFiredTime = 0;
 
-        public EnemyWeapon(ProjectileConfig config, IFireable bullet)
+        public EnemyWeapon(ProjectileConfig config, IProjectile bullet)
         {
             _config = config;
             _bullet = bullet;

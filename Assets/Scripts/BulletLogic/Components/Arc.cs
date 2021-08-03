@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public class Arc : Fireable
+    public class Arc : Projectile
     {
         public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
@@ -26,6 +26,7 @@ namespace GrazingShmup
                     if (angle < 0)
                     {
                         currentConfig.ModifyTurning(-1);
+                        currentConfig.InvertSpinCapsuleSpin();
                     }
                     if (angle == 0)
                     {

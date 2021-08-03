@@ -126,5 +126,19 @@ namespace GrazingShmup
             _repeaterCapsuleSettings.RCapsuleTurnSpeed *= modifier;
             _spinningCapsuleSettings.SCapsuleTurnSpeed *= modifier;
         }
+
+        public void ModifySpeed (float deltaSpeed)
+        {
+            _projectileSpeed += deltaSpeed;
+            _capsuleSettings.CapsuleSpeed += deltaSpeed;
+            _burstCapsuleSettings.BCapsuleSpeed += deltaSpeed;
+            _repeaterCapsuleSettings.RCapsuleSpeed += deltaSpeed;
+            _spinningCapsuleSettings.SCapsuleSpeed += deltaSpeed;
+        }
+
+        public void InvertSpinCapsuleSpin()
+        {
+            _spinningCapsuleSettings.SpinSpeed = -_spinningCapsuleSettings.SpinSpeed;
+        }
     }
 }

@@ -36,11 +36,14 @@ namespace GrazingShmup
 
         private void LateUpdate()
         {
-            if (Time.frameCount % 2 == 0)
-                for (int i = 0; i < _lateUpdatables.Count; i++)
-                    _lateUpdatables[i].LateUpdate(_deltaTime + Time.deltaTime);
-            else
-                _deltaTime = Time.deltaTime;
+            for (int i = 0; i < _lateUpdatables.Count; i++)
+                _lateUpdatables[i].LateUpdate(Time.deltaTime);
+
+            //if (Time.frameCount % 2 == 0)
+            //    for (int i = 0; i < _lateUpdatables.Count; i++)
+            //        _lateUpdatables[i].LateUpdate(_deltaTime + Time.deltaTime);
+            //else
+            //    _deltaTime = Time.deltaTime;
         }
 
         private void CreateUpdatables()

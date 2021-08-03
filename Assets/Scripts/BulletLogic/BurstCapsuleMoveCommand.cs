@@ -1,19 +1,12 @@
 using UnityEngine;
 
 namespace GrazingShmup
-{
-    public class RepeaterCapsuleMoveCommand : DelayedCapsuleMoveCommand
-    {
-        protected float _refireTime;
-        protected float _lastFireTime;
-
-        public RepeaterCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float turnSpeed, 
-                                        float lifeTime, IProjectile content, ProjectileConfig config, float refireTime)  
-            : base(bullet, speed, deltaSpeed, deltaSpeedDelay, turnSpeed, lifeTime, content, config)
-        {
-            _refireTime = refireTime;
-            _lastFireTime = Time.time;
-        }
+{ 
+public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
+    { 
+        public BurstCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float turnSpeed,
+                                        float lifeTime, IProjectile content, ProjectileConfig config, float refireTime)
+            : base (bullet, speed, deltaSpeed, deltaSpeedDelay, turnSpeed, lifeTime, content, config, refireTime) { }
 
         public override bool Execute(float deltaTime)
         {
@@ -38,8 +31,23 @@ namespace GrazingShmup
 
             if (Time.time - _lastFireTime >= _refireTime)
             {
-                _content.Fire(_config, _bullet.position, _bullet.rotation.eulerAngles);
+                Vector3 rotation;
+
+                if (_config.BurstCapsuleSettings.IsTracking)
+                {
+                    Quaternion newRotation = new Quaternion();
+                    Vector3 targetPosition = ServiceLocator.GetService<PlayerTracker>().Player.position;
+                    newRotation.SetLookRotation(Vector3.forward, targetPosition - _bullet.position);
+
+                    rotation = newRotation.eulerAngles;
+                }
+                else
+                    rotation = _bullet.rotation.eulerAngles;
+
+                _content.Fire(_config, _bullet.position, rotation);
                 _lastFireTime = Time.time;
+
+                _config.ModifySpeed(_config.BurstCapsuleSettings.DeltaSpeedInBurst);
             }
 
             _lifeTime -= deltaTime;
