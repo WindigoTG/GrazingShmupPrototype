@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public class RepeaterCapsule : Fireable
+    public class RepeaterCapsule : Projectile
     {
         public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
@@ -14,7 +14,7 @@ namespace GrazingShmup
             IBulletMoveCommand command = new RepeaterCapsuleMoveCommand(bullet, config.RepeaterCapsuleSettings.RCapsuleSpeed,
                                                                         config.RepeaterCapsuleSettings.RCapsuleDeltaSpeed, config.RepeaterCapsuleSettings.RCapsuleDeltaSpeedDelay,
                                                                           config.RepeaterCapsuleSettings.RCapsuleTurnSpeed, config.RepeaterCapsuleSettings.RCapsuleLifeTime,
-                                                                          _subFireable, config, config.RepeaterCapsuleSettings.RCapsuleRefireTime);
+                                                                          _subProjectile, config, config.RepeaterCapsuleSettings.RCapsuleRefireTime);
 
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);

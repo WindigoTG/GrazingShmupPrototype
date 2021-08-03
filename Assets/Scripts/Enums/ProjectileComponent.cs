@@ -6,7 +6,9 @@ namespace GrazingShmup
         Arc,
         Row,
         Capsule,
-        RepeaterCapsule
+        RepeaterCapsule,
+        BurstCapsule,
+        SpinningCapsule
     }
 
     public enum BulletBase

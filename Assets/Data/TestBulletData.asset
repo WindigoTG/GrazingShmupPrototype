@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
   _bulletConfig:
-    _projectileLifeTime: 999
-    _fireDelay: 0.25
+    _projectileLifeTime: 10
+    _fireDelay: 10
     _projectileSpeed: 0.1
-    _projectileDeltaSpeed: 0.01
-    _projectileDeltaSpeedDelay: 0
-    _projectileTurnSpeed: 10
+    _projectileDeltaSpeed: 0.5
+    _projectileDeltaSpeedDelay: 0.5
+    _projectileTurnSpeed: 0
     _homingTime: 1
     _lineSettings:
       LineBulletCount: 1
       DeltaSpeedInLine: 0.5
     _arcSettings:
-      ArcBulletCount: 10
-      _arcAngle: 324
+      ArcBulletCount: 4
+      _arcAngle: 270
       InitialRadius: 0
-      SymmetrizeTurning: 0
+      SymmetrizeTurning: 1
     _rowSettings:
       RowAdditionalBulletCount: 0
       RowHorisontalOffset: 0.1
@@ -40,7 +40,7 @@ MonoBehaviour:
       CapsuleSpeed: 1
       CapsuleDeltaSpeed: 0
       CapsuleDeltaSpeedDelay: 0
-      _capsuleTurnSpeed: -50
+      _capsuleTurnSpeed: 0
     _repeaterCapsuleSettings:
       RCapsuleLifeTime: 3
       RCapsuleSpeed: 1
@@ -49,23 +49,23 @@ MonoBehaviour:
       _rCapsuleTurnSpeed: 50
       RCapsuleRefireTime: 0.25
     _burstCapsuleSettings:
-      BCapsuleLifeTime: 0
-      BurstRefireTime: 0
-      DeltaSpeedInBurst: 0
-      IsTracking: 0
+      BCapsuleLifeTime: 5
+      BurstRefireTime: 0.1
+      DeltaSpeedInBurst: 0.025
+      IsTracking: 1
       BCapsuleSpeed: 0
       BCapsuleDeltaSpeed: 0
       BCapsuleDeltaSpeedDelay: 0
       _bCapsuleTurnSpeed: 0
     _spinningCapsuleSettings:
-      SpinArc: 0
-      SpinSpeed: 0
-      DegreesBetweenShots: 0
-      SCapsuleSpeed: 0
-      SCapsuleDeltaSpeed: 0
-      SCapsuleDeltaSpeedDelay: 0
-      _sCapsuleTurnSpeed: 0
+      SpinArc: 2160
+      SpinSpeed: -360
+      DegreesBetweenShots: 15
+      SCapsuleSpeed: 1
+      SCapsuleDeltaSpeed: 0.5
+      SCapsuleDeltaSpeedDelay: 1
+      _sCapsuleTurnSpeed: -25
   _bulletBase: 0
   _bulletOwner: 1
   _enemyWeaponTracking: 0
-  _bulletComponents: 01000000
+  _bulletComponents: 060000000300000001000000

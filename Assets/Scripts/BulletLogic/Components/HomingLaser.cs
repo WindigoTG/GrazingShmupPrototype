@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GrazingShmup
 { 
-public class HomingLaser : Fireable
+public class HomingLaser : Projectile
     {
         private BulletOwner _owner;
 

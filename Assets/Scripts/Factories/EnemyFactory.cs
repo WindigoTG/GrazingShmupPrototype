@@ -22,7 +22,7 @@ namespace GrazingShmup
                 _bulletData.Add(type, Resources.Load<BulletData>(path));
             }
 
-            IFireable bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
+            IProjectile bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
                                                                        _bulletData[type].Base, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
 
             IWeaponEnemy weapon;

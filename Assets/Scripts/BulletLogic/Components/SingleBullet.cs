@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public class SingleBullet : Fireable
+    public class SingleBullet : Projectile
     {
         private BulletOwner _owner;
 

@@ -9,7 +9,7 @@ namespace GrazingShmup
         [SerializeField] private Transform _testTarget;
         private BulletManager _bulletManager;
         private BulletFactory _bulletFactory;
-        private IFireable _projectile;
+        private IProjectile _projectile;
         private float _fireDelay;
 
         private float _lastFiredTime;

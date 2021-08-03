@@ -1455,27 +1455,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config:
-    _bulletSpeed: 1
-    _bulletAngularSpeed: 0
-    _bulletDeltaSpeed: 0.1
-    _homingTime: 0
-    _homingSpeed: 0
-    _lifeTime: 1
+    _projectileLifeTime: 0
     _fireDelay: 1
-    _lineBulletCount: 0
-    _deltaSpeedinLine: 0
-    _arcLineCount: 10
-    _arcAngle: 324
-    _initialRadius: 0
-    _rowLineCount: 1
-    _rowLineOffset: 0.1
-    _rowVerticalOffset: -0.03
-    _isMirrored: 0
-    _capsuleDelay: 0
-    _capsuleSpeed: 1
-    _capsuleAngularSpeed: 0
-    _refireingCapsule: 0
-    _refireTime: 0
+    _projectileSpeed: 0
+    _projectileDeltaSpeed: 0
+    _projectileDeltaSpeedDelay: 0
+    _projectileTurnSpeed: 0
+    _homingTime: 0
+    _lineSettings:
+      LineBulletCount: 0
+      DeltaSpeedInLine: 0
+    _arcSettings:
+      ArcBulletCount: 0
+      _arcAngle: 0
+      InitialRadius: 0
+      SymmetrizeTurning: 0
+    _rowSettings:
+      RowAdditionalBulletCount: 0
+      RowHorisontalOffset: 0
+      RowVerticalOffset: 0
+      IsTwoSided: 0
+      IsMirrored: 0
+      RowGap: 0
+    _capsuleSettings:
+      CapsuleLifeTime: 0
+      CapsuleSpeed: 0
+      CapsuleDeltaSpeed: 0
+      CapsuleDeltaSpeedDelay: 0
+      _capsuleTurnSpeed: 0
+    _repeaterCapsuleSettings:
+      RCapsuleLifeTime: 0
+      RCapsuleSpeed: 0
+      RCapsuleDeltaSpeed: 0
+      RCapsuleDeltaSpeedDelay: 0
+      _rCapsuleTurnSpeed: 0
+      RCapsuleRefireTime: 0
+    _burstCapsuleSettings:
+      BCapsuleLifeTime: 0
+      BurstRefireTime: 0
+      DeltaSpeedInBurst: 0
+      IsTracking: 0
+      BCapsuleSpeed: 0
+      BCapsuleDeltaSpeed: 0
+      BCapsuleDeltaSpeedDelay: 0
+      _bCapsuleTurnSpeed: 0
+    _spinningCapsuleSettings:
+      SpinArc: 0
+      SpinSpeed: 0
+      DegreesBetweenShots: 0
+      SCapsuleSpeed: 0
+      SCapsuleDeltaSpeed: 0
+      SCapsuleDeltaSpeedDelay: 0
+      _sCapsuleTurnSpeed: 0
   _bulletData: {fileID: 11400000, guid: 5b3aca2a2e99d344481f98de11e17bfe, type: 2}
   _testTarget: {fileID: 2028681150}
 --- !u!4 &1852054054

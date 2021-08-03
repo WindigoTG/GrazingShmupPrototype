@@ -14,13 +14,13 @@ namespace GrazingShmup
         protected Vector3 _lastPosition;
         protected float _bulletRadius;
 
-        protected IFireable _content;
+        protected IProjectile _content;
         protected ProjectileConfig _config;
 
         protected float _lastUpdateTime;
         protected float _deltaTime;
 
-        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float angularSpeed, float lifeTime, IFireable content, ProjectileConfig config)
+        public DelayedCapsuleMoveCommand(Transform bullet, float speed, float deltaSpeed, float deltaSpeedDelay, float angularSpeed, float lifeTime, IProjectile content, ProjectileConfig config)
         {
             _bullet = bullet;
             _speed = speed;
@@ -41,6 +41,7 @@ namespace GrazingShmup
             else
                 _deltaTime = deltaTime;
 
+            _lastUpdateTime = Time.time;
             _lastPosition = _bullet.position;
 
             _bullet.transform.Rotate(Vector3.forward, _angularSpeed * 180 / Mathf.PI * deltaTime);
@@ -60,10 +61,9 @@ namespace GrazingShmup
             {
                 _content.Fire(_config, _bullet.position, _bullet.rotation.eulerAngles);
                 ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Push(_bullet.gameObject);
-                _lastUpdateTime = Time.time;
                 return false;
             }
-            _lastUpdateTime = Time.time;
+
             return true;
         }
 

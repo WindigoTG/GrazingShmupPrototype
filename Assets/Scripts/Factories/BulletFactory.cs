@@ -2,16 +2,16 @@ namespace GrazingShmup
 {
     public class BulletFactory : IBulletFactory
     {
-        public Fireable GetBullet(BulletBase bulletBase, ProjectileComponent[] bulletComponents, BulletOwner owner)
+        public Projectile GetBullet(BulletBase bulletBase, ProjectileComponent[] bulletComponents, BulletOwner owner)
         {
-            Fireable fireable = GetBase(bulletBase, owner);
+            Projectile fireable = GetBase(bulletBase, owner);
             if (bulletComponents != null)
                 for (int i = 0; i < bulletComponents.Length; i++)
                     fireable = Decorate(fireable, bulletComponents[i]);
             return fireable;
         }
 
-        private Fireable Decorate(Fireable fireable, ProjectileComponent component)
+        private Projectile Decorate(Projectile fireable, ProjectileComponent component)
         {
             switch (component)
             {
@@ -25,12 +25,16 @@ namespace GrazingShmup
                     return fireable.FiredInLine();
                 case ProjectileComponent.Row:
                     return fireable.FiredInRow();
+                case ProjectileComponent.BurstCapsule:
+                    return fireable.FiredInBurstCapsule();
+                case ProjectileComponent.SpinningCapsule:
+                    return fireable.FiredInSpinningCapsule();
                 default:
                     return fireable;
             }
         }
 
-        private Fireable GetBase(BulletBase bulletBase, BulletOwner owner)
+        private Projectile GetBase(BulletBase bulletBase, BulletOwner owner)
         {
             switch (bulletBase)
             {

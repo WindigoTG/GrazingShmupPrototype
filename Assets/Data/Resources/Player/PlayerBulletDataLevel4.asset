@@ -13,33 +13,58 @@ MonoBehaviour:
   m_Name: PlayerBulletDataLevel4
   m_EditorClassIdentifier: 
   _bulletConfig:
-    _bulletSpeed: 7
-    _bulletDeltaSpeed: 0
-    _bulletDeltaSpeedDelay: 0
-    _bulletTurnSpeed: 0
-    _homingTime: 0
-    _homingSpeed: 0
-    _bulletLifeTime: 0
+    _projectileLifeTime: 1.5
     _fireDelay: 0.05
-    _lineBulletCount: 1
-    _deltaSpeedInLine: 0
-    _arcBulletCount: 0
-    _arcAngle: 45
-    _initialRadius: 0
-    _symmetrizeTurning: 0
-    _rowAdditionalBulletCount: 1
-    _rowHorisontalffset: 0
-    _rowVerticalOffset: -0.05
-    _isTwoSided: 0
-    _isMirrored: 1
-    _rowGap: 0
-    _capsuleLifeTime: 0
-    _capsuleSpeed: 0
-    _capsuleDeltaSpeed: 0
-    _capsuleDeltaSpeedDelay: 0
-    _capsuleTurnSpeed: 0
-    _refireingCapsule: 0
-    _refireTime: 0
+    _projectileSpeed: 7
+    _projectileDeltaSpeed: 0
+    _projectileDeltaSpeedDelay: 0
+    _projectileTurnSpeed: 0
+    _homingTime: 0
+    _lineSettings:
+      LineBulletCount: 0
+      DeltaSpeedInLine: 0
+    _arcSettings:
+      ArcBulletCount: 7
+      _arcAngle: 45
+      InitialRadius: 0
+      SymmetrizeTurning: 0
+    _rowSettings:
+      RowAdditionalBulletCount: 2
+      RowHorisontalOffset: 0.1
+      RowVerticalOffset: -0.05
+      IsTwoSided: 0
+      IsMirrored: 1
+      RowGap: 0
+    _capsuleSettings:
+      CapsuleLifeTime: 0
+      CapsuleSpeed: 0
+      CapsuleDeltaSpeed: 0
+      CapsuleDeltaSpeedDelay: 0
+      _capsuleTurnSpeed: 0
+    _repeaterCapsuleSettings:
+      RCapsuleLifeTime: 0
+      RCapsuleSpeed: 0
+      RCapsuleDeltaSpeed: 0
+      RCapsuleDeltaSpeedDelay: 0
+      _rCapsuleTurnSpeed: 0
+      RCapsuleRefireTime: 0
+    _burstCapsuleSettings:
+      BCapsuleLifeTime: 0
+      BurstRefireTime: 0
+      DeltaSpeedInBurst: 0
+      IsTracking: 0
+      BCapsuleSpeed: 0
+      BCapsuleDeltaSpeed: 0
+      BCapsuleDeltaSpeedDelay: 0
+      _bCapsuleTurnSpeed: 0
+    _spinningCapsuleSettings:
+      SpinArc: 0
+      SpinSpeed: 0
+      DegreesBetweenShots: 0
+      SCapsuleSpeed: 0
+      SCapsuleDeltaSpeed: 0
+      SCapsuleDeltaSpeedDelay: 0
+      _sCapsuleTurnSpeed: 0
   _bulletBase: 0
   _bulletOwner: 0
   _enemyWeaponTracking: 0

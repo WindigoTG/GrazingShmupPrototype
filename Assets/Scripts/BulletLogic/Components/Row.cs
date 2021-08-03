@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GrazingShmup
 {
-    public class Row : Fireable
+    public class Row : Projectile
     {
         public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
