@@ -140,5 +140,14 @@ namespace GrazingShmup
         {
             _spinningCapsuleSettings.SpinSpeed = -_spinningCapsuleSettings.SpinSpeed;
         }
+
+        public void ModifyDeltaSpeedDelay(float difference)
+        {
+            _projectileDeltaSpeedDelay += difference;
+            _capsuleSettings.CapsuleDeltaSpeedDelay += difference;
+            _burstCapsuleSettings.BCapsuleDeltaSpeedDelay += difference;
+            _repeaterCapsuleSettings.RCapsuleDeltaSpeedDelay += difference;
+            _spinningCapsuleSettings.SCapsuleDeltaSpeedDelay += difference;
+        }
     }
 }

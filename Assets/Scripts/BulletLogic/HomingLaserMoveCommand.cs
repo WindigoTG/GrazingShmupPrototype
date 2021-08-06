@@ -16,6 +16,7 @@ namespace GrazingShmup
             _homingTime = homingTime;
 
             _target = ServiceLocator.GetService<PlayerTracker>().Player;
+            Debug.LogWarning(_target.name);
         }
 
         public override bool Execute(float deltaTime)

@@ -13,6 +13,8 @@ namespace GrazingShmup
         [Min(0)] [Tooltip("Delay before capsule's speed start to change")] public float RCapsuleDeltaSpeedDelay;
         [SerializeField] [Tooltip("How fast a capsule turns")]float _rCapsuleTurnSpeed;
         [Min(0)] [Tooltip("Time between capsule's shots")] public float RCapsuleRefireTime;
+        [Tooltip("Attempt to adjust DeltaSpeedDelay in shots," +
+            "so that they start to change speed at the same time")] public bool SynchronizeDeltaSpeedDelayInShots;
 
         public float RCapsuleTurnSpeed
         {

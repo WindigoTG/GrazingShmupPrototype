@@ -59,12 +59,12 @@ MonoBehaviour:
       _bCapsuleTurnSpeed: 0
     _spinningCapsuleSettings:
       SpinArc: 2160
-      SpinSpeed: -360
+      SpinSpeed: -720
       DegreesBetweenShots: 15
-      SCapsuleSpeed: 1
-      SCapsuleDeltaSpeed: 0.5
-      SCapsuleDeltaSpeedDelay: 1
-      _sCapsuleTurnSpeed: -25
+      SCapsuleSpeed: 0
+      SCapsuleDeltaSpeed: 0
+      SCapsuleDeltaSpeedDelay: 0
+      _sCapsuleTurnSpeed: 0
   _bulletBase: 0
   _bulletOwner: 1
   _enemyWeaponTracking: 0

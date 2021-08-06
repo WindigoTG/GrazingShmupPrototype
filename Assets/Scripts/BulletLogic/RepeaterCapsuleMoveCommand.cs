@@ -38,6 +38,9 @@ namespace GrazingShmup
 
             if (Time.time - _lastFireTime >= _refireTime)
             {
+                if (_config.RepeaterCapsuleSettings.SynchronizeDeltaSpeedDelayInShots)
+                    _config.ModifyDeltaSpeedDelay(-_config.RepeaterCapsuleSettings.RCapsuleRefireTime);
+
                 _content.Fire(_config, _bullet.position, _bullet.rotation.eulerAngles);
                 _lastFireTime = Time.time;
             }
