@@ -13,6 +13,8 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
             _turnSpeed = config.BurstCapsuleSettings.BCapsuleTurnSpeed;
             _lifeTime = config.BurstCapsuleSettings.BCapsuleLifeTime;
 
+            _prefab = config.BurstCapsuleSettings.BCapsulePrefab;
+
             _refireTime = config.BurstCapsuleSettings.BurstRefireTime;
         }
 

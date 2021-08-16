@@ -1182,7 +1182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1287723605
 Transform:
   m_ObjectHideFlags: 0
@@ -1441,7 +1441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1852054053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1461,9 @@ MonoBehaviour:
     _projectileDeltaSpeed: 0
     _projectileDeltaSpeedDelay: 0
     _projectileTurnSpeed: 0
+    _bulletPrefab: {fileID: 0}
     _homingTime: 0
+    _homingLaserPrefab: {fileID: 0}
     _lineSettings:
       LineBulletCount: 0
       DeltaSpeedInLine: 0
@@ -1482,15 +1484,17 @@ MonoBehaviour:
       CapsuleSpeed: 0
       CapsuleDeltaSpeed: 0
       CapsuleDeltaSpeedDelay: 0
-      _capsuleTurnSpeed: 0
+      CapsuleTurnSpeed: 0
+      _capsulePrefab: {fileID: 0}
     _repeaterCapsuleSettings:
       RCapsuleLifeTime: 0
       RCapsuleSpeed: 0
       RCapsuleDeltaSpeed: 0
       RCapsuleDeltaSpeedDelay: 0
-      _rCapsuleTurnSpeed: 0
+      RCapsuleTurnSpeed: 0
       RCapsuleRefireTime: 0
       SynchronizeDeltaSpeedDelayInShots: 0
+      _rCapsulePrefab: {fileID: 0}
     _burstCapsuleSettings:
       BCapsuleLifeTime: 0
       BurstRefireTime: 0
@@ -1499,7 +1503,8 @@ MonoBehaviour:
       BCapsuleSpeed: 0
       BCapsuleDeltaSpeed: 0
       BCapsuleDeltaSpeedDelay: 0
-      _bCapsuleTurnSpeed: 0
+      BCapsuleTurnSpeed: 0
+      _bCapsulePrefab: {fileID: 0}
     _spinningCapsuleSettings:
       SpinArc: 0
       SpinSpeed: 0
@@ -1507,7 +1512,8 @@ MonoBehaviour:
       SCapsuleSpeed: 0
       SCapsuleDeltaSpeed: 0
       SCapsuleDeltaSpeedDelay: 0
-      _sCapsuleTurnSpeed: 0
+      SCapsuleTurnSpeed: 0
+      _sCapsulePrefab: {fileID: 0}
   _bulletData: {fileID: 11400000, guid: 5b3aca2a2e99d344481f98de11e17bfe, type: 2}
   _testTarget: {fileID: 2028681150}
 --- !u!4 &1852054054

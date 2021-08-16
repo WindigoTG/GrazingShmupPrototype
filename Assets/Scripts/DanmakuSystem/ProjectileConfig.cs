@@ -19,8 +19,12 @@ namespace GrazingShmup
         [Tooltip("For Bullet: How fast it turns\n" +
                  "For Homing Laser: How sharply it steers towards target")] float _projectileTurnSpeed;
         [Space]
+        [SerializeField] [Tooltip("Prefab to use as a bullet")] private GameObject _bulletPrefab;
+        [Space]
         [Header("Homing Laser settings")]
         [SerializeField] [Min(0)] [Tooltip("How long a homing laser tracks target")] float _homingTime;
+        [Space]
+        [SerializeField] [Tooltip("Prefab to use as a homing laser")] private GameObject _homingLaserPrefab;
         [Space]
 
         [SerializeField] LineConfig _lineSettings;
@@ -78,6 +82,10 @@ namespace GrazingShmup
             get => _homingTime;
             set => _homingTime = value;
         }
+
+        public GameObject BulletPrefab => _bulletPrefab;
+
+        public GameObject HomingLaserPrefab => _homingLaserPrefab;
         #endregion
 
         #region Components Properties
@@ -118,6 +126,7 @@ namespace GrazingShmup
         }
         #endregion
 
+        #region Config modifying methods
         public void ModifyTurning(int modifier)
         {
             _projectileTurnSpeed *= modifier;
@@ -149,5 +158,6 @@ namespace GrazingShmup
             _repeaterCapsuleSettings.RCapsuleDeltaSpeedDelay += difference;
             _spinningCapsuleSettings.SCapsuleDeltaSpeedDelay += difference;
         }
+        #endregion
     }
 }
