@@ -19,7 +19,9 @@ MonoBehaviour:
     _projectileDeltaSpeed: 1
     _projectileDeltaSpeedDelay: 0
     _projectileTurnSpeed: 0
+    _bulletPrefab: {fileID: 6318242840552354594, guid: f7617c8e991e21b4abbd22ecb5a3e282, type: 3}
     _homingTime: 3
+    _homingLaserPrefab: {fileID: 6261420400490341371, guid: fc4bdbbd4036cc64792645f45982e9dd, type: 3}
     _lineSettings:
       LineBulletCount: 1
       DeltaSpeedInLine: 0
@@ -40,15 +42,17 @@ MonoBehaviour:
       CapsuleSpeed: 1
       CapsuleDeltaSpeed: 0
       CapsuleDeltaSpeedDelay: 0
-      _capsuleTurnSpeed: 0
+      CapsuleTurnSpeed: 0
+      _capsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
     _repeaterCapsuleSettings:
       RCapsuleLifeTime: 0
       RCapsuleSpeed: 0
       RCapsuleDeltaSpeed: 0
       RCapsuleDeltaSpeedDelay: 0
-      _rCapsuleTurnSpeed: 0
+      RCapsuleTurnSpeed: 0
       RCapsuleRefireTime: 0
       SynchronizeDeltaSpeedDelayInShots: 0
+      _rCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
     _burstCapsuleSettings:
       BCapsuleLifeTime: 5
       BurstRefireTime: 0.1
@@ -57,7 +61,8 @@ MonoBehaviour:
       BCapsuleSpeed: 0
       BCapsuleDeltaSpeed: 0
       BCapsuleDeltaSpeedDelay: 0
-      _bCapsuleTurnSpeed: 0
+      BCapsuleTurnSpeed: 0
+      _bCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
     _spinningCapsuleSettings:
       SpinArc: 0
       SpinSpeed: 0
@@ -65,7 +70,8 @@ MonoBehaviour:
       SCapsuleSpeed: 0
       SCapsuleDeltaSpeed: 0
       SCapsuleDeltaSpeedDelay: 0
-      _sCapsuleTurnSpeed: 0
+      SCapsuleTurnSpeed: 0
+      _sCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
   _bulletBase: 0
   _bulletOwner: 1
   _enemyWeaponTracking: 1

@@ -16,6 +16,8 @@ namespace GrazingShmup
             _turnSpeed = config.RepeaterCapsuleSettings.RCapsuleTurnSpeed;
             _lifeTime = config.RepeaterCapsuleSettings.RCapsuleLifeTime;
 
+            _prefab = config.RepeaterCapsuleSettings.RCapsulePrefab;
+
             _refireTime = config.RepeaterCapsuleSettings.RCapsuleRefireTime;
             _lastFireTime = Time.time;
         }

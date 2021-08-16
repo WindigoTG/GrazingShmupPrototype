@@ -14,12 +14,10 @@ namespace GrazingShmup
         [Tooltip("Initial speed of a capsule")] public float BCapsuleSpeed;
         [Tooltip("Rate with which capsule's speed changes per second")] public float BCapsuleDeltaSpeed;
         [Min(0)] [Tooltip("Delay before capsule's speed start to change")] public float BCapsuleDeltaSpeedDelay;
-        [SerializeField][Tooltip("How fast a capsule turns")] float _bCapsuleTurnSpeed;
+        [Tooltip("How fast a capsule turns")] public float BCapsuleTurnSpeed;
+        [Space]
+        [SerializeField] [Tooltip("Prefab to use as a capsule")] private GameObject _bCapsulePrefab;
 
-        public float BCapsuleTurnSpeed
-        {
-            get => _bCapsuleTurnSpeed * Mathf.PI / 180;
-            set => _bCapsuleTurnSpeed = value * 180 / Mathf.PI;
-        }
+        public GameObject BCapsulePrefab => _bCapsulePrefab;
     }
 }

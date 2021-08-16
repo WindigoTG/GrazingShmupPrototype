@@ -16,6 +16,8 @@ namespace GrazingShmup
             _turnSpeed = config.CapsuleSettings.CapsuleTurnSpeed;
             _lifeTime = config.CapsuleSettings.CapsuleLifeTime;
 
+            _prefab = config.CapsuleSettings.CapsulePrefab;
+
             _content = content;
             _config = config;
         }
@@ -38,11 +40,6 @@ namespace GrazingShmup
             }
 
             return true;
-        }
-
-        protected void DisableProjectile()
-        {
-            _objectPoolManager.CapsulePool.Push(_projectile.gameObject);
         }
     }
 }

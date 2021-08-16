@@ -17,6 +17,8 @@ namespace GrazingShmup
             _deltaSpeedDelay = config.SpinningCapsuleSettings.SCapsuleDeltaSpeedDelay;
             _turnSpeed = config.SpinningCapsuleSettings.SCapsuleTurnSpeed;
 
+            _prefab = config.SpinningCapsuleSettings.SCapsulePrefab;
+
             _shootingRotation = _projectile.rotation;
         }
 

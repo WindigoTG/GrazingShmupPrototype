@@ -22,6 +22,8 @@ namespace GrazingShmup
         protected ObjectPoolManager _objectPoolManager;
         protected CollisionManager _collisionManager;
 
+        protected GameObject _prefab;
+
         public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config)
         {
             _objectPoolManager = ServiceLocator.GetService<ObjectPoolManager>();
@@ -35,6 +37,9 @@ namespace GrazingShmup
             _turnSpeed = config.ProjectileTurnSpeed;
             _lifeTime = config.ProjectileLifeTime;
             _lastPosition = _projectile.position;
+
+            _prefab = config.BulletPrefab;
+
             GetBulletSize();
         }
 
@@ -116,12 +121,9 @@ namespace GrazingShmup
             return _collisionManager.CheckCollisions(_lastPosition, _bulletRadius, _projectile.position - _lastPosition, layerMask);
         }
 
-        private void DisableProjectile()
+        protected void DisableProjectile()
         {
-            if (_bulletOwner == BulletOwner.Enemy)
-                _objectPoolManager.EnemyBulletsPool.Push(_projectile.gameObject);
-            else
-                _objectPoolManager.PlayerBulletsPool.Push(_projectile.gameObject);
+            _objectPoolManager.GetBulletPool(_prefab).Push(_projectile.gameObject);
         }
     }
 }

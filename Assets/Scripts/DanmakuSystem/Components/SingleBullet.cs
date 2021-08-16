@@ -13,9 +13,7 @@ namespace GrazingShmup
 
         public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
-            Transform bullet = _owner == BulletOwner.Enemy ? 
-                                ServiceLocator.GetService<ObjectPoolManager>().EnemyBulletsPool.Pop().transform :
-                                ServiceLocator.GetService<ObjectPoolManager>().PlayerBulletsPool.Pop().transform;
+            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().GetBulletPool(config.BulletPrefab).Pop().transform;
 
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);

@@ -14,6 +14,8 @@ namespace GrazingShmup
             _homingSpeed = config.ProjectileTurnSpeed;
             _homingTime = config.HomingTime;
 
+            _prefab = config.HomingLaserPrefab;
+
             _target = ServiceLocator.GetService<PlayerTracker>().Player;
         }
 
@@ -62,11 +64,6 @@ namespace GrazingShmup
             _projectile.rotation = _rotation;
 
             _homingTime -= _deltaTime;
-        }
-
-        private void DisableProjectile()
-        {
-            _objectPoolManager.HomingLaserPool.Push(_projectile.gameObject);
         }
     }
 }
