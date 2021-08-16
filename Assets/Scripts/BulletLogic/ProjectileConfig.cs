@@ -37,7 +37,7 @@ namespace GrazingShmup
         #endregion
 
         #region General Properties
-        public float LifeTime
+        public float ProjectileLifeTime
         {
             get => _projectileLifeTime;
             set => _projectileLifeTime = value;

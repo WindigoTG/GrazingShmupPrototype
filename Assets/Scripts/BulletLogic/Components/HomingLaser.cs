@@ -23,8 +23,7 @@ public class HomingLaser : Projectile
 
             trail.Clear();
 
-            IBulletMoveCommand command = new HomingLaserMoveCommand(bullet, _owner, config.ProjectileSpeed, config.ProjectileDeltaSpeed, config.ProjectileDeltaSpeedDelay,
-                                                                    config.ProjectileTurnSpeed, config.HomingTime, config.LifeTime);
+            IProjectileMoveCommand command = new HomingLaserMoveCommand(bullet, _owner, config);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

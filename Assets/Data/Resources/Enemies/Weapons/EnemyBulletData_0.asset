@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: EnemyBulletData_0
   m_EditorClassIdentifier: 
   _bulletConfig:
-    _projectileLifeTime: 30
+    _projectileLifeTime: 10
     _fireDelay: 1
-    _projectileSpeed: 0.05
-    _projectileDeltaSpeed: 0.5
-    _projectileDeltaSpeedDelay: 5
+    _projectileSpeed: 1
+    _projectileDeltaSpeed: 1
+    _projectileDeltaSpeedDelay: 0
     _projectileTurnSpeed: 0
-    _homingTime: 1.5
+    _homingTime: 3
     _lineSettings:
       LineBulletCount: 1
       DeltaSpeedInLine: 0
     _arcSettings:
-      ArcBulletCount: 1
-      _arcAngle: 0
+      ArcBulletCount: 4
+      _arcAngle: 30
       InitialRadius: 0
       SymmetrizeTurning: 0
     _rowSettings:
@@ -48,6 +48,7 @@ MonoBehaviour:
       RCapsuleDeltaSpeedDelay: 0
       _rCapsuleTurnSpeed: 0
       RCapsuleRefireTime: 0
+      SynchronizeDeltaSpeedDelayInShots: 0
     _burstCapsuleSettings:
       BCapsuleLifeTime: 5
       BurstRefireTime: 0.1
@@ -67,5 +68,5 @@ MonoBehaviour:
       _sCapsuleTurnSpeed: 0
   _bulletBase: 0
   _bulletOwner: 1
-  _enemyWeaponTracking: 0
-  _bulletComponents: 0500000003000000
+  _enemyWeaponTracking: 1
+  _bulletComponents: 01000000

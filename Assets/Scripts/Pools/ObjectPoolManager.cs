@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GrazingShmup
 {
-    internal sealed class ObjectPoolManager
+    public sealed class ObjectPoolManager
     {
         private ObjectPool _playerBulletsPool;
         private ObjectPool _enemyBulletsPool;
@@ -45,7 +45,7 @@ namespace GrazingShmup
             }
         }
 
-        public ObjectPool BulletCapsulePool
+        public ObjectPool CapsulePool
         {
             get
             {

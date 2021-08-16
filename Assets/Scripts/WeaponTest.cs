@@ -20,7 +20,11 @@ namespace GrazingShmup
         {
             _bulletFactory = new BulletFactory();
 
-            ServiceLocator.AddService(new CollisionManager());
+            CollisionManager collisionManager = new CollisionManager();
+            float targetSize = _testTarget.GetComponent<CircleCollider2D>().radius;
+            collisionManager.RegisterPlayer(_testTarget, targetSize, (0, 0));
+
+            ServiceLocator.AddService(collisionManager);
             _bulletManager = new BulletManager();
 
             ServiceLocator.AddService(new ObjectPoolManager(null));

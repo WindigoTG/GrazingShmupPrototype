@@ -16,6 +16,9 @@ namespace GrazingShmup
         ParticleSystem[] _particles;
         float[] _particleSpeed;
 
+        float _hitPointRadius;
+        (float x, float y) _grazeColliderSize;
+
         public PlayerShip(PlayerData playerData, IEnginePlayer movement, IWeaponPlayer weapon)
         {
             _playerData = playerData;
@@ -29,9 +32,10 @@ namespace GrazingShmup
             _powerCore = new PlayerPowerCore(_transform);
 
             _movement.SetDependencies(_transform, _playerData);
-            ServiceLocator.GetService<CollisionManager>().RegisterPlayer(_transform);
-            ServiceLocator.GetService<CollisionManager>().PlayerHit += _powerCore.Hit;
-            ServiceLocator.GetService<CollisionManager>().PlayerGrazed += _powerCore.Graze;
+
+            SetCollidersSizes();
+
+            RegisterCollisions();
 
             _animators = _transform.GetComponentsInChildren<Animator>();
             _particles = _transform.GetComponentsInChildren<ParticleSystem>();
@@ -44,6 +48,21 @@ namespace GrazingShmup
                 _particleSpeed[i] = main.startSpeedMultiplier;
                 main.startSpeedMultiplier = _particleSpeed[i] / 2;
             }
+        }
+
+        private void RegisterCollisions()
+        {
+            CollisionManager collisionManager = ServiceLocator.GetService<CollisionManager>();
+            collisionManager.RegisterPlayer(_transform, _hitPointRadius, _grazeColliderSize);
+            collisionManager.PlayerHit += _powerCore.Hit;
+            collisionManager.PlayerGrazed += _powerCore.Graze;
+        }
+
+        private void SetCollidersSizes()
+        {
+            _hitPointRadius = _transform.GetComponentInChildren<CircleCollider2D>().radius;
+            PolygonCollider2D grazeCollider = _transform.GetComponentInChildren<PolygonCollider2D>();
+            _grazeColliderSize = (grazeCollider.bounds.extents.x, grazeCollider.bounds.extents.y);
         }
 
         public Transform Transform => _transform;

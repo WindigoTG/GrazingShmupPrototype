@@ -5,7 +5,7 @@ namespace GrazingShmup
 {
     public class BulletManager : IUpdateableLate
     {
-        private List<IBulletMoveCommand> _commands;
+        private List<IProjectileMoveCommand> _commands;
         float _maxTime = 0.01f;
 
         int _currentIndex;
@@ -15,7 +15,7 @@ namespace GrazingShmup
 
         public BulletManager()
         {
-            _commands = new List<IBulletMoveCommand>();
+            _commands = new List<IProjectileMoveCommand>();
         }
 
         public void LateUpdate(float deltaTime)
@@ -65,12 +65,12 @@ namespace GrazingShmup
             Debug.Log($"Bullet Count: {_commands.Count}  |  FPS: {1 / Time.deltaTime}  |  {bullets}");
         }
 
-        public void AddCommand(IBulletMoveCommand command)
+        public void AddCommand(IProjectileMoveCommand command)
         {
             _commands.Add(command);
         }
 
-        public void RemoveCommand(IBulletMoveCommand command)
+        public void RemoveCommand(IProjectileMoveCommand command)
         {
             if (_commands.Contains(command))
                 _commands.Remove(command);

@@ -6,16 +6,12 @@ namespace GrazingShmup
     {
         public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
         {
-            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().BulletCapsulePool.Pop().transform;
+            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().CapsulePool.Pop().transform;
 
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
-            IBulletMoveCommand command = new BurstCapsuleMoveCommand(bullet, config.BurstCapsuleSettings.BCapsuleSpeed,
-                                                                        config.BurstCapsuleSettings.BCapsuleDeltaSpeed, config.BurstCapsuleSettings.BCapsuleDeltaSpeedDelay,
-                                                                          config.BurstCapsuleSettings.BCapsuleTurnSpeed, config.BurstCapsuleSettings.BCapsuleLifeTime,
-                                                                          _subProjectile, config, config.BurstCapsuleSettings.BurstRefireTime);
-
+            IProjectileMoveCommand command = new BurstCapsuleMoveCommand(bullet, BulletOwner.Enemy, config, _subProjectile);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

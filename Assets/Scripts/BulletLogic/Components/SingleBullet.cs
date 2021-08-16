@@ -20,7 +20,7 @@ namespace GrazingShmup
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
-            IBulletMoveCommand command = new BaseBulletMoveCommand(bullet, _owner, config.ProjectileSpeed, config.ProjectileDeltaSpeed, config.ProjectileDeltaSpeedDelay, config.ProjectileTurnSpeed, config.LifeTime);
+            IProjectileMoveCommand command = new BaseProjectileMoveCommand(bullet, _owner, config);
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }

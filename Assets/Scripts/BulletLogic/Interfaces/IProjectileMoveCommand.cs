@@ -1,6 +1,6 @@
 namespace GrazingShmup
 {
-    public interface IBulletMoveCommand
+    public interface IProjectileMoveCommand
     {
         public bool Execute(float deltaTime);
     }
