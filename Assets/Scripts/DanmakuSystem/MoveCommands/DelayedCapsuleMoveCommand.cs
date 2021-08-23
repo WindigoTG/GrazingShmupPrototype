@@ -39,6 +39,13 @@ namespace GrazingShmup
                 return false;
             }
 
+            if (CheckIfOutsideScreenBounds())
+            {
+                _content.Fire(_config, _projectile.position, _projectile.rotation.eulerAngles);
+                DisableProjectile();
+                return false;
+            }
+
             return true;
         }
     }

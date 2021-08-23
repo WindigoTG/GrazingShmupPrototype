@@ -38,6 +38,12 @@ namespace GrazingShmup
                 return false;
             }
 
+            if (CheckIfOutsideScreenBounds())
+            {
+                DisableProjectile();
+                return false;
+            }
+
             return true;
         }
 

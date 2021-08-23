@@ -36,6 +36,12 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
                 return false;
             }
 
+            if (CheckIfOutsideScreenBounds())
+            {
+                DisableProjectile();
+                return false;
+            }
+
             return true;
         }
 

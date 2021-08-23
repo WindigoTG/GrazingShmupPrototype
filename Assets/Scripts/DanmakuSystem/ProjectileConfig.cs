@@ -26,6 +26,14 @@ namespace GrazingShmup
         [Space]
         [SerializeField] [Tooltip("Prefab to use as a homing laser")] private GameObject _homingLaserPrefab;
         [Space]
+        [Header("Out of screen bounds settings")]
+        [SerializeField] [Tooltip("Should a bullet stay alive after leaving the screen\n" +
+                                "True: a bullet will live until its life time runs out\n" +
+                                "False: a bullet is destroyed after leaving the screen")] private bool _shoudLiveOffscreen;
+        [SerializeField] [Min(0)] [Tooltip("An extra distance a bullet can travel off the screen before it is destroyed\n" +
+                                            "Recommended to set offcet to at least half of bullet's size," +
+                                            "so a bullet can fully get out of sight before being destroyed")] float _offscreenOffset;
+        [Space]
 
         [SerializeField] LineConfig _lineSettings;
         [SerializeField] ArcConfig _arcSettings;
@@ -86,6 +94,18 @@ namespace GrazingShmup
         public GameObject BulletPrefab => _bulletPrefab;
 
         public GameObject HomingLaserPrefab => _homingLaserPrefab;
+
+        public bool ShouldLiveOffscreen
+        {
+            get => _shoudLiveOffscreen;
+            set => _shoudLiveOffscreen = value;
+        }
+
+        public float OffscreenOffset
+        {
+            get => _offscreenOffset;
+            set => _offscreenOffset = value;
+        }
         #endregion
 
         #region Components Properties

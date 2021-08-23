@@ -7,9 +7,6 @@ namespace GrazingShmup
         Transform _playerShip;
         PlayerData _playerData;
 
-        Vector3 _lowerLeft;
-        Vector3 _upperRight;
-
         public PlayerEngine() { }
 
         public PlayerEngine(Transform playerShip, PlayerData playerData)
@@ -33,18 +30,15 @@ namespace GrazingShmup
 
         private void ConstrainPlayerPosition()
         {
-            _lowerLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, -Camera.main.transform.position.z));
-            _upperRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, -Camera.main.transform.position.z));
+            if (_playerShip.position.x > ScreenBounds.RightBound - _playerData.ScreenBoundMargin)
+                _playerShip.position = _playerShip.position.Change(x: ScreenBounds.RightBound - _playerData.ScreenBoundMargin);
+            if (_playerShip.position.x < ScreenBounds.LeftBound + _playerData.ScreenBoundMargin)
+                _playerShip.position = _playerShip.position.Change(x: ScreenBounds.LeftBound + _playerData.ScreenBoundMargin);
 
-            if (_playerShip.position.x > _upperRight.x - _playerData.ScreenBoundMargin)
-                _playerShip.position = _playerShip.position.Change(x: _upperRight.x - _playerData.ScreenBoundMargin);
-            if (_playerShip.position.x < _lowerLeft.x + _playerData.ScreenBoundMargin)
-                _playerShip.position = _playerShip.position.Change(x: _lowerLeft.x + _playerData.ScreenBoundMargin);
-
-            if (_playerShip.position.y > _upperRight.y - _playerData.ScreenBoundMargin)
-                _playerShip.position = _playerShip.position.Change(y: _upperRight.y - _playerData.ScreenBoundMargin);
-            if (_playerShip.position.y < _lowerLeft.y + _playerData.ScreenBoundMargin)
-                _playerShip.position = _playerShip.position.Change(y: _lowerLeft.y + _playerData.ScreenBoundMargin);
+            if (_playerShip.position.y > ScreenBounds.TopBound - _playerData.ScreenBoundMargin)
+                _playerShip.position = _playerShip.position.Change(y: ScreenBounds.TopBound - _playerData.ScreenBoundMargin);
+            if (_playerShip.position.y < ScreenBounds.BottomBound + _playerData.ScreenBoundMargin)
+                _playerShip.position = _playerShip.position.Change(y: ScreenBounds.BottomBound + _playerData.ScreenBoundMargin);
         }
     }
 }

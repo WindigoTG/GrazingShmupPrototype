@@ -24,6 +24,9 @@ namespace GrazingShmup
 
         protected GameObject _prefab;
 
+        protected bool _shouldLiveOffscreen;
+        protected float _offscreenOffset;
+
         public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config)
         {
             _objectPoolManager = ServiceLocator.GetService<ObjectPoolManager>();
@@ -39,6 +42,9 @@ namespace GrazingShmup
             _lastPosition = _projectile.position;
 
             _prefab = config.BulletPrefab;
+
+            _shouldLiveOffscreen = config.ShouldLiveOffscreen;
+            _offscreenOffset = config.OffscreenOffset;
 
             GetBulletSize();
         }
@@ -65,6 +71,12 @@ namespace GrazingShmup
             }
 
             if (CheckIfLifeTimeIsOver())
+            {
+                DisableProjectile();
+                return false;
+            }
+
+            if (CheckIfOutsideScreenBounds())
             {
                 DisableProjectile();
                 return false;
@@ -119,6 +131,14 @@ namespace GrazingShmup
             int layerMask = _bulletOwner == BulletOwner.Enemy ? LayerMask.GetMask(References.PlayerHitBox) : LayerMask.GetMask(References.EnemyLayer);
 
             return _collisionManager.CheckCollisions(_lastPosition, _bulletRadius, _projectile.position - _lastPosition, layerMask);
+        }
+
+        protected bool CheckIfOutsideScreenBounds()
+        {
+            if (_shouldLiveOffscreen)
+                return false;
+
+            return !ScreenBounds.CheckIfWithinBounds(_projectile.position, _offscreenOffset);
         }
 
         protected void DisableProjectile()

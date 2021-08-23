@@ -37,6 +37,13 @@ namespace GrazingShmup
             {
                 _homingTime = 0;
             }
+
+            if (CheckIfOutsideScreenBounds())
+            {
+                DisableProjectile();
+                return false;
+            }
+
             return true;
         }
 
