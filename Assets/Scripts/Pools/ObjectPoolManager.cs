@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -11,14 +12,12 @@ namespace GrazingShmup
         private Transform _enemyParent;
         private Transform _bulletsParent;
 
-        IEnemyFactory _enemyFactory;
+        [Inject] IEnemyFactory _enemyFactory;
 
-        public ObjectPoolManager(IEnemyFactory enemyFactory)
+        public ObjectPoolManager()
         {
-
             _enemyParent = new GameObject(References.Enemies_Parent_Object).transform;
             _bulletsParent = new GameObject(References.Bullets_Parent_Object).transform;
-            _enemyFactory = enemyFactory;
         }
 
         public ObjectPool GetEnemyPool(EnemyType type)

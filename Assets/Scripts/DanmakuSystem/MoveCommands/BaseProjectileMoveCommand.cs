@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -19,8 +20,8 @@ namespace GrazingShmup
         protected float _lastUpdateTime;
         protected float _deltaTime;
 
-        protected ObjectPoolManager _objectPoolManager;
-        protected CollisionManager _collisionManager;
+        [Inject] protected ObjectPoolManager _objectPoolManager;
+        [Inject] protected CollisionManager _collisionManager;
 
         protected GameObject _prefab;
 
@@ -29,9 +30,6 @@ namespace GrazingShmup
 
         public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config)
         {
-            _objectPoolManager = ServiceLocator.GetService<ObjectPoolManager>();
-            _collisionManager = ServiceLocator.GetService<CollisionManager>();
-
             _projectile = projectile;
             _bulletOwner = owner;
             _speed = config.BulletSpeed;

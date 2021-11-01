@@ -13,7 +13,7 @@ public class HomingLaser : Projectile
 
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
-            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().GetBulletPool(config.HomingLaserPrefab).Pop().transform;
+            Transform bullet = _objectPoolManager.GetBulletPool(config.HomingLaserPrefab).Pop().transform;
 
             var trail = bullet.GetComponent<TrailRenderer>();
             trail.Clear();
@@ -25,7 +25,7 @@ public class HomingLaser : Projectile
 
             IProjectileMoveCommand command = new HomingLaserMoveCommand(bullet, _owner, config);
 
-            ServiceLocator.GetService<BulletManager>().AddCommand(command);
+            _bulletManger.AddCommand(command);
         }
     }   
 }
