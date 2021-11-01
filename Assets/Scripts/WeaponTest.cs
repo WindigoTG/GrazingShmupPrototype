@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -7,8 +8,10 @@ namespace GrazingShmup
         [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         [SerializeField] private Transform _testTarget;
-        private BulletManager _bulletManager;
-        private BulletFactory _bulletFactory;
+        [Inject] private BulletManager _bulletManager;
+        [Inject] private IBulletFactory _bulletFactory;
+        [Inject] private PlayerTracker _playerTracker;
+        [Inject] private CollisionManager _collisionManager;
         private IProjectile _projectile;
         private float _fireDelay;
 
@@ -18,18 +21,10 @@ namespace GrazingShmup
 
         private void Awake()
         {
-            _bulletFactory = new BulletFactory();
-
-            CollisionManager collisionManager = new CollisionManager();
             float targetSize = _testTarget.GetComponent<CircleCollider2D>().radius;
-            collisionManager.RegisterPlayer(_testTarget, targetSize, (0, 0));
+            _collisionManager.RegisterPlayer(_testTarget, targetSize, (0, 0));
 
-            ServiceLocator.AddService(collisionManager);
-            _bulletManager = new BulletManager();
-
-            ServiceLocator.AddService(new ObjectPoolManager(null));
-            ServiceLocator.AddService(_bulletManager);
-            ServiceLocator.AddService(new PlayerTracker(_testTarget));
+            _playerTracker.UpdatePlayer(_testTarget);
 
             _projectile = _bulletFactory.GetBullet(_bulletData.BaseBullet, _bulletData.BulletComponents, _bulletData.BulletOwner);
             _config = _bulletData.BulletConfig;

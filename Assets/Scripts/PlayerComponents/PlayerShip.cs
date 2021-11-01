@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -18,6 +19,8 @@ namespace GrazingShmup
 
         float _hitPointRadius;
         (float x, float y) _grazeColliderSize;
+
+        [Inject] CollisionManager _collisionManager;
 
         public PlayerShip(PlayerData playerData, IEnginePlayer movement, IWeaponPlayer weapon)
         {
@@ -52,10 +55,9 @@ namespace GrazingShmup
 
         private void RegisterCollisions()
         {
-            CollisionManager collisionManager = ServiceLocator.GetService<CollisionManager>();
-            collisionManager.RegisterPlayer(_transform, _hitPointRadius, _grazeColliderSize);
-            collisionManager.PlayerHit += _powerCore.Hit;
-            collisionManager.PlayerGrazed += _powerCore.Graze;
+            _collisionManager.RegisterPlayer(_transform, _hitPointRadius, _grazeColliderSize);
+            _collisionManager.PlayerHit += _powerCore.Hit;
+            _collisionManager.PlayerGrazed += _powerCore.Graze;
         }
 
         private void SetCollidersSizes()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -6,16 +7,17 @@ namespace GrazingShmup
     {
         private PlayerShip _player;
 
-        private IPlayerFactory _playerFactory;
+        [Inject] private IPlayerFactory _playerFactory;
+        [Inject] private PlayerTracker _playerTracker;
 
         private float _inputHor;
         private float _inputVer;
         private float _slowDownInput;
 
-        public PlayerController(IPlayerFactory playerFactory)
+        public PlayerController()
         {
-            _playerFactory = playerFactory;
             _player = _playerFactory.CreatePlayer();
+            _playerTracker.UpdatePlayer(PlayerTransform);
         }
 
         public void Update(float deltaTime)

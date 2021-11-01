@@ -25,13 +25,13 @@ MonoBehaviour:
     ShouldLiveOffscreen: 1
     OffscreenOffset: 0
     LineSettings:
-      _lineBulletCount: 1
+      _lineBulletCount: 3
       DeltaSpeedInLine: 1
     ArcSettings:
-      _arcBulletCount: 2
-      ArcAngle: 10
+      _arcBulletCount: 5
+      ArcAngle: 50
       InitialRadius: 0
-      SymmetrizeTurning: 0
+      SymmetrizeTurning: 1
     RowSettings:
       _rowAdditionalBulletCount: 0
       RowHorizontalOffset: 0.15
@@ -77,4 +77,4 @@ MonoBehaviour:
   BaseBullet: 0
   BulletOwner: 1
   IsTracking: 0
-  BulletComponents: 06000000000000000100000002000000
+  BulletComponents: 00000000010000000000000001000000

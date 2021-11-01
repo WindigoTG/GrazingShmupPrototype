@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 namespace GrazingShmup
 {
@@ -7,6 +8,8 @@ namespace GrazingShmup
     {
         Dictionary<EnemyType, EnemyMovementData> _movementData = new Dictionary<EnemyType, EnemyMovementData>();
         Dictionary<EnemyType, BulletData> _bulletData = new Dictionary<EnemyType, BulletData>();
+
+        [Inject] IBulletFactory _bulletFactory;
 
         public Enemy CreateEnemy(EnemyType type)
         {
@@ -22,8 +25,8 @@ namespace GrazingShmup
                 _bulletData.Add(type, Resources.Load<BulletData>(path));
             }
 
-            IProjectile bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
-                                                                       _bulletData[type].BaseBullet, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
+
+            IProjectile bullet = _bulletFactory.GetBullet(_bulletData[type].BaseBullet, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
 
             IWeaponEnemy weapon;
             if (_bulletData[type].IsTracking)
