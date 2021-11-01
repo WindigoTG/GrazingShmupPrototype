@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 {
@@ -14,23 +13,13 @@ namespace GrazingShmup
 
         float _deltaTime;
 
-        [Inject] PlayerController _playerController;
-        [Inject] BulletManager _bulletManager;
-        [Inject] EnemyController _enemyController;
-
-        [Inject]
-        private void Init()
+        void Awake()
         {
             _updatables = new List<IUpdateableRegular>();
             _fixedUpdatables = new List<IUpdateableFixed>();
             _lateUpdatables = new List<IUpdateableLate>();
 
-            _updatables.Add(_playerController);
-            _fixedUpdatables.Add(_playerController);
-
-            _lateUpdatables.Add(_bulletManager);
-
-            _updatables.Add(_enemyController);
+            CreateUpdatables();
         }
 
         void Update()
@@ -49,6 +38,34 @@ namespace GrazingShmup
         {
             for (int i = 0; i < _lateUpdatables.Count; i++)
                 _lateUpdatables[i].LateUpdate(Time.deltaTime);
+
+            //if (Time.frameCount % 2 == 0)
+            //    for (int i = 0; i < _lateUpdatables.Count; i++)
+            //        _lateUpdatables[i].LateUpdate(_deltaTime + Time.deltaTime);
+            //else
+            //    _deltaTime = Time.deltaTime;
+        }
+
+        private void CreateUpdatables()
+        {
+            ServiceLocator.AddService(new CollisionManager());
+            ServiceLocator.AddService(new BulletFactory());
+
+            PlayerController playerController = new PlayerController(new PlayerFactory());
+            _updatables.Add(playerController);
+            _fixedUpdatables.Add(playerController);
+
+            EnemyFactory enemyFactory = new EnemyFactory();
+            ServiceLocator.AddService(new ObjectPoolManager(enemyFactory));
+
+            BulletManager bulletManager = new BulletManager();
+            ServiceLocator.AddService(bulletManager);
+            _lateUpdatables.Add(bulletManager);
+
+            EnemyController enemyController = new EnemyController(enemyFactory, _testEnemyRoute, playerController);
+            _updatables.Add(enemyController);
+
+            ServiceLocator.AddService(new PlayerTracker(playerController.PlayerTransform));
         }
     }
 }

@@ -13,14 +13,14 @@ namespace GrazingShmup
 
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
-            Transform bullet = _objectPoolManager.GetBulletPool(config.BulletPrefab).Pop().transform;
+            Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().GetBulletPool(config.BulletPrefab).Pop().transform;
 
             bullet.position = position;
             bullet.rotation = Quaternion.Euler(rotation);
 
             IProjectileMoveCommand command = new BaseProjectileMoveCommand(bullet, _owner, config);
 
-            _bulletManger.AddCommand(command);
+            ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }
     }
 }

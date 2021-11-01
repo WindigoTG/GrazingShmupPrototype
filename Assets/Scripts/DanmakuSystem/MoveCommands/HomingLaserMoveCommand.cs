@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 {
@@ -9,15 +8,13 @@ namespace GrazingShmup
         Transform _target;
         Quaternion _rotation;
 
-        [Inject] PlayerTracker _playerTracker;
-
         public HomingLaserMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config) : base(projectile, owner, config)
         {
             _homingTime = config.HomingTime;
 
             _prefab = config.HomingLaserPrefab;
 
-            _target = _playerTracker.Player;
+            _target = ServiceLocator.GetService<PlayerTracker>().Player;
         }
 
         public override bool Execute(float deltaTime)

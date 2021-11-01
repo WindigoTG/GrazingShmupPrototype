@@ -1,14 +1,10 @@
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 {
     public abstract class Projectile : IProjectile
     {
         protected IProjectile _subProjectile;
-
-        [Inject] protected ObjectPoolManager _objectPoolManager;
-        [Inject] protected BulletManager _bulletManger;
 
         public abstract void Fire(BulletConfig config, Vector3 position, Vector3 rotation);
 

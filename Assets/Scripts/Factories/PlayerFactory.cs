@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 {
@@ -7,15 +6,16 @@ namespace GrazingShmup
     {
         BulletData _bulletData;
 
-        [Inject] IBulletFactory _bulletFactory;
-
-        public PlayerFactory(){}
+        public PlayerFactory()
+        {
+            
+        }
 
         public PlayerShip CreatePlayer()
         {
             return new PlayerShip(Resources.Load<PlayerData>(References.Player_Data), new PlayerEngine(), 
-                                                            new PlayerWeapon(LoadBulletConfig(),
-                                                            _bulletFactory.GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
+                                                            new PlayerWeapon(LoadBulletConfig(), 
+                                                            ServiceLocator.GetService<BulletFactory>().GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
         }
 
         private BulletConfig[] LoadBulletConfig()

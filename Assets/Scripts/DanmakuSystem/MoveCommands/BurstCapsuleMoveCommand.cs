@@ -1,12 +1,9 @@
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 { 
 public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
-    {
-        [Inject] PlayerTracker _playerTracker;
-
+    { 
         public BurstCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base (projectile, owner, config, content) 
         {
@@ -57,7 +54,7 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
                 if (_config.BurstCapsuleSettings.IsTracking)
                 {
                     Quaternion newRotation = new Quaternion();
-                    Vector3 targetPosition = _playerTracker.Player.position;
+                    Vector3 targetPosition = ServiceLocator.GetService<PlayerTracker>().Player.position;
                     newRotation.SetLookRotation(Vector3.forward, targetPosition - _projectile.position);
 
                     rotation = newRotation.eulerAngles;

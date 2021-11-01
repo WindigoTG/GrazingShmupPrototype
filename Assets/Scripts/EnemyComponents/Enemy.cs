@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Zenject;
 
 namespace GrazingShmup
 {
@@ -14,9 +13,6 @@ namespace GrazingShmup
 
         public Action<Enemy> Deactivation;
 
-        [Inject] CollisionManager _collisionManager;
-        [Inject] ObjectPoolManager _objectPoolManager;
-
         private ObjectPool _enemyPool;
         private PlayerController _playerController;
 
@@ -24,7 +20,7 @@ namespace GrazingShmup
         {
             _weapon = weapon;
             _movement = movement;
-            _enemyPool = _objectPoolManager.GetEnemyPool(_type);
+            _enemyPool = ServiceLocator.GetService<ObjectPoolManager>().GetEnemyPool(_type);
         }
 
         public bool IsActive => _enemy != null;
@@ -65,7 +61,7 @@ namespace GrazingShmup
 
         private void DeactivateEnemy()
         {
-            _collisionManager.EnemyHit -= CheckHit;
+            ServiceLocator.GetService<CollisionManager>().EnemyHit -= CheckHit;
             Deactivation?.Invoke(this);
             _enemyPool.Push(_enemy.gameObject);
             _enemy = null;
