@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class RepeaterCapsule : Projectile
     {
-        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().GetBulletPool(config.RepeaterCapsuleSettings.RCapsulePrefab).Pop().transform;
 

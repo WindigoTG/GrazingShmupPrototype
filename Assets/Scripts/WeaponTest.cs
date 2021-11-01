@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private ProjectileConfig _config;
+        [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         [SerializeField] private Transform _testTarget;
         private BulletManager _bulletManager;
@@ -31,8 +31,8 @@ namespace GrazingShmup
             ServiceLocator.AddService(_bulletManager);
             ServiceLocator.AddService(new PlayerTracker(_testTarget));
 
-            _projectile = _bulletFactory.GetBullet(_bulletData.Base, _bulletData.BulletComponents, _bulletData.BulletOwner);
-            _config = _bulletData.Config;
+            _projectile = _bulletFactory.GetBullet(_bulletData.BaseBullet, _bulletData.BulletComponents, _bulletData.BulletOwner);
+            _config = _bulletData.BulletConfig;
             _fireDelay = _config.FireDelay;
             _lastFiredTime = Time.time;
         }
@@ -41,8 +41,8 @@ namespace GrazingShmup
         {
             if (Time.time - _lastFiredTime >= _fireDelay)
             {
-                _projectile = _bulletFactory.GetBullet(_bulletData.Base, _bulletData.BulletComponents, _bulletData.BulletOwner);
-                _config = _bulletData.Config;
+                _projectile = _bulletFactory.GetBullet(_bulletData.BaseBullet, _bulletData.BulletComponents, _bulletData.BulletOwner);
+                _config = _bulletData.BulletConfig;
 
                 Fire();
                 _lastFiredTime = Time.time;

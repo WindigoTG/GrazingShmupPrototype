@@ -5,9 +5,9 @@ namespace GrazingShmup
     public class DelayedCapsuleMoveCommand : BaseProjectileMoveCommand
     {
         protected IProjectile _content;
-        protected ProjectileConfig _config;
+        protected BulletConfig _config;
 
-        public DelayedCapsuleMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config, IProjectile content)
+        public DelayedCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base(projectile, owner, config)
         {
             _speed = config.CapsuleSettings.CapsuleSpeed;

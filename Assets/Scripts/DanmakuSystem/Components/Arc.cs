@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class Arc : Projectile
     {
-        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
             config.Rotation = rotation;
@@ -15,10 +15,12 @@ namespace GrazingShmup
                 return;
             }
 
-            var start = config.Rotation.z * Mathf.PI / 180 - config.ArcSettings.ArcAngle / 2;
+            var arcAngle = config.ArcSettings.ArcAngle * Mathf.PI / 180;
+
+            var start = config.Rotation.z * Mathf.PI / 180 - arcAngle / 2;
             for (int i = 0; i < config.ArcSettings.ArcBulletCount; i++)
             {
-                var angle = start + i * (config.ArcSettings.ArcAngle / (config.ArcSettings.ArcBulletCount - 1));
+                var angle = start + i * (arcAngle / (config.ArcSettings.ArcBulletCount - 1));
                 var currentConfig = config;
 
                 if (config.ArcSettings.SymmetrizeTurning)

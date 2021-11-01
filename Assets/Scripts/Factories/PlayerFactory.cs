@@ -18,14 +18,14 @@ namespace GrazingShmup
                                                             ServiceLocator.GetService<BulletFactory>().GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
         }
 
-        private ProjectileConfig[] LoadBulletConfig()
+        private BulletConfig[] LoadBulletConfig()
         {
-            ProjectileConfig[] config = new ProjectileConfig[5];
+            BulletConfig[] config = new BulletConfig[5];
 
             for (int i = 0; i < 5; i++)
             {
                 _bulletData = Resources.Load<BulletData>(References.Player_Bullet_Data + i.ToString());
-                config[i] = _bulletData.Config;
+                config[i] = _bulletData.BulletConfig;
             }
 
             return config;

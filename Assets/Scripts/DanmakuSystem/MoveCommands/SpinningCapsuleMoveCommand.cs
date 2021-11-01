@@ -9,7 +9,7 @@ namespace GrazingShmup
         private float _degreesSpun;
         private Quaternion _shootingRotation;
 
-        public SpinningCapsuleMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config, IProjectile content)
+        public SpinningCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base(projectile, owner, config, content)
         {
             _speed = config.SpinningCapsuleSettings.SCapsuleSpeed;

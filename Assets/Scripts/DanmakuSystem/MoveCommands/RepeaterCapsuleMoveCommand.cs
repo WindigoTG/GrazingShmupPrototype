@@ -7,7 +7,7 @@ namespace GrazingShmup
         protected float _refireTime;
         protected float _lastFireTime;
 
-        public RepeaterCapsuleMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config, IProjectile content)  
+        public RepeaterCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)  
             : base(projectile, owner, config, content)
         {
             _speed = config.RepeaterCapsuleSettings.RCapsuleSpeed;

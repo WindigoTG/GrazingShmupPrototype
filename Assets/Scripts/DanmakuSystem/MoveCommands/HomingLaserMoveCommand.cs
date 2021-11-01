@@ -5,13 +5,11 @@ namespace GrazingShmup
     public class HomingLaserMoveCommand : BaseProjectileMoveCommand
     {
         float _homingTime;
-        float _homingSpeed;
         Transform _target;
         Quaternion _rotation;
 
-        public HomingLaserMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config) : base(projectile, owner, config)
+        public HomingLaserMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config) : base(projectile, owner, config)
         {
-            _homingSpeed = config.ProjectileTurnSpeed;
             _homingTime = config.HomingTime;
 
             _prefab = config.HomingLaserPrefab;
@@ -67,7 +65,7 @@ namespace GrazingShmup
 
             _rotation = Quaternion.RotateTowards(_projectile.rotation,
                                                 Quaternion.AngleAxis(angle, axis),
-                                                _homingSpeed * 180 / Mathf.PI * _deltaTime);
+                                                _turnSpeed * 180 / Mathf.PI * _deltaTime);
             _projectile.rotation = _rotation;
 
             _homingTime -= _deltaTime;

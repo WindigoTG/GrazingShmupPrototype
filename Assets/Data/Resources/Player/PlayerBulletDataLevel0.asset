@@ -12,22 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
   m_Name: PlayerBulletDataLevel0
   m_EditorClassIdentifier: 
-  _bulletConfig:
-    _projectileLifeTime: 1.5
+  BulletConfig:
+    _bulletLifeTime: 5
     _fireDelay: 0.05
-    _projectileSpeed: 7
-    _projectileDeltaSpeed: 0
-    _projectileDeltaSpeedDelay: 0
-    _projectileTurnSpeed: 0
-    _bulletPrefab: {fileID: 6318242840552354594, guid: bcb8d4d9dd4af704792a0e7315f37614, type: 3}
+    BulletSpeed: 5
+    BulletDeltaSpeed: 0
+    _bulletDeltaSpeedDelay: 0
+    BulletTurnSpeed: 0
+    BulletPrefab: {fileID: 6318242840552354594, guid: bcb8d4d9dd4af704792a0e7315f37614, type: 3}
     _homingTime: 0
-    _homingLaserPrefab: {fileID: 6261420400490341371, guid: fc4bdbbd4036cc64792645f45982e9dd, type: 3}
-    _lineSettings:
-      LineBulletCount: 1
+    HomingLaserPrefab: {fileID: 0}
+    ShouldLiveOffscreen: 0
+    OffscreenOffset: 0
+    LineSettings:
+      _lineBulletCount: 1
       DeltaSpeedInLine: 0
-    _arcSettings:
-      ArcBulletCount: 1
-      _arcAngle: 0
+    ArcSettings:
+      _arcBulletCount: 3
+      ArcAngle: 35
       InitialRadius: 0
       SymmetrizeTurning: 0
     _rowSettings:
@@ -72,7 +74,7 @@ MonoBehaviour:
       SCapsuleDeltaSpeedDelay: 0
       SCapsuleTurnSpeed: 0
       _sCapsulePrefab: {fileID: 0}
-  _bulletBase: 0
-  _bulletOwner: 0
-  _enemyWeaponTracking: 0
-  _bulletComponents: 0200000001000000
+  BaseBullet: 0
+  BulletOwner: 0
+  IsTracking: 0
+  BulletComponents: 01000000

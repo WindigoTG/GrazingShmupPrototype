@@ -4,7 +4,7 @@ namespace GrazingShmup
 { 
 public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
     { 
-        public BurstCapsuleMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config, IProjectile content)
+        public BurstCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base (projectile, owner, config, content) 
         {
             _speed = config.BurstCapsuleSettings.BCapsuleSpeed;

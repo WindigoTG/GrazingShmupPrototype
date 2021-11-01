@@ -7,7 +7,13 @@ namespace GrazingShmup
     public struct LineConfig
     {
         [Header("Line settings")]
-        [Min(1)] [Tooltip("Number of bullets in a line")] public int LineBulletCount;
+        [SerializeField] [Min(1)] [Tooltip("Number of bullets in a line")] int _lineBulletCount;
         [Tooltip("Difference in initial speed between bullets in a line")] public float DeltaSpeedInLine;
+
+        public int LineBulletCount
+        {
+            get => _lineBulletCount;
+            set => _lineBulletCount = value >= 1 ? value : 1;
+        }
     }
 }

@@ -12,69 +12,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecd25cd8b03414488b736548eac3e05, type: 3}
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
-  _bulletConfig:
-    _projectileLifeTime: 50
-    _fireDelay: 5
-    _projectileSpeed: 1
-    _projectileDeltaSpeed: -0.5
-    _projectileDeltaSpeedDelay: 2.5
-    _projectileTurnSpeed: 0
-    _bulletPrefab: {fileID: 6318242840552354594, guid: f7617c8e991e21b4abbd22ecb5a3e282, type: 3}
+  BulletConfig:
+    _bulletLifeTime: 5
+    _fireDelay: 1
+    BulletSpeed: 1
+    BulletDeltaSpeed: 0
+    _bulletDeltaSpeedDelay: 2.5
+    BulletTurnSpeed: 1
+    BulletPrefab: {fileID: 6318242840552354594, guid: f7617c8e991e21b4abbd22ecb5a3e282, type: 3}
     _homingTime: 1
-    _homingLaserPrefab: {fileID: 6261420400490341371, guid: fc4bdbbd4036cc64792645f45982e9dd, type: 3}
-    _shoudLiveOffscreen: 0
-    _offscreenOffset: 0.5
-    _lineSettings:
-      LineBulletCount: 5
-      DeltaSpeedInLine: 0.1
-    _arcSettings:
-      ArcBulletCount: 6
-      _arcAngle: 300
-      InitialRadius: 0.05
-      SymmetrizeTurning: 1
-    _rowSettings:
-      RowAdditionalBulletCount: 2
-      RowHorisontalOffset: 0.1
+    HomingLaserPrefab: {fileID: 6261420400490341371, guid: fc4bdbbd4036cc64792645f45982e9dd, type: 3}
+    ShouldLiveOffscreen: 1
+    OffscreenOffset: 0
+    LineSettings:
+      _lineBulletCount: 1
+      DeltaSpeedInLine: 1
+    ArcSettings:
+      _arcBulletCount: 2
+      ArcAngle: 10
+      InitialRadius: 0
+      SymmetrizeTurning: 0
+    RowSettings:
+      _rowAdditionalBulletCount: 0
+      RowHorizontalOffset: 0.15
       RowVerticalOffset: -0.05
       IsTwoSided: 1
       IsMirrored: 1
-      RowGap: 0
-    _capsuleSettings:
-      CapsuleLifeTime: 2
-      CapsuleSpeed: 1
+      RowGap: 0.3
+    CapsuleSettings:
+      _capsuleLifeTime: 0
+      CapsuleSpeed: 0
       CapsuleDeltaSpeed: 0
-      CapsuleDeltaSpeedDelay: 0
+      _capsuleDeltaSpeedDelay: 0
       CapsuleTurnSpeed: 0
-      _capsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
-    _repeaterCapsuleSettings:
-      RCapsuleLifeTime: 3
-      RCapsuleSpeed: 1
+      CapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
+    RepeaterCapsuleSettings:
+      _rCapsuleLifeTime: 0
+      RCapsuleSpeed: 0
       RCapsuleDeltaSpeed: 0
-      RCapsuleDeltaSpeedDelay: 0
+      _rCapsuleDeltaSpeedDelay: 0
       RCapsuleTurnSpeed: 0
-      RCapsuleRefireTime: 0.5
-      SynchronizeDeltaSpeedDelayInShots: 1
-      _rCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
-    _burstCapsuleSettings:
-      BCapsuleLifeTime: 5
-      BurstRefireTime: 0.1
-      DeltaSpeedInBurst: 0.025
-      IsTracking: 1
-      BCapsuleSpeed: 1
+      _rCapsuleRefireTime: 0
+      SynchronizeDeltaSpeedDelayInShots: 0
+      RCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
+    BurstCapsuleSettings:
+      _bCapsuleLifeTime: 0
+      _burstRefireTime: 0
+      DeltaSpeedInBurst: 0
+      IsTracking: 0
+      BCapsuleSpeed: 0
       BCapsuleDeltaSpeed: 0
-      BCapsuleDeltaSpeedDelay: 0
+      _bCapsuleDeltaSpeedDelay: 0
       BCapsuleTurnSpeed: 0
-      _bCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
-    _spinningCapsuleSettings:
-      SpinArc: 1080
-      SpinSpeed: 360
-      DegreesBetweenShots: 15
+      BCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
+    SpinningCapsuleSettings:
+      SpinArc: 0
+      SpinSpeed: 0
+      _degreesBetweenShots: 0
       SCapsuleSpeed: 0
-      SCapsuleDeltaSpeed: 1
-      SCapsuleDeltaSpeedDelay: 0
+      SCapsuleDeltaSpeed: 0
+      _sCapsuleDeltaSpeedDelay: 0
       SCapsuleTurnSpeed: 0
-      _sCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
-  _bulletBase: 0
-  _bulletOwner: 1
-  _enemyWeaponTracking: 0
-  _bulletComponents: 06000000030000000100000003000000
+      SCapsulePrefab: {fileID: 3035866496731491863, guid: fe6164b4aaf90544d9d6ef82e93d593d, type: 3}
+  BaseBullet: 0
+  BulletOwner: 1
+  IsTracking: 0
+  BulletComponents: 06000000000000000100000002000000
