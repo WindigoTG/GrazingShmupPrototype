@@ -23,13 +23,13 @@ namespace GrazingShmup
             }
 
             IProjectile bullet = ServiceLocator.GetService<BulletFactory>().GetBullet(
-                                                                       _bulletData[type].Base, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
+                                                                       _bulletData[type].BaseBullet, _bulletData[type].BulletComponents, _bulletData[type].BulletOwner);
 
             IWeaponEnemy weapon;
             if (_bulletData[type].IsTracking)
-                weapon = new EnemyWeaponTracking(_bulletData[type].Config, bullet);
+                weapon = new EnemyWeaponTracking(_bulletData[type].BulletConfig, bullet);
             else
-                weapon = new EnemyWeaponNonTracking(_bulletData[type].Config, bullet);
+                weapon = new EnemyWeaponNonTracking(_bulletData[type].BulletConfig, bullet);
 
             Enemy enemy = new Enemy( type, weapon, new EnemyEngine(_movementData[type]));
 

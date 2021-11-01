@@ -4,14 +4,14 @@ namespace GrazingShmup
 {
     public class Row : Projectile
     {
-        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
             config.Rotation = rotation;
 
             var angle = config.Rotation.z * Mathf.PI / 180;
 
-            float gap = (config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0) ? config.RowSettings.RowGap / 2 : 0;
+            float gap = (config.RowSettings.IsTwoSided && config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0) ? config.RowSettings.RowGap / 2 : 0;
 
             Vector3 gapOffset = new Vector3((0 * Mathf.Sin(angle) + gap * Mathf.Cos(angle)),
                         (gap * Mathf.Sin(angle) + 0 * Mathf.Cos(angle)),
@@ -19,7 +19,7 @@ namespace GrazingShmup
 
             SubFire(config, position + gapOffset, rotation);
 
-            if (config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0)
+            if (config.RowSettings.IsTwoSided && config.RowSettings.IsMirrored && config.RowSettings.RowGap > 0)
                 SubFire(config, position - gapOffset, rotation);
 
             if (config.RowSettings.RowAdditionalBulletCount > 0)
@@ -28,8 +28,8 @@ namespace GrazingShmup
                 {
                     
 
-                    Vector3 offset = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) + config.RowSettings.RowHorisontalOffset * Mathf.Cos(angle)) * i,
-                        (config.RowSettings.RowHorisontalOffset * Mathf.Sin(angle) + config.RowSettings.RowVerticalOffset * Mathf.Cos(angle)) * i, 
+                    Vector3 offset = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) + config.RowSettings.RowHorizontalOffset * Mathf.Cos(angle)) * i,
+                        (config.RowSettings.RowHorizontalOffset * Mathf.Sin(angle) + config.RowSettings.RowVerticalOffset * Mathf.Cos(angle)) * i, 
                         0.0f);
 
                     SubFire(config, position + offset + gapOffset, rotation);
@@ -38,8 +38,8 @@ namespace GrazingShmup
                     {
                         float yOffsetModifier = config.RowSettings.IsMirrored ? 1 : -1;
 
-                        Vector3 offsetMirrored = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) - config.RowSettings.RowHorisontalOffset * Mathf.Cos(angle)) * i,
-                        (-config.RowSettings.RowHorisontalOffset * Mathf.Sin(angle) + (config.RowSettings.RowVerticalOffset * yOffsetModifier) * Mathf.Cos(angle)) * i,
+                        Vector3 offsetMirrored = new Vector3((-config.RowSettings.RowVerticalOffset * Mathf.Sin(angle) - config.RowSettings.RowHorizontalOffset * Mathf.Cos(angle)) * i,
+                        (-config.RowSettings.RowHorizontalOffset * Mathf.Sin(angle) + (config.RowSettings.RowVerticalOffset * yOffsetModifier) * Mathf.Cos(angle)) * i,
                         0.0f);
                         SubFire(config, position + offsetMirrored - gapOffset, rotation);
                     }

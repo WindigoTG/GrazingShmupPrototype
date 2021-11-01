@@ -4,7 +4,7 @@ namespace GrazingShmup
 {
     public class Line : Projectile
     {
-        public override void Fire(ProjectileConfig config, Vector3 position, Vector3 rotation)
+        public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             for (var i = 0; i < config.LineSettings.LineBulletCount; i++)
             {

@@ -27,18 +27,18 @@ namespace GrazingShmup
         protected bool _shouldLiveOffscreen;
         protected float _offscreenOffset;
 
-        public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, ProjectileConfig config)
+        public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config)
         {
             _objectPoolManager = ServiceLocator.GetService<ObjectPoolManager>();
             _collisionManager = ServiceLocator.GetService<CollisionManager>();
 
             _projectile = projectile;
             _bulletOwner = owner;
-            _speed = config.ProjectileSpeed;
-            _deltaSpeed = config.ProjectileDeltaSpeed;
-            _deltaSpeedDelay = config.ProjectileDeltaSpeedDelay;
-            _turnSpeed = config.ProjectileTurnSpeed;
-            _lifeTime = config.ProjectileLifeTime;
+            _speed = config.BulletSpeed;
+            _deltaSpeed = config.BulletDeltaSpeed;
+            _deltaSpeedDelay = config.BulletDeltaSpeedDelay;
+            _turnSpeed = config.BulletTurnSpeed;
+            _lifeTime = config.BulletLifeTime;
             _lastPosition = _projectile.position;
 
             _prefab = config.BulletPrefab;
@@ -111,8 +111,7 @@ namespace GrazingShmup
 
         protected void Move()
         {
-            //_bullet.transform.Rotate(Vector3.forward, _angularSpeed * _speed * _deltaTime);
-            _projectile.transform.Rotate(Vector3.forward, _turnSpeed * 180 / Mathf.PI * _deltaTime);
+            _projectile.transform.Rotate(Vector3.forward, _turnSpeed * _deltaTime);
             _projectile.Translate(Vector3.up * (_speed * _deltaTime), Space.Self);
 
             AdjustSpeed();

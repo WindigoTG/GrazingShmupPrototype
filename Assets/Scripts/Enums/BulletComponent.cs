@@ -1,6 +1,6 @@
 namespace GrazingShmup
 {
-    public enum ProjectileComponent
+    public enum BulletComponent
     {
         Line,
         Arc,

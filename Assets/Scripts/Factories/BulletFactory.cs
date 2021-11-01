@@ -1,33 +1,35 @@
+using System.Collections.Generic;
+
 namespace GrazingShmup
 {
     public class BulletFactory : IBulletFactory
     {
-        public Projectile GetBullet(BulletBase bulletBase, ProjectileComponent[] bulletComponents, BulletOwner owner)
+        public Projectile GetBullet(BulletBase bulletBase, List<BulletComponent> bulletComponents, BulletOwner owner)
         {
             Projectile fireable = GetBase(bulletBase, owner);
             if (bulletComponents != null)
-                for (int i = 0; i < bulletComponents.Length; i++)
+                for (int i = 0; i < bulletComponents.Count; i++)
                     fireable = Decorate(fireable, bulletComponents[i]);
             return fireable;
         }
 
-        private Projectile Decorate(Projectile fireable, ProjectileComponent component)
+        private Projectile Decorate(Projectile fireable, BulletComponent component)
         {
             switch (component)
             {
-                case ProjectileComponent.Arc:
+                case BulletComponent.Arc:
                     return fireable.FiredInArc();
-                case ProjectileComponent.Capsule:
+                case BulletComponent.Capsule:
                     return fireable.FiredInDelayedCapsule();
-                case ProjectileComponent.RepeaterCapsule:
+                case BulletComponent.RepeaterCapsule:
                     return fireable.FiredInMultishotCapsule();
-                case ProjectileComponent.Line:
+                case BulletComponent.Line:
                     return fireable.FiredInLine();
-                case ProjectileComponent.Row:
+                case BulletComponent.Row:
                     return fireable.FiredInRow();
-                case ProjectileComponent.BurstCapsule:
+                case BulletComponent.BurstCapsule:
                     return fireable.FiredInBurstCapsule();
-                case ProjectileComponent.SpinningCapsule:
+                case BulletComponent.SpinningCapsule:
                     return fireable.FiredInSpinningCapsule();
                 default:
                     return fireable;

@@ -2000,23 +2000,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config:
-    _projectileLifeTime: 0
+    _bulletLifeTime: 0
     _fireDelay: 1
-    _projectileSpeed: 0
-    _projectileDeltaSpeed: 0
-    _projectileDeltaSpeedDelay: 0
-    _projectileTurnSpeed: 0
-    _bulletPrefab: {fileID: 0}
+    BulletSpeed: 0
+    BulletDeltaSpeed: 0
+    _bulletDeltaSpeedDelay: 0
+    BulletTurnSpeed: 0
+    BulletPrefab: {fileID: 0}
     _homingTime: 0
-    _homingLaserPrefab: {fileID: 0}
-    _shoudLiveOffscreen: 0
-    _offscreenOffset: 0
-    _lineSettings:
-      LineBulletCount: 0
+    HomingLaserPrefab: {fileID: 0}
+    ShouldLiveOffscreen: 0
+    OffscreenOffset: 0
+    LineSettings:
+      _lineBulletCount: 0
       DeltaSpeedInLine: 0
-    _arcSettings:
-      ArcBulletCount: 0
-      _arcAngle: 0
+    ArcSettings:
+      _arcBulletCount: 0
+      ArcAngle: 0
       InitialRadius: 0
       SymmetrizeTurning: 0
     _rowSettings:
