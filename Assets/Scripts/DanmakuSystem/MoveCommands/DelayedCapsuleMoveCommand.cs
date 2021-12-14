@@ -4,8 +4,15 @@ namespace GrazingShmup
 {
     public class DelayedCapsuleMoveCommand : BaseProjectileMoveCommand
     {
+        #region Fields
+
         protected IProjectile _content;
         protected BulletConfig _config;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public DelayedCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base(projectile, owner, config)
@@ -21,6 +28,11 @@ namespace GrazingShmup
             _content = content;
             _config = config;
         }
+
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public override bool Execute(float deltaTime)
         {
@@ -48,5 +60,7 @@ namespace GrazingShmup
 
             return true;
         }
+
+        #endregion
     }
 }

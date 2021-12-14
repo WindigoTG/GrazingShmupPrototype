@@ -3,7 +3,9 @@ using UnityEngine;
 namespace GrazingShmup
 { 
 public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
-    { 
+    {
+        #region ClassLifeCycles
+
         public BurstCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base (projectile, owner, config, content) 
         {
@@ -17,6 +19,11 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
 
             _refireTime = config.BurstCapsuleSettings.BurstRefireTime;
         }
+
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public override bool Execute(float deltaTime)
         {
@@ -45,6 +52,11 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
             return true;
         }
 
+        #endregion
+
+
+        #region Methods
+
         private void FireContent()
         {
             if (Time.time - _lastFireTime >= _refireTime)
@@ -68,5 +80,7 @@ public class BurstCapsuleMoveCommand : RepeaterCapsuleMoveCommand
                 _config.ModifySpeed(_config.BurstCapsuleSettings.DeltaSpeedInBurst);
             }
         }
+
+        #endregion
     }
 }

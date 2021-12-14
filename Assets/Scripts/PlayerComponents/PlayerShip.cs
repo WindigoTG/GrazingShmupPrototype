@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public class PlayerShip : IMoveable
     {
+        #region Fields
+
         private PlayerData _playerData;
         private Transform _transform;
         private IEnginePlayer _movement;
@@ -18,6 +20,20 @@ namespace GrazingShmup
 
         float _hitPointRadius;
         (float x, float y) _grazeColliderSize;
+
+        #endregion
+
+
+        #region Properties
+
+        public Transform Transform => _transform;
+        public IWeaponPlayer Weapon => _weapon;
+        public IEnginePlayer Movement => _movement;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public PlayerShip(PlayerData playerData, IEnginePlayer movement, IWeaponPlayer weapon)
         {
@@ -50,6 +66,24 @@ namespace GrazingShmup
             }
         }
 
+        #endregion
+
+
+        #region IMovable
+
+        public void Move(float inputHor, float inputVer, bool isSlowedDown, float deltaTime)
+        {
+            _movement.Move(inputHor, inputVer, isSlowedDown, deltaTime);
+            Animate(inputHor, inputVer);
+
+            _powerCore.UpdateRegular(deltaTime);
+        }
+
+        #endregion
+
+
+        #region Methods
+
         private void RegisterCollisions()
         {
             CollisionManager collisionManager = ServiceLocator.GetService<CollisionManager>();
@@ -63,18 +97,6 @@ namespace GrazingShmup
             _hitPointRadius = _transform.GetComponentInChildren<CircleCollider2D>().radius;
             PolygonCollider2D grazeCollider = _transform.GetComponentInChildren<PolygonCollider2D>();
             _grazeColliderSize = (grazeCollider.bounds.extents.x, grazeCollider.bounds.extents.y);
-        }
-
-        public Transform Transform => _transform;
-        public IWeaponPlayer Weapon => _weapon;
-        public IEnginePlayer Movement => _movement;
-
-        public void Move(float inputHor, float inputVer, bool isSlowedDown, float deltaTime)
-        {
-            _movement.Move(inputHor, inputVer, isSlowedDown, deltaTime);
-            Animate(inputHor, inputVer);
-
-            _powerCore.Update(deltaTime);
         }
 
         public void Fire()
@@ -126,5 +148,7 @@ namespace GrazingShmup
         {
             _weapon = weapon;
         }
+
+        #endregion
     }
 }

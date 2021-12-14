@@ -6,6 +6,8 @@ namespace GrazingShmup
     [Serializable]
     public struct RowConfig
     {
+        #region Fields
+
         [Header("Row settings")]
         [Min(0)]
         [Tooltip("Number of additional bullets in an row" +
@@ -18,10 +20,17 @@ namespace GrazingShmup
         [Tooltip("If true, additional bullets are added on both sides, in symmetrical fashion")] public bool IsMirrored;
         [Min(0)] [Tooltip("If mirrored, puts a gap between left and right sires")] public float RowGap;
 
+        #endregion
+
+
+        #region Properties
+
         public int RowAdditionalBulletCount
         {
             get => _rowAdditionalBulletCount;
             set => _rowAdditionalBulletCount = Math.Abs(value);
         }
+
+        #endregion
     }
 }

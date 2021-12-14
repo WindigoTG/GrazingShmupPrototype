@@ -2,6 +2,6 @@ namespace GrazingShmup
 {
     public interface IUpdateableFixed
     {
-        void FixedUpdate(float fixedDeltaTime);
+        void UpdateFixed(float fixedDeltaTime);
     }
 }

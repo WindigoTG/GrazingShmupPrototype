@@ -6,6 +6,8 @@ namespace GrazingShmup
     [Serializable]
     public struct CapsuleConfig
     {
+        #region Fields
+
         [Header("Capsule settings")]
         [SerializeField] [Min(0)] [Tooltip("How long a capsule exist")] private float _capsuleLifeTime;
         [Tooltip("Initial speed of a capsule")] public float CapsuleSpeed;
@@ -14,6 +16,11 @@ namespace GrazingShmup
         [Tooltip("How fast a capsule turns")] public float CapsuleTurnSpeed;
         [Space]
         [Tooltip("Prefab to use as a capsule")] public GameObject CapsulePrefab;
+
+        #endregion
+
+
+        #region Properties
 
         public float CapsuleLifeTime
         {
@@ -26,5 +33,7 @@ namespace GrazingShmup
             get => _capsuleDeltaSpeedDelay;
             set => _capsuleDeltaSpeedDelay = Math.Abs(value);
         }
+
+        #endregion
     }
 }

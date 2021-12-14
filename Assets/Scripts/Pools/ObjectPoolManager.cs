@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public sealed class ObjectPoolManager
     {
+        #region Fields
+
         private Dictionary<EnemyType, ObjectPool> _enemyPool = new Dictionary<EnemyType, ObjectPool>();
         private Dictionary<GameObject, ObjectPool> _bulletsPool = new Dictionary<GameObject, ObjectPool>();
 
@@ -12,6 +14,11 @@ namespace GrazingShmup
         private Transform _bulletsParent;
 
         IEnemyFactory _enemyFactory;
+
+        #endregion
+
+
+        #region ClassLifeCCycles
 
         public ObjectPoolManager(IEnemyFactory enemyFactory)
         {
@@ -36,5 +43,7 @@ namespace GrazingShmup
 
             return _bulletsPool[prefab];
         }
+
+        #endregion
     }
 }

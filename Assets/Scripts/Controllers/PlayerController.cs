@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class PlayerController : IUpdateableRegular, IUpdateableFixed
     {
+        #region Fields
+
         private PlayerShip _player;
 
         private IPlayerFactory _playerFactory;
@@ -12,13 +14,31 @@ namespace GrazingShmup
         private float _inputVer;
         private float _slowDownInput;
 
+        #endregion
+
+
+        #region Properties
+
+        public Vector3 PlayerPosition => _player.Transform.position;
+        public Transform PlayerTransform => _player.Transform;
+
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public PlayerController(IPlayerFactory playerFactory)
         {
             _playerFactory = playerFactory;
             _player = _playerFactory.CreatePlayer();
         }
 
-        public void Update(float deltaTime)
+        #endregion
+
+
+        #region IUpdateableRegular
+
+        public void UpdateRegular(float deltaTime)
         {
             _inputHor = Input.GetAxisRaw(References.Input_Axis_Horizontal);
             _inputVer = Input.GetAxisRaw(References.Input_Axis_Vertical);
@@ -29,12 +49,17 @@ namespace GrazingShmup
                 _player.Fire();
             } 
         }
-        public void FixedUpdate(float fixedDeltaTime)
+
+        #endregion
+
+
+        #region IUpdateableFixed
+
+        public void UpdateFixed(float fixedDeltaTime)
         {
             _player.Move(_inputHor, _inputVer, _slowDownInput != 0, fixedDeltaTime);
         }
 
-        public Vector3 PlayerPosition => _player.Transform.position;
-        public Transform PlayerTransform => _player.Transform;
+        #endregion
     }
 }

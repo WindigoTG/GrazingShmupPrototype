@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class SpinningCapsule : Projectile
     {
+        #region IProjectile
+
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             Transform bullet = ServiceLocator.GetService<ObjectPoolManager>().GetBulletPool(config.SpinningCapsuleSettings.SCapsulePrefab).Pop().transform;
@@ -15,5 +17,7 @@ namespace GrazingShmup
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }
+
+        #endregion
     }
 }

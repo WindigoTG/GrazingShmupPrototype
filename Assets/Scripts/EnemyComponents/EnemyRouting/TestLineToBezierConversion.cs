@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Test
@@ -7,16 +5,17 @@ namespace Test
     [ExecuteInEditMode]
     public class TestLineToBezierConversion : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] LineRenderer _controlLine;
         [SerializeField] int _segmentsCount = 100;
         [SerializeField] LineRenderer _resultLine;
 
-        void Awake()
-        {
+        #endregion
 
-        }
 
-        // Update is called once per frame
+        #region UnityMethods
+
         void Update()
         {
             _resultLine.positionCount = _segmentsCount;
@@ -28,6 +27,11 @@ namespace Test
                 _resultLine.SetPosition(i, point);
             }
         }
+
+        #endregion
+
+
+        #region Methods
 
         Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
         {
@@ -49,5 +53,7 @@ namespace Test
             _resultLine.GetPositions(positions);
             return positions;
         }
+
+        #endregion
     }
 }

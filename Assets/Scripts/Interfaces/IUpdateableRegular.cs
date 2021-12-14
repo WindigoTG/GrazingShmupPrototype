@@ -2,6 +2,6 @@ namespace GrazingShmup
 {
     public interface IUpdateableRegular
     {
-        public void Update(float deltaTime);
+        public void UpdateRegular(float deltaTime);
     }
 }

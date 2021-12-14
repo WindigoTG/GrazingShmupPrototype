@@ -6,6 +6,8 @@ namespace Test
 {
     public class TestEnemyMovement : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] TestLineToBezierConversion _lineSource;
         [SerializeField] TestTransformToBezierConversion _routeSource;
         [SerializeField] float _speed;
@@ -16,13 +18,16 @@ namespace Test
 
         Vector3 _direction;
 
-        // Start is called before the first frame update
+        #endregion
+
+
+        #region UnityMethods
+
         void Start()
         {
             _positions = _routeSource.GetRoute();
         }
 
-        // Update is called once per frame
         void Update()
         {
             _positions = _routeSource.GetRoute();
@@ -40,5 +45,7 @@ namespace Test
             _direction = (transform.position - _positions[_currentPosition]).normalized;
             transform.Translate(_direction * _speed * Time.deltaTime);
         }
+
+        #endregion
     }
 }

@@ -6,6 +6,8 @@ namespace GrazingShmup
     [Serializable]
     public struct RepeaterCapsuleConfig
     {
+        #region Fields
+
         [Header("Repeater Capsule settings")]
         [SerializeField] [Min(0)] [Tooltip("How long a capsule exist")] private float _rCapsuleLifeTime;
         [Tooltip("Initial speed of a capsule")] public float RCapsuleSpeed;
@@ -17,6 +19,11 @@ namespace GrazingShmup
             "so that they start to change speed at the same time")] public bool SynchronizeDeltaSpeedDelayInShots;
         [Space]
         [Tooltip("Prefab to use as a capsule")] public GameObject RCapsulePrefab;
+
+        #endregion
+
+
+        #region Properties
 
         public float RCapsuleLifeTime
         {
@@ -35,5 +42,7 @@ namespace GrazingShmup
             get => _rCapsuleRefireTime;
             set => _rCapsuleRefireTime = Math.Abs(value);
         }
+
+        #endregion
     }
 }

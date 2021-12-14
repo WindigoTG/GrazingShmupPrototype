@@ -4,9 +4,16 @@ namespace GrazingShmup
 {
     public class HomingLaserMoveCommand : BaseProjectileMoveCommand
     {
+        #region Fields
+
         float _homingTime;
         Transform _target;
         Quaternion _rotation;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public HomingLaserMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config) : base(projectile, owner, config)
         {
@@ -16,6 +23,11 @@ namespace GrazingShmup
 
             _target = ServiceLocator.GetService<PlayerTracker>().Player;
         }
+
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public override bool Execute(float deltaTime)
         {
@@ -45,6 +57,11 @@ namespace GrazingShmup
             return true;
         }
 
+        #endregion
+
+
+        #region Methods
+
         new private void Move()
         {
             if (_homingTime > 0)
@@ -70,5 +87,7 @@ namespace GrazingShmup
 
             _homingTime -= _deltaTime;
         }
+
+        #endregion
     }
 }

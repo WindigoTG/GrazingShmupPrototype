@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public class GameController : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] EnemyRoute _testEnemyRoute;
 
         List<IUpdateableRegular> _updatables;
@@ -12,6 +14,11 @@ namespace GrazingShmup
         List<IUpdateableLate> _lateUpdatables;
 
         float _deltaTime;
+
+        #endregion
+
+
+        #region UnityMethods
 
         void Awake()
         {
@@ -25,19 +32,19 @@ namespace GrazingShmup
         void Update()
         {
             for (int i = 0; i < _updatables.Count; i++)
-                _updatables[i].Update(Time.deltaTime);
+                _updatables[i].UpdateRegular(Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
             for (int i = 0; i < _fixedUpdatables.Count; i++)
-                _fixedUpdatables[i].FixedUpdate(Time.fixedDeltaTime);
+                _fixedUpdatables[i].UpdateFixed(Time.fixedDeltaTime);
         }
 
         private void LateUpdate()
         {
             for (int i = 0; i < _lateUpdatables.Count; i++)
-                _lateUpdatables[i].LateUpdate(Time.deltaTime);
+                _lateUpdatables[i].UpdateLate(Time.deltaTime);
 
             //if (Time.frameCount % 2 == 0)
             //    for (int i = 0; i < _lateUpdatables.Count; i++)
@@ -45,6 +52,11 @@ namespace GrazingShmup
             //else
             //    _deltaTime = Time.deltaTime;
         }
+
+        #endregion
+
+
+        #region Methods
 
         private void CreateUpdatables()
         {
@@ -67,5 +79,7 @@ namespace GrazingShmup
 
             ServiceLocator.AddService(new PlayerTracker(playerController.PlayerTransform));
         }
+
+        #endregion
     }
 }

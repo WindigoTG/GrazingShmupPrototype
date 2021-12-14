@@ -4,12 +4,14 @@ namespace GrazingShmup
 {
     public class PlayerFactory : IPlayerFactory
     {
+        #region Fields
+
         BulletData _bulletData;
 
-        public PlayerFactory()
-        {
-            
-        }
+        #endregion
+
+
+        #region IPlayerFactory
 
         public PlayerShip CreatePlayer()
         {
@@ -17,6 +19,11 @@ namespace GrazingShmup
                                                             new PlayerWeapon(LoadBulletConfig(), 
                                                             ServiceLocator.GetService<BulletFactory>().GetBullet(BulletBase.Bullet, _bulletData.BulletComponents, _bulletData.BulletOwner)));
         }
+
+        #endregion
+
+
+        #region Methods
 
         private BulletConfig[] LoadBulletConfig()
         {
@@ -30,5 +37,7 @@ namespace GrazingShmup
 
             return config;
         }
+
+        #endregion
     }
 }

@@ -4,8 +4,15 @@ namespace GrazingShmup
 {
     public class PlayerEngine : IEnginePlayer
     {
+        #region Fields
+
         Transform _playerShip;
         PlayerData _playerData;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public PlayerEngine() { }
 
@@ -14,6 +21,11 @@ namespace GrazingShmup
             _playerData = playerData;
             _playerShip = playerShip;
         }
+
+        #endregion
+
+
+        #region IEnginePlayer
 
         public void SetDependencies(Transform playerShip, PlayerData playerData)
         {
@@ -28,6 +40,11 @@ namespace GrazingShmup
             ConstrainPlayerPosition();
         }
 
+        #endregion
+
+
+        #region Methods
+
         private void ConstrainPlayerPosition()
         {
             if (_playerShip.position.x > ScreenBounds.RightBound - _playerData.ScreenBoundMargin)
@@ -40,5 +57,7 @@ namespace GrazingShmup
             if (_playerShip.position.y < ScreenBounds.BottomBound + _playerData.ScreenBoundMargin)
                 _playerShip.position = _playerShip.position.Change(y: ScreenBounds.BottomBound + _playerData.ScreenBoundMargin);
         }
+
+        #endregion
     }
 }

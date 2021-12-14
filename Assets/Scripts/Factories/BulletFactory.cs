@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class BulletFactory : IBulletFactory
     {
+        #region IBulletFactory
+
         public Projectile GetBullet(BulletBase bulletBase, List<BulletComponent> bulletComponents, BulletOwner owner)
         {
             Projectile fireable = GetBase(bulletBase, owner);
@@ -12,6 +14,11 @@ namespace GrazingShmup
                     fireable = Decorate(fireable, bulletComponents[i]);
             return fireable;
         }
+
+        #endregion
+
+
+        #region Methods
 
         private Projectile Decorate(Projectile fireable, BulletComponent component)
         {
@@ -47,5 +54,7 @@ namespace GrazingShmup
                     return new HomingLaser(owner);
             }
         }
+
+        #endregion
     }
 }

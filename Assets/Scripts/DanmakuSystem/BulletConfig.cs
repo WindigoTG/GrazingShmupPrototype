@@ -7,6 +7,7 @@ namespace GrazingShmup
     public struct BulletConfig
     {
         #region Fields
+
         [Header("Base projectile settings")]
         [SerializeField] [Min(0)] [Tooltip("How long a bullet/laser exist")] float _bulletLifeTime;
         [SerializeField] [Min(0)] [Tooltip("Time between shots")] float _fireDelay;
@@ -45,9 +46,11 @@ namespace GrazingShmup
         private Vector3 _position;
         private Vector3 _rotation;
         private float _angle;
+
         #endregion
 
         #region General Properties
+
         public float BulletLifeTime
         {
             get => _bulletLifeTime;
@@ -71,6 +74,7 @@ namespace GrazingShmup
             get => _homingTime;
             set => _homingTime = Math.Abs(value);
         }
+
         #endregion
 
         #region Position/Rotation Properties
@@ -91,9 +95,11 @@ namespace GrazingShmup
             get => _angle;
             set => _angle = value;
         }
+
         #endregion
 
         #region Config modifying methods
+
         public void ModifyTurning(int modifier)
         {
             BulletTurnSpeed *= modifier;
@@ -125,6 +131,7 @@ namespace GrazingShmup
             RepeaterCapsuleSettings.RCapsuleDeltaSpeedDelay += difference;
             SpinningCapsuleSettings.SCapsuleDeltaSpeedDelay += difference;
         }
+
         #endregion
     }
 }

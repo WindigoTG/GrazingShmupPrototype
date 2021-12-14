@@ -5,8 +5,14 @@ namespace GrazingShmup
 {
     public static class ServiceLocator
     {
+        #region Fields
+
         private static readonly Dictionary<Type, object> _services =
                 new Dictionary<Type, object>();
+
+        #endregion
+
+        #region Methods
 
         public static void AddService<T>(T value) where T : class
         {
@@ -29,5 +35,6 @@ namespace GrazingShmup
             return default;
         }
 
+        #endregion
     }
 }

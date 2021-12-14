@@ -6,6 +6,8 @@ namespace GrazingShmup
     [Serializable]
     public struct SpinningCapsuleConfig
     {
+        #region Fields
+
         [Header("Spinning Capsule settings")]
         [Tooltip("For how many degrees burst will spin")] public float SpinArc;
         [Tooltip("How fast a capsule spins")] public float SpinSpeed;
@@ -16,6 +18,11 @@ namespace GrazingShmup
         [Tooltip("How fast a capsule turns")] public float SCapsuleTurnSpeed;
         [Space]
         [Tooltip("Prefab to use as a capsule")] public GameObject SCapsulePrefab;
+
+        #endregion
+
+
+        #region Properties
 
         public float DegreesBetweenShots
         {
@@ -28,5 +35,7 @@ namespace GrazingShmup
             get => _sCapsuleDeltaSpeedDelay;
             set => _sCapsuleDeltaSpeedDelay = Math.Abs(value);
         }
+
+        #endregion
     }
 }

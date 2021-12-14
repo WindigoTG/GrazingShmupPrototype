@@ -6,7 +6,9 @@ namespace GrazingShmup
 	[ExecuteInEditMode]
 	public class EnemyRoute : MonoBehaviour
 	{
-		[SerializeField] Color _lineColor = Color.red;
+        #region Fields
+
+        [SerializeField] Color _lineColor = Color.red;
 		private Vector3[] _nodes;
 		[SerializeField, Range(0.1f, 5.0f)] private float _radius = 0.5f;
 
@@ -19,10 +21,17 @@ namespace GrazingShmup
 		[SerializeField] bool _shouldFollowScreen;
 		[SerializeField] EnemyType _enemyType;
 
-		void Update()
-		{
+		#endregion
 
-		}
+
+		#region Properties
+
+		public EnemyType EnemyType => _enemyType;
+
+		#endregion
+
+
+		#region UnityMethods
 
 		private void OnDrawGizmos()
 		{
@@ -78,7 +87,12 @@ namespace GrazingShmup
 			}
 		}
 
-		Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+        #endregion
+
+
+        #region Methods
+
+        Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
 		{
 			float u = 1 - t;
 			float tt = t * t;
@@ -109,6 +123,6 @@ namespace GrazingShmup
 			return _positions;
 		}
 
-		public EnemyType EnemyType => _enemyType;
-	}
+        #endregion
+    }
 }

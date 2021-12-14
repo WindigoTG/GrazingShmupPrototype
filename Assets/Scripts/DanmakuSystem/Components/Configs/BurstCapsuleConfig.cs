@@ -6,6 +6,8 @@ namespace GrazingShmup
     [Serializable]
     public struct BurstCapsuleConfig
     {
+        #region Fields
+
         [Header("Burst Capsule settings")]
         [SerializeField] [Min(0)] [Tooltip("How long a capsule exist")] private float _bCapsuleLifeTime;
         [SerializeField] [Min(0)] [Tooltip("Time between shots in burst")] private float _burstRefireTime;
@@ -17,6 +19,11 @@ namespace GrazingShmup
         [Tooltip("How fast a capsule turns")] public float BCapsuleTurnSpeed;
         [Space]
         [Tooltip("Prefab to use as a capsule")] public GameObject BCapsulePrefab;
+
+        #endregion
+
+
+        #region Properties
 
         public float BCapsuleLifeTime
         {
@@ -35,5 +42,7 @@ namespace GrazingShmup
             get => _bCapsuleDeltaSpeedDelay;
             set => _bCapsuleDeltaSpeedDelay = Math.Abs(value);
         }
+
+        #endregion
     }
 }

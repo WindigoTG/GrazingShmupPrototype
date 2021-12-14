@@ -2,6 +2,6 @@ namespace GrazingShmup
 { 
     public interface IUpdateableLate
     {
-        public void LateUpdate(float deltaTime);
+        public void UpdateLate(float deltaTime);
     }
 }

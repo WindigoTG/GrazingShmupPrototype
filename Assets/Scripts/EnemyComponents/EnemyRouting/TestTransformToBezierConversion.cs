@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 [ExecuteInEditMode]
 public class TestTransformToBezierConversion : MonoBehaviour
 {
-	[SerializeField] Color _lineColor = Color.red;
+    #region Fields
+
+    [SerializeField] Color _lineColor = Color.red;
 	private Vector3[] _nodes;
 	[SerializeField, Range(0.1f, 5.0f)] private float _radius = 0.5f;
 
@@ -15,8 +15,12 @@ public class TestTransformToBezierConversion : MonoBehaviour
 	[SerializeField] int _segmentsCount = 100;
 	private Vector3[] _positions;
 
+    #endregion
 
-	void Update()
+
+    #region UnityMethods
+
+    void Update()
 	{
 		_positions = new Vector3[_segmentsCount];
 
@@ -67,7 +71,12 @@ public class TestTransformToBezierConversion : MonoBehaviour
 		}
 	}
 
-	Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    #endregion
+
+
+    #region Methods
+
+    Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
 	{
 		float u = 1 - t;
 		float tt = t * t;
@@ -97,4 +106,6 @@ public class TestTransformToBezierConversion : MonoBehaviour
 
 		return _positions;
 	}
+
+    #endregion
 }

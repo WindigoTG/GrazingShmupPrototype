@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public class CollisionManager
     {
+        #region Fields
+
         RaycastHit2D[] _hits = new RaycastHit2D[128];
 
         Transform _player;
@@ -14,6 +16,11 @@ namespace GrazingShmup
         public Action<Transform> EnemyHit;
         public Action PlayerHit;
         public Action<Vector3> PlayerGrazed;
+
+        #endregion
+
+
+        #region Methods
 
         public bool CheckCollisions(Vector3 origin, float radius, Vector3 direction, int layerMask)
         {
@@ -109,5 +116,7 @@ namespace GrazingShmup
             _playerHitPointRadius = hitPointRadius;
             _playerGrazeColliderSize = grazeColliderSize;
         }
+
+        #endregion
     }
 }

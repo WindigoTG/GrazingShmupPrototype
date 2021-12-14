@@ -5,9 +5,16 @@ namespace GrazingShmup
 {
     public class SpinningCapsuleMoveCommand : DelayedCapsuleMoveCommand
     {
+        #region Fields
+
         private float _nextfireDegree;
         private float _degreesSpun;
         private Quaternion _shootingRotation;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public SpinningCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)
             : base(projectile, owner, config, content)
@@ -21,6 +28,11 @@ namespace GrazingShmup
 
             _shootingRotation = _projectile.rotation;
         }
+
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public override bool Execute(float deltaTime)
         {
@@ -47,6 +59,11 @@ namespace GrazingShmup
             return true;
         }
 
+        #endregion
+
+
+        #region Methods
+
         private bool SpinAndShoot()
         {
 
@@ -66,5 +83,7 @@ namespace GrazingShmup
 
             return true;
         }
+
+        #endregion
     }
 }

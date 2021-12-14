@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace GrazingShmup
 {
-    public class PlayerPowerCore 
+    public class PlayerPowerCore : IUpdateableRegular
     {
+        #region Fields
+
         Transform _playerShip;
         Transform _grazeSparksTransform;
         ParticleSystem _grazeSparks;
@@ -24,6 +24,20 @@ namespace GrazingShmup
 
         Slider _slider;
 
+        #endregion
+
+
+        #region Properties
+
+        public bool IsGrazing => _isGrazing;
+
+        public int PowerLevel => (int)(_currentPowerLevel / 25);
+
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public PlayerPowerCore(Transform playerShip)
         {
             _grazeSparksTransform = Object.Instantiate(Resources.Load<GameObject>(References.Graze_Sparks_Prefab)).transform;
@@ -33,9 +47,12 @@ namespace GrazingShmup
             _slider = Object.FindObjectOfType<Slider>();
         }
 
+        #endregion
 
 
-        public void Update(float deltaTime)
+        #region IUpdateableRegular
+
+        public void UpdateRegular(float deltaTime)
         {
 
             if (_currentGrazeCoolDown > 0)
@@ -62,13 +79,14 @@ namespace GrazingShmup
             _slider.colors = colors;
         }
 
-        public bool IsGrazing => _isGrazing;
+        #endregion
 
-        public int PowerLevel => (int)(_currentPowerLevel / 25);
+
+        #region Methods
 
         public void Hit()
         {
-            Debug.LogError("Got Hit");
+            Debug.LogWarning("Got Hit");
         }
 
         public void Graze(Vector3 contactPosition)
@@ -93,5 +111,7 @@ namespace GrazingShmup
                     _currentPowerLevel = _maxPowerLevel;
             }
         }
+
+        #endregion
     }
 }

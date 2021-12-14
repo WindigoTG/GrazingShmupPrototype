@@ -5,15 +5,27 @@ namespace GrazingShmup
 {
     public sealed class ObjectPool
     {
+        #region Fields
+
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;
         private Transform _parentObject;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public ObjectPool(GameObject prefab, Transform parentObject)
         {
             _prefab = prefab;
             _parentObject = parentObject;
         }
+
+        #endregion
+
+
+        #region Methods
 
         public void Push(GameObject gameObject)
         {
@@ -37,5 +49,7 @@ namespace GrazingShmup
 
             return gameObject;
         }
+
+        #endregion
     }
 }

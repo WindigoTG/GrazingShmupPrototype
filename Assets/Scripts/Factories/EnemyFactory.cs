@@ -5,8 +5,15 @@ namespace GrazingShmup
 {
     public class EnemyFactory : IEnemyFactory
     {
+        #region Fields
+
         Dictionary<EnemyType, EnemyMovementData> _movementData = new Dictionary<EnemyType, EnemyMovementData>();
         Dictionary<EnemyType, BulletData> _bulletData = new Dictionary<EnemyType, BulletData>();
+
+        #endregion
+
+
+        #region IEnemyFactory
 
         public Enemy CreateEnemy(EnemyType type)
         {
@@ -41,5 +48,7 @@ namespace GrazingShmup
             string path = References.Enemy_Prefabs + ((int)type).ToString();
             return Resources.Load<GameObject>(path);
         }
+
+        #endregion
     }
 }

@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public sealed class Enemy : IUpdateableRegular
     {
+        #region Fields
+
         private IMovementEnemy _movement;
         private IWeaponEnemy _weapon;
         private Transform _enemy;
@@ -16,6 +18,18 @@ namespace GrazingShmup
         private ObjectPool _enemyPool;
         private PlayerController _playerController;
 
+        #endregion
+
+
+        #region Properties
+
+        public bool IsActive => _enemy != null;
+
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public Enemy(EnemyType type, IWeaponEnemy weapon, IMovementEnemy movement)
         {
             _weapon = weapon;
@@ -23,7 +37,21 @@ namespace GrazingShmup
             _enemyPool = ServiceLocator.GetService<ObjectPoolManager>().GetEnemyPool(_type);
         }
 
-        public bool IsActive => _enemy != null;
+        #endregion
+
+
+        #region IUpdateableRegular
+
+        public void UpdateRegular(float deltaTime)
+        {
+            _movement?.Move(deltaTime);
+            Shoot();
+        }
+
+        #endregion
+
+
+        #region Methods
 
         public void ActivateEnemy(Vector3[] route, PlayerController playerController)
         {
@@ -32,12 +60,6 @@ namespace GrazingShmup
             _enemy.position = route[0];
             _movement.SetObjectToMoveAndRoute(_enemy, route);
             _playerController = playerController;
-        }
-
-        public void Update(float deltaTime)
-        {
-            _movement?.Move(deltaTime);
-            Shoot();
         }
 
         private void Shoot()
@@ -67,5 +89,7 @@ namespace GrazingShmup
             _enemy = null;
             _weaponMount = null;
         }
+
+        #endregion
     }
 }

@@ -1,14 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace GrazingShmup
 {
     public class EnemyController : IUpdateableRegular
     {
+        #region Fields
+
         Dictionary<EnemyType, List<Enemy>> _enemies = new Dictionary<EnemyType, List<Enemy>>();
         IEnemyFactory _enemyFactory;
         PlayerController _playerController;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public EnemyController(IEnemyFactory enemyFactory, EnemyRoute route, PlayerController playerController)
         {
@@ -22,16 +27,23 @@ namespace GrazingShmup
             _enemies[route.EnemyType].Add(enemy);
         }
 
-        public void Update(float deltaTime)
+        #endregion
+
+
+        #region IUpdateableRegular
+
+        public void UpdateRegular(float deltaTime)
         {
             if (_enemies.Count > 0)
             {
                 foreach (var e in _enemies)
                 {
                     for (int i = 0; i < e.Value.Count; i++)
-                        e.Value[i].Update(deltaTime);
+                        e.Value[i].UpdateRegular(deltaTime);
                 }
             }
         }
+
+        #endregion
     }
 }

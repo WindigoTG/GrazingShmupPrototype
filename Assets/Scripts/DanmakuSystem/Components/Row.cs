@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class Row : Projectile
     {
+        #region IProjectile
+
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
@@ -46,5 +48,7 @@ namespace GrazingShmup
                 }
             }
         }
+
+        #endregion
     }
 }

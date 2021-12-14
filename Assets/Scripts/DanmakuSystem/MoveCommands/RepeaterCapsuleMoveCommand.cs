@@ -4,8 +4,15 @@ namespace GrazingShmup
 {
     public class RepeaterCapsuleMoveCommand : DelayedCapsuleMoveCommand
     {
+        #region Fields
+
         protected float _refireTime;
         protected float _lastFireTime;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public RepeaterCapsuleMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config, IProjectile content)  
             : base(projectile, owner, config, content)
@@ -21,6 +28,11 @@ namespace GrazingShmup
             _refireTime = config.RepeaterCapsuleSettings.RCapsuleRefireTime;
             _lastFireTime = Time.time;
         }
+
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public override bool Execute(float deltaTime)
         {
@@ -49,6 +61,11 @@ namespace GrazingShmup
             return true;
         }
 
+        #endregion
+
+
+        #region Methods
+
         private void FireContent()
         {
             if (Time.time - _lastFireTime >= _refireTime)
@@ -60,5 +77,7 @@ namespace GrazingShmup
                 _lastFireTime = Time.time;
             }
         }
+
+        #endregion
     }
 }

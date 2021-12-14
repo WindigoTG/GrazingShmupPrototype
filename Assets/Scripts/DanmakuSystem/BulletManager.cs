@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public class BulletManager : IUpdateableLate
     {
+        #region Fields
+
         private List<IProjectileMoveCommand> _commands;
         float _maxTime = 0.01f;
 
@@ -13,12 +15,22 @@ namespace GrazingShmup
         bool _isNewCycle;
         float _startTime;
 
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public BulletManager()
         {
             _commands = new List<IProjectileMoveCommand>();
         }
 
-        public void LateUpdate(float deltaTime)
+        #endregion
+
+
+        #region IUpdateableLate
+
+        public void UpdateLate(float deltaTime)
         {
 
             int bullets = 0;
@@ -65,6 +77,11 @@ namespace GrazingShmup
             Debug.Log($"Bullet Count: {_commands.Count}  |  FPS: {1 / Time.deltaTime}  |  {bullets}");
         }
 
+        #endregion
+
+
+        #region Methods
+
         public void AddCommand(IProjectileMoveCommand command)
         {
             _commands.Add(command);
@@ -75,5 +92,7 @@ namespace GrazingShmup
             if (_commands.Contains(command))
                 _commands.Remove(command);
         }
+
+        #endregion
     }
 }

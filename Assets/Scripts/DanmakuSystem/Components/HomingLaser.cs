@@ -4,12 +4,24 @@ namespace GrazingShmup
 { 
 public class HomingLaser : Projectile
     {
+        #region
+
         private BulletOwner _owner;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public HomingLaser(BulletOwner owner)
         {
             _owner = owner;
         }
+
+        #endregion
+
+
+        #region IProjectile
 
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
@@ -27,5 +39,7 @@ public class HomingLaser : Projectile
 
             ServiceLocator.GetService<BulletManager>().AddCommand(command);
         }
-    }   
+
+        #endregion
+    }
 }

@@ -5,6 +5,8 @@ namespace GrazingShmup
 {
     public class EnemyEngine : IMovementEnemy
     {
+        #region Fields
+
         Transform _enemy;
         Vector3[] _positions;
         int _currentPosition;
@@ -15,10 +17,20 @@ namespace GrazingShmup
 
         public event Action ReachedFinish;
 
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public EnemyEngine(EnemyMovementData movementData)
         {
             _movementData = movementData;
         }
+
+        #endregion
+
+
+        #region IMovementEnemy
 
         public void SetObjectToMoveAndRoute(Transform enemy, Vector3[] positions)
         {
@@ -46,10 +58,17 @@ namespace GrazingShmup
             }
         }
 
+        #endregion
+
+
+        #region Methods
+
         private void Restart()
         {
             _enemy.position = _positions[0];
             _currentPosition = 0;
         }
+
+        #endregion
     }
 }

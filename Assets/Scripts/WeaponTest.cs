@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class WeaponTest : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] private BulletConfig _config;
         [SerializeField] private BulletData _bulletData;
         [SerializeField] private Transform _testTarget;
@@ -15,6 +17,11 @@ namespace GrazingShmup
         private float _lastFiredTime;
 
         private float _deltaTime;
+
+        #endregion
+
+
+        #region UnityMethods
 
         private void Awake()
         {
@@ -56,12 +63,19 @@ namespace GrazingShmup
             //    _bulletManager.LateUpdate(_deltaTime + Time.deltaTime);
             //else
             //    _deltaTime = Time.deltaTime;
-            _bulletManager.LateUpdate(Time.deltaTime);
+            _bulletManager.UpdateLate(Time.deltaTime);
         }
+
+        #endregion
+
+
+        #region Methods
 
         private void Fire()
         {
             _projectile.Fire(_config, transform.position, transform.rotation.eulerAngles);
         }
+
+        #endregion
     }
 }

@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class Arc : Projectile
     {
+        #region IProjectile
+
         public override void Fire(BulletConfig config, Vector3 position, Vector3 rotation)
         {
             config.Position = position;
@@ -42,5 +44,7 @@ namespace GrazingShmup
                 SubFire(currentConfig, currentConfig.Position, currentConfig.Rotation);
             }
         }
+
+        #endregion
     }
 }

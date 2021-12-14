@@ -4,10 +4,17 @@ namespace GrazingShmup
 {
     public sealed class PlayerWeapon : IWeaponPlayer
     {
+        #region Fields
+
         private BulletConfig[] _config;
         private IProjectile _projectile;
         private float _lastFiredTime;
         private float _fireDelay;
+
+        #endregion
+
+
+        #region ClassLifeCycles
 
         public PlayerWeapon(BulletConfig[] config, IProjectile projectile)
         {
@@ -16,6 +23,11 @@ namespace GrazingShmup
             _fireDelay = _config[0].FireDelay;
             _lastFiredTime = -_fireDelay;
         }
+
+        #endregion
+
+
+        #region IWeaponPlayer
 
         public void Shoot(Transform bulletSpawn, int powerLevel)
         {
@@ -26,5 +38,7 @@ namespace GrazingShmup
                 _fireDelay = _config[powerLevel].FireDelay;
             }
         }
+
+        #endregion
     }
 }

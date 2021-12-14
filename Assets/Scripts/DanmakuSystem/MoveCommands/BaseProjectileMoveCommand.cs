@@ -4,6 +4,8 @@ namespace GrazingShmup
 {
     public class BaseProjectileMoveCommand : IProjectileMoveCommand
     {
+        #region Fields
+
         protected Transform _projectile;
         protected float _speed;
         protected float _deltaSpeed;
@@ -27,6 +29,11 @@ namespace GrazingShmup
         protected bool _shouldLiveOffscreen;
         protected float _offscreenOffset;
 
+        #endregion
+
+
+        #region ClassLifeCycles
+
         public BaseProjectileMoveCommand(Transform projectile, BulletOwner owner, BulletConfig config)
         {
             _objectPoolManager = ServiceLocator.GetService<ObjectPoolManager>();
@@ -49,12 +56,10 @@ namespace GrazingShmup
             GetBulletSize();
         }
 
-        private void GetBulletSize()
-        {
-            var collider = _projectile.gameObject.AddComponent<BoxCollider2D>();
-            _bulletRadius = collider.bounds.extents.x;
-            Object.Destroy(collider);
-        }
+        #endregion
+
+
+        #region IProjectileMoveCommand
 
         public virtual bool Execute(float deltaTime)
         {
@@ -83,6 +88,18 @@ namespace GrazingShmup
             }
 
             return true;
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void GetBulletSize()
+        {
+            var collider = _projectile.gameObject.AddComponent<BoxCollider2D>();
+            _bulletRadius = collider.bounds.extents.x;
+            Object.Destroy(collider);
         }
 
         protected void SetDeltaTimeForurrentUpdate(float deltaTime)
@@ -144,5 +161,7 @@ namespace GrazingShmup
         {
             _objectPoolManager.GetBulletPool(_prefab).Push(_projectile.gameObject);
         }
+
+        #endregion
     }
 }
